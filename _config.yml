@@ -98,9 +98,15 @@ author:
   email: xlffm3@gmail.com
   twitter:
   links:
-    - title:
-      url:
-      icon:
+    - title: GitHub
+      url: https://github.com/xlffm3
+      icon: fab fa-github-square
+    - title: Instagram
+      url: https://instagram.com/hong___o
+      icon: fab fa-instagram
+    - title: Email
+      url: mailto:xlffm3@gmail.com
+      icon: fas fa-envelope-square
 
 # Footer Links
 footer_links:

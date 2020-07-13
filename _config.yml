@@ -51,8 +51,8 @@ feed:
   path: atom.xml
 
 # Pagination - https://jekyllrb.com/docs/pagination/
-# paginate: 10
-# paginate_path: /page:num/
+paginate: 5
+paginate_path: /page:num/
 
 # Search
 search_full_content: true # can have performance implications for large sites
@@ -87,13 +87,15 @@ defaults:
       type: posts
     values:
       layout: post
+      comments: true
       share: true
+      sitemap: true
 
 # Site Author
 author:
-  name:
+  name: Jinhong Park
   picture:
-  email:
+  email: xlffm3@gmail.com
   twitter:
   links:
     - title:

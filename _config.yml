@@ -21,8 +21,8 @@ title: "Definitely Maybe"
 description: "Keep On Reaching Up For A Higher Ground"
 baseurl: # the subpath of your site, e.g. "/blog"
 url: "https://xlffm3.github.io"
-logo: # path of site logo, e.g. "/images/logo.png"
-date_format: "%B %-d, %Y"
+logo: /images/profile.jpg
+date_format: "%Y-%m-%d"
 read_time: true
 words_per_minute: 200
 mathjax:
@@ -34,9 +34,11 @@ google_fonts:
     weights: "400,400i,700,700i"
   - name: "Lora"
     weights: "400,400i,700,700i"
+  - name: "Nanum Gothic"
+    weights: "400,400i,700,700i"
 google_analytics: # Google Analytics id, e.g. "UA-NNNNNNNN-N"
 disqus:
-  shortname: # Disqus shortname, e.g. "my_disqus_shortname"
+  shortname: definitelymaybe-1 # Disqus shortname, e.g. "my_disqus_shortname"
 twitter:
   username: # site's Twitter username, e.g. "mmistakes"
 
@@ -94,7 +96,7 @@ defaults:
 # Site Author
 author:
   name: Jinhong Park
-  picture:
+  picture: /images/profile.jpg
   email: xlffm3@gmail.com
   twitter:
   links:
@@ -104,6 +106,9 @@ author:
     - title: Instagram
       url: https://instagram.com/hong___o
       icon: fab fa-instagram
+    - title: Facebook
+      url: https://www.facebook.com/qkrwlsghd
+      icon: fab fa-facebook-square
     - title: Email
       url: mailto:xlffm3@gmail.com
       icon: fas fa-envelope-square
@@ -116,6 +121,9 @@ footer_links:
   - title: Instagram
     url: https://instagram.com/hong___o
     icon: fab fa-instagram
+  - title: Facebook
+    url: https://www.facebook.com/qkrwlsghd
+    icon: fab fa-facebook-square
   - title: Email
     url: mailto:xlffm3@gmail.com
     icon: fas fa-envelope-square

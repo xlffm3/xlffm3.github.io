@@ -6,3 +6,16 @@ sitemap: false
 @charset "utf-8";
 
 @import "so-simple";
+
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
+
+$serif-font-family: "Nanum Gothic", "Lora", serif;
+$sans-serif-font-family: "Nanum Gothic", "Source Sans Pro", sans-serif;
+$monospace-font-family: "Nanum Gothic", Menlo, Consolas, Monaco, "Courier New", Courier,
+  monospace;
+
+$base-font-family: $sans-serif-font-family;
+$headline-font-family: $sans-serif-font-family;
+$title-font-family: $serif-font-family;
+$description-font-family: $serif-font-family;
+$meta-font-family: $serif-font-family;

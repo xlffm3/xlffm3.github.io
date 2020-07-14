@@ -1,17 +1,17 @@
-current directory: C:/Users/glenn/Desktop/Jinhong/git/so-simple-theme/vendor/bundle/ruby/2.6.0/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
-C:/Ruby26-x64/bin/ruby.exe -I C:/Ruby26-x64/lib/ruby/2.6.0 -r ./siteconf20200714-35616-164e7st.rb extconf.rb
+current directory: C:/Users/glenn/Desktop/Jinhong/git/minimal-mistakes/vendor/bundle/ruby/2.6.0/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
+C:/Ruby26-x64/bin/ruby.exe -I C:/Ruby26-x64/lib/ruby/2.6.0 -r ./siteconf20200714-3320-1n46e1v.rb extconf.rb
 creating Makefile
 
-current directory: C:/Users/glenn/Desktop/Jinhong/git/so-simple-theme/vendor/bundle/ruby/2.6.0/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
+current directory: C:/Users/glenn/Desktop/Jinhong/git/minimal-mistakes/vendor/bundle/ruby/2.6.0/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
 make "DESTDIR=" clean
 
-current directory: C:/Users/glenn/Desktop/Jinhong/git/so-simple-theme/vendor/bundle/ruby/2.6.0/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
+current directory: C:/Users/glenn/Desktop/Jinhong/git/minimal-mistakes/vendor/bundle/ruby/2.6.0/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
 make "DESTDIR="
 generating ruby_http_parser-x64-mingw32.def
 compiling ruby_http_parser.c
 compiling ryah_http_parser.c
 linking shared-object ruby_http_parser.so
 
-current directory: C:/Users/glenn/Desktop/Jinhong/git/so-simple-theme/vendor/bundle/ruby/2.6.0/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
+current directory: C:/Users/glenn/Desktop/Jinhong/git/minimal-mistakes/vendor/bundle/ruby/2.6.0/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 ruby_http_parser.so ./.gem.20200714-35616-1lj58sy
+/usr/bin/install -c -m 0755 ruby_http_parser.so ./.gem.20200714-3320-8i3fvx

@@ -1,21 +1,8 @@
 ---
 # Only the main Sass file needs front matter (the dashes are enough)
-sitemap: false
 ---
 
 @charset "utf-8";
 
-@import "so-simple";
-
-@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
-
-$serif-font-family: "Nanum Gothic", "Lora", serif;
-$sans-serif-font-family: "Nanum Gothic", "Source Sans Pro", sans-serif;
-$monospace-font-family: "Nanum Gothic", Menlo, Consolas, Monaco, "Courier New", Courier,
-  monospace;
-
-$base-font-family: $sans-serif-font-family;
-$headline-font-family: $sans-serif-font-family;
-$title-font-family: $serif-font-family;
-$description-font-family: $serif-font-family;
-$meta-font-family: $serif-font-family;
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials

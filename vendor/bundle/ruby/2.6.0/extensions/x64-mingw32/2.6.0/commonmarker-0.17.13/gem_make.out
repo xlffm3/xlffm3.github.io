@@ -1,11 +1,11 @@
-current directory: C:/Users/glenn/Desktop/Jinhong/git/so-simple-theme/vendor/bundle/ruby/2.6.0/gems/commonmarker-0.17.13/ext/commonmarker
-C:/Ruby26-x64/bin/ruby.exe -I C:/Ruby26-x64/lib/ruby/2.6.0 -r ./siteconf20200714-35616-1kmf11t.rb extconf.rb
+current directory: C:/Users/glenn/Desktop/Jinhong/git/minimal-mistakes/vendor/bundle/ruby/2.6.0/gems/commonmarker-0.17.13/ext/commonmarker
+C:/Ruby26-x64/bin/ruby.exe -I C:/Ruby26-x64/lib/ruby/2.6.0 -r ./siteconf20200714-3320-1j6k580.rb extconf.rb
 creating Makefile
 
-current directory: C:/Users/glenn/Desktop/Jinhong/git/so-simple-theme/vendor/bundle/ruby/2.6.0/gems/commonmarker-0.17.13/ext/commonmarker
+current directory: C:/Users/glenn/Desktop/Jinhong/git/minimal-mistakes/vendor/bundle/ruby/2.6.0/gems/commonmarker-0.17.13/ext/commonmarker
 make "DESTDIR=" clean
 
-current directory: C:/Users/glenn/Desktop/Jinhong/git/so-simple-theme/vendor/bundle/ruby/2.6.0/gems/commonmarker-0.17.13/ext/commonmarker
+current directory: C:/Users/glenn/Desktop/Jinhong/git/minimal-mistakes/vendor/bundle/ruby/2.6.0/gems/commonmarker-0.17.13/ext/commonmarker
 make "DESTDIR="
 generating commonmarker-x64-mingw32.def
 compiling arena.c
@@ -56,6 +56,6 @@ compiling utf8.c
 compiling xml.c
 linking shared-object commonmarker/commonmarker.so
 
-current directory: C:/Users/glenn/Desktop/Jinhong/git/so-simple-theme/vendor/bundle/ruby/2.6.0/gems/commonmarker-0.17.13/ext/commonmarker
+current directory: C:/Users/glenn/Desktop/Jinhong/git/minimal-mistakes/vendor/bundle/ruby/2.6.0/gems/commonmarker-0.17.13/ext/commonmarker
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 commonmarker.so ./.gem.20200714-35616-tbqywe/commonmarker
+/usr/bin/install -c -m 0755 commonmarker.so ./.gem.20200714-3320-1shh7mc/commonmarker

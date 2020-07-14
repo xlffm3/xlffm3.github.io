@@ -1,0 +1,75 @@
+---
+title: "Spring Boot 개념과 활용 - 18장 : H2 인메모리 DB"
+date: 2020-07-05 19:55:29
+thumbnail: https://user-images.githubusercontent.com/56240505/86525119-eea35780-bebd-11ea-8fbd-ceacfdfae2c6.png
+categories:
+- Back-End
+- Spring & Spring Boot
+tags: [Spring Boot]
+---
+
+## Spring Boot가 지원하는 인메모리 DB
+
+* H2 (추천).
+* HSQL.
+* Derby.
+
+<br>
+
+## Spring-JDBC
+
+* 의존성을 주입받으면 AutoConfiguration을 통해 필요한 Bean들을 자동으로 설정해준다.
+  * DataSource.
+  * JdbcTemplate.
+
+<br>
+
+## 인메모리 DB 기본 정보
+
+* URL: “testdb”.
+* username: “sa”.
+* password: “”.
+
+<br>
+
+## 예제 코드
+
+> AppRunner.java
+
+```java
+@Component
+public class AppRunner implements ApplicationRunner {
+
+    @Autowired
+    DataSource dataSource;
+
+    @Autowired
+    JdbcTemplate jdbcTemplate;
+
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        try (Connection connection = dataSource.getConnection()) {
+
+            System.out.println(connection.getMetaData().getURL());
+            System.out.println(connection.getMetaData().getUserName());
+
+            Statement statement = connection.createStatement();
+            String sql = "CREATE TABLE USER (ID INTEGER NOT NULL, name VARCHAR(255), PRIMARY\n" +
+                    "KEY (id))";
+            statement.executeUpdate(sql);
+            jdbcTemplate.execute("INSERT INTO USER VALUES (1, 'keesun')");
+        }
+    }
+}
+```
+
+* Spring Devtools를 사용하거나, properties에 ``spring.h2.console.enabled=true``를 추가한다.
+* /h2-console path로 DB에 접속한다.
+
+<br>
+
+---
+
+## Reference
+
+* 스프링 부트 개념과 활용 (백기선, Inflearn)

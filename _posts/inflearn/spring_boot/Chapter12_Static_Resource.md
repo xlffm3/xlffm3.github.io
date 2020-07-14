@@ -1,0 +1,56 @@
+---
+title: "Spring Boot 개념과 활용 - 12장 : 정적 리소스 지원"
+date: 2020-07-05 18:59:29
+thumbnail: https://user-images.githubusercontent.com/56240505/86525119-eea35780-bebd-11ea-8fbd-ceacfdfae2c6.png
+categories:
+- Back-End
+- Spring & Spring Boot
+tags: [Spring Boot]
+---
+
+## Static Resource 지원
+
+* 동적으로 View를 생성하는 것이 아니라, 요청이 오기 전부터 이미 준비되어 있는 정적인 자원들을 의미한다.
+* 정적 리소스 맵핑 “/\*\*”.
+* 기본 리소스 위치.
+  * classpath:/static
+  * classpath:/public
+  * classpath:/resources/
+  * classpath:/META-INF/resources
+  * spring.mvc.static-path-pattern : 특정 맵핑 설정 변경이 가능하다.
+    * 예) “/hello.html” => /static/hello.html
+  * spring.mvc.static-locations : 리소스 찾을 위치의 변경이 가능하다.
+* Last-Modified 헤더를 보고 304 응답을 보낸다.
+* ResourceHttpRequestHandler가 요청을 처리한다.
+  * properties에 대한 추가보다 해당 방법이 권장된다.
+  * WebMvcConfigurer의 addRersourceHandlers로 커스터마이징 할 수 있다.
+
+<br>
+
+## addRersourceHandlers
+
+> Configuration.java
+
+```java
+@Configuration
+public class Config implements WebMvcConfigurer {
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/m/**")
+                .addResourceLocations("classpath:/m/")
+                .setCachePeriod(20);
+    }
+}
+```
+
+* 기존 Spring Boot가 제공하는 리소스 핸들러를 유지하면서 추가한다.
+* m으로 시작하는 요청이 오면 classpath 기준 m 디렉토리 하위 파일로 검색한다는 의미이다.
+
+<br>
+
+---
+
+## Reference
+
+* 스프링 부트 개념과 활용 (백기선, Inflearn)

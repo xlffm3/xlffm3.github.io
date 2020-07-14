@@ -111,9 +111,6 @@ author:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       url: "mailto:xlffm3@email.com"
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      url: "https://xlffm3.github.io"
 
 # Site Footer
 footer:
@@ -130,9 +127,6 @@ footer:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       url: "mailto:xlffm3@email.com"
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      url: "https://xlffm3.github.io"
 
 
 # Reading Files

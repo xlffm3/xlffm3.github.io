@@ -94,7 +94,7 @@ analytics:
 # Site Author
 author:
   name             : "Jinhong Park"
-  avatar           : "/assets/images/profile.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/sidebarprofile.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Keep On Reaching Up"
   location         : "Seoul, South Korea"
   email            :

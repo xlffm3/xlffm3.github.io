@@ -1,5 +1,5 @@
 ---
-title: "Spring Web MVC - 3장 : IoC 컨테이너 및 MVC 연동"
+title: "Spring Web MVC - 3장 : IoC 컨테이너 & MVC 연동"
 categories:
   - Back-End
   - Spring & Spring Boot

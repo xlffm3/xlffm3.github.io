@@ -104,7 +104,7 @@ last_modified_at: 2020-07-14T08:02:00-05:00
 
 > MyListener.java
 
-```Java
+```java
 public class MyListener implements ServletContextListener {
 
     @Override
@@ -124,7 +124,7 @@ public class MyListener implements ServletContextListener {
 
 > MyFilter.java
 
-```Java
+```java
 public class MyFilter implements Filter {
 
     @Override

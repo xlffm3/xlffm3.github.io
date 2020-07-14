@@ -48,6 +48,7 @@ public class EventController {
 
 ```java
 public class EventEditor extends PropertyEditorSupport {
+  
     @Override
     public String getAsText() {
         Event event = (Event)getValue();

@@ -16,7 +16,7 @@ last_modified_at: 2020-07-14T08:07:00-05:00
 
 > SimpleController.java
 
-```Java
+```java
 @RestController
 public class SampleController {
 
@@ -31,7 +31,7 @@ public class SampleController {
 
 > SimpleControllerTest.java
 
-```Java
+```java
 @RunWith(SpringRunner.class)
 @WebMvcTest
 class SampleControllerTest {
@@ -57,7 +57,7 @@ class SampleControllerTest {
 
 > PersonFormatter.java
 
-```Java
+```java
 public class PersonFormatter implements Formatter<Person> {
 
     @Override
@@ -182,7 +182,7 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
 
 > SimpleController.java
 
-```Java
+```java
 @GetMapping("/hello")
 public String hello(@RequestParam("id") Person person) {
     return "hello " + person.getName();

@@ -113,7 +113,7 @@ protected void initStrategies(ApplicationContext context) {
 
 > WebApplication.java
 
-```Java
+```java
 public class WebApplication implements WebApplicationInitializer {
 
     @Override

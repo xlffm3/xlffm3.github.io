@@ -14,7 +14,7 @@ last_modified_at: 2020-07-10T08:20:00-05:00
 
 ## SpEL(Spring Expression Language)
 
-```Java
+```java
 ExpressionParser parser = new SpelExpressionParser();
 StandardEvaluationContext context = new StandardEvaluationContext(bean);
 Expression expression = parser.parseExpression(“SpEL 표현식”);
@@ -32,7 +32,7 @@ String value = expression.getvalue(context, String.class);
 
 > Test.Java
 
-```Java
+```java
 @Component
 public class Test {
 	@Value{"#{1 + 1}"}

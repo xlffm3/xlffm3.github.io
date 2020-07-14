@@ -1,5 +1,5 @@
 ---
-title:  "Spring Framework 핵심 기술 - 4장 : Component Scan"
+title:  "Spring Framework 핵심 기술 - 4장 : @Component Scan"
 categories:
   - Back-End
   - Spring & Spring Boot

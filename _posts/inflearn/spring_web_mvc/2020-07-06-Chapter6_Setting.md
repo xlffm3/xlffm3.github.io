@@ -23,7 +23,7 @@ last_modified_at: 2020-07-14T08:06:00-05:00
 
 > WebConfig.java
 
-```Java
+```java
 @Configuration
 @ComponentScan
 @EnableWebMvc
@@ -37,7 +37,7 @@ public class WebConfig {
 
 > WebApplication.java
 
-```Java
+```java
 public class WebApplication implements WebApplicationInitializer {
 
     @Override

@@ -57,7 +57,7 @@ public class BookService {
 
 > Application.xml
 
-```java
+```xml
 <bean id="bookService" class="com.example.demo.BookService">
     <property name="bookRepository" ref="bookRepository"/>
 </bean>
@@ -119,10 +119,9 @@ public class BookRepository {}
 
 > Application.xml
 
-```java
+```xml
 <context:component-scan basepackage="com.example.demo"/>
 ```
-
 
 * XML에 등록된 component-scan 기능을 토대로 특정 패키지 이하의 모든 클래스 중에 @Component Annotation을 이용한 Class를 스캐닝하여 Bean으로 등록한다.
 * @Service 및 @Repository는 @Component를 확장한 Annotation이다.

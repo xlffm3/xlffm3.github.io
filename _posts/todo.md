@@ -7,30 +7,12 @@
 * 문제 https://mommoo.tistory.com/92
 
 ## DI 방식 : 생성자 , autowired, 필드 롬복
-
-https://blusky10.tistory.com/330
-* @Data 어노테이션은 지양
-
-jsonvalue notnull default
+https://zorba91.tistory.com/238
 
 CSRF ??
-
-@JsonIgnore
-테스트깨질때... 값이 null인데 json 반환안할거기때문에
+할거기때문에
 > 나중에 정리할 내용 종료
 
-
-## mock과 mockbean의 차이, injectmocks
-
-https://howtodoinjava.com/mockito/mockito-mock-injectmocks/
-
-
-#3 mockMvc
-
- autowired 안하고 builder를 통해 직접 Before 시점에서 주입 가능하며, 커스터마이징가능
-
- ## 서비스 테스트는 일반적으로 스프링 컨텍스트가 필요없
- * ExtendWith(MockitoExtension.class) 추가
 
 
  ## 지네릭스를 이용하자
@@ -52,6 +34,9 @@ https://howtodoinjava.com/mockito/mockito-mock-injectmocks/
 
 
 
+ jsonvalue notnull default
+ @JsonIgnore
+ 테스트깨질때... 값이 null인데 json 반환안
 
  ## 페이징
 

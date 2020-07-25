@@ -10,28 +10,12 @@
 https://zorba91.tistory.com/238
 
 CSRF ??
-할거기때문에
-> 나중에 정리할 내용 종료
+ 나중에 정리할 내용 종료
 
-
-
- ## 지네릭스를 이용하자
-
- interface CrudInterface<Req, Res>
-
- class UserApiController implements CrudInterface<UserRequest, UserResponse>
- class ItemApiController implements CrudInterface<ItemRequest, ItemResponse>
-
- 서비스 레이어도 동일하게!
-
- ## enum 리팩토렁
 
  @Enumerated
 
  ## 컨트롤러 추상화 crud!!
-
- abstractClass를 상속받고, 내부에서 @PostConstruct를 통해 객체 넣어
-
 
 
  jsonvalue notnull default

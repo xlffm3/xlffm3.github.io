@@ -36,10 +36,10 @@ HttpEntity와 ResponseEntity 또한 특정 T 타입의 data를 담을 수 있도
 
 ```java
 @Component
-public abstract class BaseService<Request,Response,Entity> implements CrudInterface<Request,Response> {
+public abstract class BaseService<Request, Response, Entity> implements CrudInterface<Request, Response> {
 
     @Autowired(required = false)
-    protected JpaRepository<Entity,Long> baseRepository;
+    protected JpaRepository<Entity, Long> baseRepository;
 }
 ```
 
@@ -53,7 +53,7 @@ public abstract class BaseService<Request,Response,Entity> implements CrudInterf
 
 ```java
 @Service
-public class OrderGroupApiLogicService extends BaseService<OrderGroupApiRequest,OrderGroupApiResponse,OrderGroup> {
+public class OrderGroupApiLogicService extends BaseService<OrderGroupApiRequest, OrderGroupApiResponse, OrderGroup> {
 
     @Autowired
     private UserRepository userRepository;
@@ -92,10 +92,10 @@ public class OrderGroupApiLogicService extends BaseService<OrderGroupApiRequest,
 
 ```java
 @Component
-public abstract class CrudController<Request,Response,Entity> implements CrudInterface<Request,Response> {
+public abstract class CrudController<Request, Response, Entity> implements CrudInterface<Request, Response> {
 
     @Autowired(required = false)
-    protected BaseService<Request,Response,Entity> baseService;
+    protected BaseService<Request, Response, Entity> baseService;
 
     @Override
     @PostMapping("")

@@ -43,7 +43,7 @@ public class UserService {
 }
 ```
 
-<br>
+간단하게 passwordEncoder를 Bean으로 등록하여 Service Logic에서 사용할 수 있다.
 
 > SecurityConfig.java
 
@@ -54,8 +54,7 @@ public PasswordEncoder passwordEncoder() {
 }
 ```
 
-간단하게 passwordEncoder를 Bean으로 등록하여 Service Logic에서 사용할 수 있다.
-
+실제 PasswordEncoder 구현 객체는 다양하니, 원하는 타입의 인코더를 이용하면 된다.
 
 <br>
 

@@ -80,7 +80,7 @@ public class OrderGroupApiLogicService extends BaseService<OrderGroupApiRequest,
 }
 ```
 
-예제를 위해 Service 단에서도 HttpEntity 및 ResponseEntity를 사용하게 했으나, 실제로 구현할 때는 ResponseDto를 반환하도록 한다.
+예제를 위해 Service 단에서도 HttpEntity 및 ResponseEntity를 사용하게 했으나, 실제로 구현할 때는 이를 지양한다.
 
 기존의 CrudInterface를 구현하는 BaseService를 상속받아 Service를 정의한다. 기능에 필요한 Response와 Request 및 Entity 등의 타입을 정의한 뒤 명시해준다. CRUD 기능을 각 Service에 적절하게 강제 구현하면서, 각각의 서비스마다 별도로 필요하는 서비스가 있다면 커스텀하게 추가해준다.
 
@@ -123,7 +123,9 @@ public abstract class CrudController<Request, Response, Entity> implements CrudI
 }
 ```
 
-컨트롤러가 사용하는 BaseService 또한 @Component로 등록되어 있어서 의존성을 주입받을 수 있다. CrudInterface가 명시한 CRUD 기능들을 간단하게 구현해준다.
+컨트롤러가 사용하는 BaseService 또한 @Component로 등록되어 있어서 의존성을 주입받을 수 있다. BaseService를 @Autowired하면 명시된 Generics를 동일하게 구현한 객체를 찾아 주입해준다.
+
+CrudInterface가 명시한 CRUD 기능들을 간단하게 구현해준다.
 
 <br>
 

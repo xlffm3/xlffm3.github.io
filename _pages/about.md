@@ -2,7 +2,7 @@
 title: "👨‍💻 Portpolio"
 permalink: /about/
 layout: single
-author_profile: true
+author_profile: false
 ---
 
 ### 🏫 Education
@@ -12,12 +12,16 @@ author_profile: true
   * Second Major : Business Administration
 * 42 Seoul [2020.01 - ]
 
+<br>
+
 ### 📚 Interests
 
 * Java
 * Spring & Spring Boot
 
-### 👨‍💻 Project
+<br>
+
+### 👨‍💻 Projects
 
 #### :: My Blog ::
 
@@ -29,6 +33,8 @@ author_profile: true
 * Description
   * Blog 1인  개발 프로젝트입니다.
 * [Github Link](https://github.com/xlffm3/springboot-myblog)
+
+<br>
 
 ### 🖥️ Experience
 
@@ -42,10 +48,8 @@ author_profile: true
   * 총 4개의 미션으로 구성된 과정이며, Java OOP와 TDD 및 Refactoring Cycle의 의식적인 연습을 통해 Clean Code의 중요성을 배웠습니다.
   * 과제를 수행하면 Github에서 PR을 보내 현업 개발자 리뷰어에게 피드백을 받고, 이를 반영하여 코드를 개선하는 방식으로 진행되었습니다.
 * [Github Link](https://github.com/xlffm3/NextStep-TDD)
-* [Next-Step Official Homepage](https://edu.nextstep.camp/)
 * [과정 후기](https://xlffm3.github.io/etc/NextStep_TDD/)
-
-<br>
+* [Next-Step Official Homepage](https://edu.nextstep.camp/)
 
 #### :: 42-Seoul 1기 ::
 
@@ -59,5 +63,3 @@ author_profile: true
   * 42 Seoul은 개발 공부 뿐만 아니라, 문제 해결을 위해 동료들과 소통하며 협업합니다.
 * [Github Link](https://github.com/xlffm3/springboot-myblog)
 * [42-Seoul Official Homepage](https://42seoul.kr/)
-
-<br>

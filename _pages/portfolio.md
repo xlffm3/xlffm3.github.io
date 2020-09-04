@@ -12,15 +12,11 @@ author_profile: true
   * Second Major : Business Administration
 * 42 Seoul [2020.01 - ]
 
-<br>
-
 ### 📚 Interests
 
 * Java
 * Spring & Spring Boot
 * [Reading Books](https://xlffm3.github.io/books/)
-
-<br>
 
 ### 👨‍💻 Projects
 
@@ -34,8 +30,6 @@ author_profile: true
 * Description
   * Blog 1인  개발 프로젝트입니다.
 * [Github Link](https://github.com/xlffm3/springboot-myblog)
-
-<br>
 
 ### 🖥️ Experience
 

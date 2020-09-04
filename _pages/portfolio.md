@@ -2,7 +2,7 @@
 title: "👨‍💻 Portfolio"
 permalink: /portfolio/
 layout: single
-author_profile: false
+author_profile: true
 ---
 
 ### 🏫 Education
@@ -18,6 +18,7 @@ author_profile: false
 
 * Java
 * Spring & Spring Boot
+* [Reading Books](https://xlffm3.github.io/books/)
 
 <br>
 
@@ -61,5 +62,5 @@ author_profile: false
   * 프랑스 교육 재단 Ecole-42의 서울 캠퍼스에서 정식 교육 프로그램을 수강 중입니다.
   * C, C++ 등의 Low-Level 언어로 다양한 프로젝트 과제를 수행하고 있으며, Computer Science에 대해서도 학습 중입니다.
   * 42 Seoul은 개발 공부 뿐만 아니라, 문제 해결을 위해 동료들과 소통하며 협업합니다.
-* [Github Link](https://github.com/xlffm3/springboot-myblog)
+* [Github Link](https://github.com/xlffm3/42-Seoul)
 * [42-Seoul Official Homepage](https://42seoul.kr/)

@@ -1,7 +1,9 @@
 # main links
 main:
-  - title: "About"
-    url: /about/
+  - title: "Portfolio"
+    url: /portfolio/
+  - title: "Books"
+    url: /books/
   - title: "Posts"
     url: /posts/
   - title: "Categories"

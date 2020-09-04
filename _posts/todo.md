@@ -1,5 +1,7 @@
 > 나중에 정리할 내용들 시작
 
+* 검색엔진 변경
+
 ## LayeredArchitecture
 
 ## transactional?

@@ -44,7 +44,7 @@ author_profile: true
   * 과제를 수행하면 Github에서 PR을 보내 현업 개발자 리뷰어에게 피드백을 받고, 이를 반영하여 코드를 개선하는 방식으로 진행되었습니다.
 * [Github Link](https://github.com/xlffm3/NextStep-TDD)
 * [과정 후기](https://xlffm3.github.io/etc/NextStep_TDD/)
-* [Next-Step Official Homepage](https://edu.nextstep.camp/)
+* [NextStep Official Homepage](https://edu.nextstep.camp/)
 
 #### :: 42-Seoul 1기 ::
 

@@ -94,7 +94,7 @@ analytics:
 # Site Author
 author:
   name             : "Jinhong"
-  avatar           : "/assets/images/sidebarprofile.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/noel.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Chasing Yesterday"
   location         : "Seoul, South Korea"
   email            :

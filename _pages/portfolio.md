@@ -2,6 +2,7 @@
 title: "👨‍💻 Portfolio"
 permalink: /portfolio/
 layout: single
+classes: wide
 author_profile: true
 ---
 

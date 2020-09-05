@@ -7,7 +7,8 @@ author_profile: true
 
 ### 🏫 Education
 
-* Hankuk University of Foreign Studies, Seoul Campus [2013.02 - 2018.12]
+* Hankuk University of Foreign Studies, Seoul Campus
+[2013.02 - 2018.12]
   * First Major : English Interpretation and Translation
   * Second Major : Business Administration
 * 42 Seoul [2020.01 - ]

@@ -8,16 +8,11 @@
 
 * 문제 https://mommoo.tistory.com/92
 
-## DI 방식 : 생성자 , autowired, 필드 롬복
-https://zorba91.tistory.com/238
-
 CSRF ??
  나중에 정리할 내용 종료
 
 
  @Enumerated
-
- ## 컨트롤러 추상화 crud!!
 
 
  jsonvalue notnull default

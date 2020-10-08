@@ -2,7 +2,6 @@
 
 * 검색엔진 변경
 
-## LayeredArchitecture
 
 ## transactional?
 

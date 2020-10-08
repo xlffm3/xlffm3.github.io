@@ -1,12 +1,9 @@
 ---
 title: "Spring Web MVC - 13장 : URI Pattern Request"
 categories:
-  - Back-End
-  - Spring & Spring Boot
-  - Inflearn
+  - Spring & Spring Boot  
 tags:
   - Spring & Spring Boot
-  - Inflearn
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-15T08:04:00-05:00

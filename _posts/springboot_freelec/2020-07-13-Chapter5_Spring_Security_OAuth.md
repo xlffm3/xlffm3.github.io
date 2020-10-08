@@ -1,7 +1,6 @@
 ---
 title: "Spring Boot와 AWS로 혼자 구현하는 웹 서비스 - 5장 : Spring Security & OAuth"
 categories:
-  - Back-End
   - Spring & Spring Boot
 tags:
   - Spring & Spring Boot

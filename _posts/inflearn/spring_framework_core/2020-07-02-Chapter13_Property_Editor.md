@@ -1,12 +1,9 @@
 ---
 title:  "Spring Framework 핵심 기술 - 13장 : PropertyEditor"
 categories:
-  - Back-End
   - Spring & Spring Boot
-  - Inflearn
 tags:
   - Spring & Spring Boot
-  - Inflearn
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-10T08:18:00-05:00
@@ -48,7 +45,7 @@ public class EventController {
 
 ```java
 public class EventEditor extends PropertyEditorSupport {
-  
+
     @Override
     public String getAsText() {
         Event event = (Event)getValue();

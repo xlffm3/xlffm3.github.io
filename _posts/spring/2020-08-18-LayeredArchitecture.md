@@ -1,10 +1,9 @@
 ---
 title: "Layered Architecture와 Spring"
 categories:
-- Back-End
-- Spring & Spring Boot
+  - Spring & Spring Boot
 tags:
-- Spring & Spring Boot
+  - Spring & Spring Boot
 toc: true
 toc_sticky: true
 last_modified_at: 2020-08-15T09:13:00-05:00

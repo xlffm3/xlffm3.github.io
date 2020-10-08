@@ -1,12 +1,9 @@
 ---
 title: "Spring Web MVC - 14장 : Media Type"
 categories:
-  - Back-End
   - Spring & Spring Boot
-  - Inflearn
 tags:
   - Spring & Spring Boot
-  - Inflearn
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-15T08:05:00-05:00

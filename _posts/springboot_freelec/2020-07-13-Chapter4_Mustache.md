@@ -1,7 +1,6 @@
 ---
 title: "Spring Boot와 AWS로 혼자 구현하는 웹 서비스 - 4장 : Mustache 실습"
 categories:
-  - Back-End
   - Spring & Spring Boot
 tags:
   - Spring & Spring Boot

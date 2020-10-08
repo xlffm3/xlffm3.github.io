@@ -1,12 +1,9 @@
 ---
 title: "Spring Web MVC - 2장 : Servlet"
 categories:
-  - Back-End
   - Spring & Spring Boot
-  - Inflearn
 tags:
   - Spring & Spring Boot
-  - Inflearn
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-14T08:02:00-05:00

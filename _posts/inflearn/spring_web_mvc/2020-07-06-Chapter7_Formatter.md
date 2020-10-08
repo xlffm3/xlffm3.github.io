@@ -1,12 +1,9 @@
 ---
 title: "Spring Web MVC - 7장 : Formatter & Domain Class Converter"
 categories:
-  - Back-End
   - Spring & Spring Boot
-  - Inflearn
 tags:
   - Spring & Spring Boot
-  - Inflearn
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-14T08:07:00-05:00

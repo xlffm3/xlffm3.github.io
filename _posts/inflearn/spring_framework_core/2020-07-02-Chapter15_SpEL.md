@@ -1,12 +1,9 @@
 ---
 title:  "Spring Framework 핵심 기술 - 15장 : SpEL"
 categories:
-  - Back-End
   - Spring & Spring Boot
-  - Inflearn
 tags:
   - Spring & Spring Boot
-  - Inflearn
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-10T08:20:00-05:00

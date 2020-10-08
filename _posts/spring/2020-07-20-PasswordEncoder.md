@@ -1,7 +1,6 @@
 ---
 title: "Spring Security의 PasswordEncorder 적용하기"
 categories:
-  - Back-End
   - Spring & Spring Boot
 tags:
   - Spring & Spring Boot

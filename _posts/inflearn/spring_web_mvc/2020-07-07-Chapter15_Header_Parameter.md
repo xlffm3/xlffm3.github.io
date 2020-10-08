@@ -1,12 +1,9 @@
 ---
 title: "Spring Web MVC - 15장 : Header & Parameter"
 categories:
-  - Back-End
   - Spring & Spring Boot
-  - Inflearn
 tags:
   - Spring & Spring Boot
-  - Inflearn
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-15T08:06:00-05:00

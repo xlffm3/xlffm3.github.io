@@ -1,7 +1,6 @@
 ---
 title: "DTO vs VO vs Entity"
 categories:
-  - Back-End
   - Spring & Spring Boot
 tags:
   - Spring & Spring Boot

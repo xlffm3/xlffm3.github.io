@@ -1,12 +1,9 @@
 ---
 title:  "Spring Boot 개념과 활용 - 15장 : Template Engine과 Html Unit"
 categories:
-  - Back-End
   - Spring & Spring Boot
-  - Inflearn
 tags:
   - Spring & Spring Boot
-  - Inflearn
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-12T08:06:00-05:00

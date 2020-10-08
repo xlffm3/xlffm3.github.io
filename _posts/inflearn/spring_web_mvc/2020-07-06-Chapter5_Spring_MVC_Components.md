@@ -1,12 +1,9 @@
 ---
 title: "Spring Web MVC - 5장 : Spring MVC 구성 요소"
 categories:
-  - Back-End
   - Spring & Spring Boot
-  - Inflearn
 tags:
   - Spring & Spring Boot
-  - Inflearn
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-14T08:05:00-05:00

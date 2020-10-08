@@ -1,12 +1,9 @@
 ---
 title:  "Spring Boot 개념과 활용 - 14장 : Index 페이지와 Favicon"
 categories:
-  - Back-End
   - Spring & Spring Boot
-  - Inflearn
 tags:
   - Spring & Spring Boot
-  - Inflearn
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-12T08:05:00-05:00

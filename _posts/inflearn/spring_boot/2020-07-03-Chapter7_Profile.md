@@ -1,12 +1,9 @@
 ---
 title:  "Spring Boot 개념과 활용 - 7장 : Profile"
 categories:
-  - Back-End
   - Spring & Spring Boot
-  - Inflearn
 tags:
   - Spring & Spring Boot
-  - Inflearn
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-11T08:09:00-05:00

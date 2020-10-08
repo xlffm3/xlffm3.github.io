@@ -1,12 +1,9 @@
 ---
 title:  "Spring Framework 핵심 기술 - 4장 : @Component Scan"
 categories:
-  - Back-End
   - Spring & Spring Boot
-  - Inflearn
 tags:
   - Spring & Spring Boot
-  - Inflearn
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-09T08:09:00-05:00

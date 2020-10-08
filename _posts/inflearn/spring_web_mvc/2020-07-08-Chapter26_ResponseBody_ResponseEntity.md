@@ -1,12 +1,9 @@
 ---
 title: "Spring Web MVC - 26장 : @ResponseBody & ResponseEntity"
 categories:
-  - Back-End
   - Spring & Spring Boot
-  - Inflearn
 tags:
   - Spring & Spring Boot
-  - Inflearn
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-08T10:25:00-05:00

@@ -1,7 +1,6 @@
 ---
 title: "Spring Controller 및 Service 추상화"
 categories:
-  - Back-End
   - Spring & Spring Boot
 tags:
   - Spring & Spring Boot

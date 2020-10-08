@@ -1,12 +1,9 @@
 ---
 title: "Spring Web MVC - 18장 : URI Pattern Handler"
 categories:
-  - Back-End
   - Spring & Spring Boot
-  - Inflearn
 tags:
   - Spring & Spring Boot
-  - Inflearn
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-15T08:09:00-05:00

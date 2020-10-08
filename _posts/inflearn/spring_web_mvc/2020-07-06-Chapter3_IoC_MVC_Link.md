@@ -1,12 +1,9 @@
 ---
 title: "Spring Web MVC - 3장 : IoC 컨테이너 & MVC 연동"
 categories:
-  - Back-End
   - Spring & Spring Boot
-  - Inflearn
 tags:
   - Spring & Spring Boot
-  - Inflearn
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-14T08:03:00-05:00

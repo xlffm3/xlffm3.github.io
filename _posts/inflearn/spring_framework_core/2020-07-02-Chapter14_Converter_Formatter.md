@@ -1,12 +1,9 @@
 ---
 title:  "Spring Framework 핵심 기술 - 14장 : Converter와 Formatter"
 categories:
-  - Back-End
   - Spring & Spring Boot
-  - Inflearn
 tags:
   - Spring & Spring Boot
-  - Inflearn
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-10T08:19:00-05:00

@@ -1,12 +1,9 @@
 ---
 title: "Spring Web MVC - 1장 : MVC Pattern"
 categories:
-  - Back-End
   - Spring & Spring Boot
-  - Inflearn
 tags:
   - Spring & Spring Boot
-  - Inflearn
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-14T08:01:00-05:00

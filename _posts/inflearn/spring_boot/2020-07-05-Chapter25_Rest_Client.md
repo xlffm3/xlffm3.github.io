@@ -1,12 +1,9 @@
 ---
 title:  "Spring Boot 개념과 활용 - 25장 : Rest Client"
 categories:
-  - Back-End
   - Spring & Spring Boot
-  - Inflearn
 tags:
   - Spring & Spring Boot
-  - Inflearn
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-13T08:15:00-05:00

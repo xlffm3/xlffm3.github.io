@@ -1,12 +1,9 @@
 ---
 title:  "Spring Boot 개념과 활용 - 16장 : HATEOAS"
 categories:
-  - Back-End
   - Spring & Spring Boot
-  - Inflearn
 tags:
   - Spring & Spring Boot
-  - Inflearn
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-12T08:07:00-05:00

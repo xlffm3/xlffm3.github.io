@@ -1,12 +1,9 @@
 ---
 title: "Spring Web MVC - 11장 : 기타 WebMvcConfigurer 설정 및 요약"
 categories:
-  - Back-End
-  - Spring & Spring Boot
-  - Inflearn
+  - Spring & Spring Boot  
 tags:
   - Spring & Spring Boot
-  - Inflearn
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-15T08:02:00-05:00

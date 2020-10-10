@@ -14,10 +14,12 @@ last_modified_at: 2020-08-30T09:13:00-05:00
 
 SpringBoot 어플리케이션을 테스트하기 위한 대표적인 테스트 유틸로는 Mockito와 RestTemplate 및 WebTestClient 등이 있다. Controller 테스트를 주로 Mockito로 진행했었는데, 최근에 간단한 CRUD 게시판을 개발하면서 WebTestClient를 사용해보기로 결정했다.
 
-WebTestClient는 Mockito에 비해 관련 한글 레퍼런스가 적은 편이고, 일부 메소드들이 Mockito에 비해 조금 덜 직관적이라 테스트를 구현함에 있어서 어려움이 많았다. 혹시 나처럼 WebTestClient를 사용하면서 어려움을 겪고 있을 사람들을 위해, [WebTestClient Version 5.2.9.RELEASE](https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/pdf/testing-webtestclient.pdf) 레퍼런스를 번역하고 테스트 예제를 간단하게 정리해보았다.
+WebTestClient는 Mockito에 비해 관련 한글 레퍼런스가 적은 편이고, 일부 메소드의 이름이 조금 덜 직관적이라 처음 사용할 때 Form Data 테스트에서 삽질을 많이 했다. (레퍼런스 꼼꼼하게 안 읽은 내 잘못... 😂)
 
-***Kotlin 코드 예제는 생략했습니다.***
+[WebTestClient Version 5.2.9.RELEASE](https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/pdf/testing-webtestclient.pdf) 레퍼런스를 번역하고 테스트 예제를 간단하게 정리해보았다.
+
 ***오역이 많습니다.***
+***Kotlin 코드 예제는 생략했습니다.***
 ***영어 원문은 해당 링크를 참조하길 바랍니다.***
 
 <br>
@@ -125,7 +127,7 @@ client.get().uri("/persons/1")
 
 * ``expectBody(Class<T>)`` : 객체 하나로 복호화합니다.
 * ``expectBodyList(Class<T>)`` : 복호화 후, List<T>로 객체들을 담습니다.
-* ``expectBody()`` : 빈 본문 혹은 JSON Content을 byte[]로 디코딩합니다. //JSON 링크 추가
+* ``expectBody()`` : 빈 본문 혹은 [JSON Content](https://xlffm3.github.io/spring%20&%20spring%20boot/WebTestClient/#42-json-content)을 byte[]로 디코딩합니다.
 
 이후, 다음과 같이 본문 검증을 위해 내장된 단정 테스트(Assertion)을 사용할 수 있습니다.
 
@@ -453,6 +455,45 @@ Mono<Void> result = client.post()
 <br>
 
 ## 6. 테스트 예제
+
+Reference를 바탕으로 Form Data를 검증하는 간단한 테스트를 작성해보자.
+
+> ArticleControllerTest.java
+
+```java
+@ExtendWith(SpringExtension.class)
+@AutoConfigureWebTestClient ①
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+public class ArticleControllerTest {
+
+    @Autowired
+    private WebTestClient webTestClient;
+
+    @Test
+    public void 게시글_생성() {
+        webTestClient.method(HttpMethod.POST) ②
+                .uri("/articles")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .body(BodyInserters
+                        .fromFormData("name", "jipark")
+                        .with("content", "test")) ③
+                .exchange()
+                .expectStatus()
+                .is3xxRedirection()
+                .expectBody()
+                .consumeWith(result -> {
+                    System.out.println(result.getResponseHeaders());
+                    System.out.println(result.getRequestHeaders().getLocation());
+                    System.out.println(result.getRequestHeaders().getLocation().getPath());
+                }); ④
+    }
+}
+```
+
+① 해당 어노테이션이 WebTestClient Bean을 생성해준다.
+② ``post()`` 등의 메소드가 있지만, webTestClient가 메소드 체이닝을 지원하기 때문에 추후 중북되는 테스트 코드들을 하나의 메소드로 추출하여 리팩토링하기 수월하도록 파라미터를 받는 ``method()``를 사용했다.
+③ BodyInserters를 통해 Form 혹은 Multipart Data를 인라인으로 Param을 보낸다.
+④ ``consumeWith()`` 메소드에서 세부적인 테스트가 가능하다. 요청이나 응답의 헤더와 본문 및 내용에 관련된 정보를 얻을 수 있다.
 
 <br>
 

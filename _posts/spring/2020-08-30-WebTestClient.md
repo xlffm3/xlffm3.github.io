@@ -27,6 +27,8 @@ WebTestClient는 Mockito에 비해 관련 한글 아티클이 적은 편이고, 
 
 WebTestClient는 WebClient를 감싸고 있는 얇은 층으로, [WebClient](https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/pdf/web-reactive.pdf#webflux-client)를 이용하여 요청을 수행하며 응답을 검증하기 위한 효과적인 API를 제공합니다. WebTestClient는 [Mock Request 및 Response](https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/pdf/testing.pdf#mock-objects-web-reactive)를 사용하여 WebFlux 어플리케이션에 바인딩하며, HTTP 웹 서버를 테스트할 수 있습니다.
 
+<br>
+
 ## 3. Setup
 
 WebTestClient를 생성하기 위해, 여러가지 서버 설정 옵션들 중 하나를 선택하시길 바랍니다. 작동 중인 서버에 바인딩할 WebFlux 어플리케이션을 설정하거나, URL을 사용하여 직접 연결하십시오.

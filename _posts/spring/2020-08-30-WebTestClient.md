@@ -168,7 +168,8 @@ EntityExchangeResult<Person> result = client.get().uri("/persons/1")
         .returnResult();
 ```
 
-응답 본문을 제너릭스를 사용하는 특정 클래스로 복호화하고자 한다면, Class<T>가 아닌 [ParameterizedTypeReference](https://docs.spring.io/spring-framework/docs/5.2.9.RELEASE/javadoc-api/org/springframework/core/ParameterizedTypeReference.html)를 허용하는 오버로드된 메소드를 사용하십시오.
+응답 본문을 제너릭스를 사용하
+는 특정 클래스로 복호화하고자 한다면, Class<T>가 아닌 [ParameterizedTypeReference](https://docs.spring.io/spring-framework/docs/5.2.9.RELEASE/javadoc-api/org/springframework/core/ParameterizedTypeReference.html) 를 허용하는 오버로드된 메소드를 사용하십시오.
 
 ### 4.1. No Content
 

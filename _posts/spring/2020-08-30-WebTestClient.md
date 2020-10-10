@@ -10,13 +10,13 @@ toc_sticky: true
 last_modified_at: 2020-08-30T09:13:00-05:00
 ---
 
-## 1. 번역 배경 및 목적
+## 1. 서론
 
 SpringBoot 어플리케이션을 테스트하기 위한 대표적인 테스트 유틸로는 Mockito와 RestTemplate 및 WebTestClient 등이 있다. Controller 테스트를 주로 Mockito로 진행했었는데, 최근에 간단한 CRUD 게시판을 개발하면서 WebTestClient를 사용해보기로 결정했다.
 
 WebTestClient는 Mockito에 비해 관련 한글 레퍼런스가 적은 편이고, 일부 메소드의 이름이 조금 덜 직관적이라 처음 사용할 때 Form Data 테스트에서 삽질을 많이 했다. (레퍼런스 꼼꼼하게 안 읽은 내 잘못... 😂)
 
-[WebTestClient Version 5.2.9.RELEASE](https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/pdf/testing-webtestclient.pdf) 레퍼런스를 번역하고 테스트 예제를 간단하게 정리해보았다.
+복습 차원에서 [WebTestClient Version 5.2.9.RELEASE](https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/pdf/testing-webtestclient.pdf) 레퍼런스를 번역하고 테스트 예제를 간단하게 정리해보았다.
 
 ***오역이 많습니다.***
 ***Kotlin 코드 예제는 생략했습니다.***

@@ -76,8 +76,8 @@ class MyTests {
 }
 ```
 
-① 로드할 configuration 클래스를 명시합니다.
-② 해당 설정을 주입합니다.
+① 로드할 configuration 클래스를 명시합니다.<br>
+② 해당 설정을 주입합니다.<br>
 ③ WebTestClient를 생성합니다.
 
 내부적으로 해당 설정이 WebHttpHandlerBuilder로 전달되어 요청 처리 체인을 설정합니다. 세부 내용은 [WebHandler API](https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/pdf/web-reactive.pdf#webflux-web-handler-api)를 참조하십시오. 이 경우, WebFlux 어플리케이션은 Mock Request 및 Response 객체를 사용하여 HTTP 서버 없이 테스트됩니다.
@@ -168,8 +168,7 @@ EntityExchangeResult<Person> result = client.get().uri("/persons/1")
         .returnResult();
 ```
 
-응답 본문을 제너릭스를 사용하
-는 특정 클래스로 복호화하고자 한다면, Class<T>가 아닌 [ParameterizedTypeReference](https://docs.spring.io/spring-framework/docs/5.2.9.RELEASE/javadoc-api/org/springframework/core/ParameterizedTypeReference.html) 를 허용하는 오버로드된 메소드를 사용하십시오.
+응답 본문을 제너릭스를 사용하는 특정 클래스로 복호화하고자 한다면, Class<T>가 아닌 [ParameterizedTypeReference](https://docs.spring.io/spring-framework/docs/5.2.9.RELEASE/javadoc-api/org/springframework/core/ParameterizedTypeReference.html)를 허용하는 오버로드된 메소드를 사용하십시오.
 
 ### 4.1. No Content
 
@@ -491,9 +490,9 @@ public class ArticleControllerTest {
 }
 ```
 
-① 해당 어노테이션이 WebTestClient Bean을 생성해준다.
-② ``post()`` 등의 메소드가 있지만, webTestClient가 메소드 체이닝을 지원하기 때문에 추후 중북되는 테스트 코드들을 하나의 메소드로 추출하여 리팩토링하기 수월하도록 파라미터를 받는 ``method()``를 사용했다.
-③ BodyInserters를 통해 Form 혹은 Multipart Data를 인라인으로 Param을 보낸다.
+① 해당 어노테이션이 WebTestClient Bean을 생성해준다.<br>
+② ``post()`` 등의 메소드가 있지만, webTestClient가 메소드 체이닝을 지원하기 때문에 추후 중북되는 테스트 코드들을 하나의 메소드로 추출하여 리팩토링하기 수월하도록 파라미터를 받는 ``method()``를 사용했다.<br>
+③ BodyInserters를 통해 Form 혹은 Multipart Data를 인라인으로 Param을 보낸다.<br>
 ④ ``consumeWith()`` 메소드에서 세부적인 테스트가 가능하다. 요청이나 응답의 헤더와 본문 및 내용에 관련된 정보를 얻을 수 있다.
 
 <br>

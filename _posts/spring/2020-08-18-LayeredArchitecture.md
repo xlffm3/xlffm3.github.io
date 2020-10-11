@@ -21,15 +21,15 @@ last_modified_at: 2020-08-15T09:13:00-05:00
 
 3-Tier는 인프라(서버)의 구성 구조이며, MVC는 어플리케이션의 개발에 사용되는 구조이기 때문에 사뭇 다른 면모가 있다.
 
-### 2-1. Presentation Layer
+### 2.1. Presentation Layer
 
 프레젠테이션 계층은 응용 프로그램의 최상위에 위치하고 있으며, 서로 다른 층에 있는 데이터 등과 커뮤니케이션을 한다. GUI 및 Front-End의 영역이며, 사용자 인터페이스를 제공한다.
 
-### 2-2. Application Layer
+### 2.2. Application Layer
 
 어플리케이션 계층은 비즈니스 로직 계층 또는 트랜잭션 계층이라고도 한다. 비즈니스 로직은 워크스테이션으로부터의 클라이언트 요청에 대해 마치 서버처럼 행동한다. 그것은 차례로 어떤 데이터가 필요한지를 결정하고, 메인프레임 컴퓨터 상에 위치하고 있을 세 번째 계층의 프로그램에 대해서는 마치 클라이언트처럼 행동한다. Middleware, 즉 Back-End의 영역이다.
 
-### 2-3. Data Layer
+### 2.3. Data Layer
 
 데이터 계층은 데이터베이스와 그것에 액세스해서 읽거나 쓰는 것을 관리하는 프로그램을 포함한다. 애플리케이션의 조직은 이것보다 더욱 복잡해질 수 있지만, 3계층 관점은 대규모 프로그램에서 일부분에 관해 생각하기에 편리한 방법이다. Back-End 영역이지만 주로 DB 서버를 의미한다.
 
@@ -44,7 +44,7 @@ MVC 패턴이란 사용자 인터페이스와 비즈니스 로직을 분리하�
 * 모델을 사용자에게 보여주는, 프레젠테이션을 표현하는 View.
 * 양측 사이에서 이를 제어하는 Controller.
 
-### 3-1. Front Controller
+### 3.1. Front Controller
 
 MVC는 프론트 컨트롤러 패턴과 함께 사용된다. 서버로 들어오는 클라이언트의 요청을 가장 앞선에서 받아 처리하는 것이 프론트 컨트롤러이다. Spring은 DispatcherServlet이라는 프론트 컨트롤러를 제공하며, 해당 Servlet이 MVC 아키텍쳐를 관리한다.
 
@@ -69,12 +69,12 @@ Service Layer가 Controller와 커뮤니케이션할 때는 DTO를, Repository�
 
 두 사진 모두 Layer를 크게 3가지로 구분하고 Domain Model과 상호작용하는 모습을 묘사했다. 그러나 최근 참고한 레퍼런스들은 Domain Model 또한 Sublayer로 추가하여 Spring Architecture를 4개의 층으로 구분한다.
 
-### 4-1. Presentation Layer
+### 4.1. Presentation Layer
 
 * **Presentation Layer == Web Layer == UI Layer**
   * @Controller 어노테이션을 다는 클래스.
 
-### 4-2. Service Layer
+### 4.2. Service Layer
 
 * **Service Layer == Application Layer**
   * @Service 어노테이션을 다는 클래스.
@@ -84,14 +84,14 @@ Service Layer가 Controller와 커뮤니케이션할 때는 DTO를, Repository�
 * 단, 핵심 비즈니스 로직을 직접 구현하지 않고 얇게 유지한다.
   * Service Layer는 트랜잭션 및 Domain 모델의 기능(비즈니스 로직) 간의 순서를 보장해야 한다.
 
-### 4-3. Business Layer
+### 4.3. Business Layer
 
 * **Business Layer == Domain Model**
   * (JPA를 사용한다면) @Entity 어노테이션을 다는 클래스.
   * 무조건 DB와 관계가 있어야 하는 것은 아니며, VO처럼 값 객체들도 이 영역이다.
 * Data와 그와 관련된 비즈니스 로직(핵심 기능)을 가진 객체이다.
 
-### 4-4. Repository Layer
+### 4.4. Repository Layer
 
 * **Repository Layer == Persistence Layer**
   * @Repository 어노테이션을 다는 DAO 클래스.

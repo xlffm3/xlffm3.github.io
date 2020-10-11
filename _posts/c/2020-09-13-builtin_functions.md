@@ -375,5 +375,5 @@ extern int errno;
 
 ## Reference
 
-* [임베드디 리눅스 시스템 포럼](http://forum.falinux.com/zbxe/)
+* [임베디드 리눅스 시스템 포럼](http://forum.falinux.com/zbxe/)
 * [Joinc](https://www.joinc.co.kr/w/FrontPage)

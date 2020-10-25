@@ -2,7 +2,6 @@
 title: "[Java] JUnit의 @ParameterizedTest 외"
 categories:
   - Java
-  - TDD
 tags:
   - Java
   - TDD

@@ -2,7 +2,6 @@
 title: "[Java] AssertJ의 Exception Assertions"
 categories:
   - Java
-  - TDD
 tags:
   - Java
   - TDD

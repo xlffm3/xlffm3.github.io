@@ -1,5 +1,5 @@
 ---
-title: "[후기] NextStep의 TDD, Refactoring, Clean Code With Java 8기 과정"
+title: "[후기] NextStep - TDD, Refactoring, Clean Code With Java 8기 과정"
 categories:
   - ETC
 tags:

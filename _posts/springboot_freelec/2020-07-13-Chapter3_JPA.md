@@ -5,7 +5,6 @@ categories:
 tags:
   - Spring & Spring Boot
   - Spring Data
-  - JPA
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-13T10:50:00-05:00

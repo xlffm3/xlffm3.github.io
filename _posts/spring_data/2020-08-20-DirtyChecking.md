@@ -4,7 +4,6 @@ categories:
   - Spring Data
 tags:
   - Spring Data
-  - JPA
 toc: true
 toc_sticky: true
 last_modified_at: 2020-08-20T09:13:00-05:00

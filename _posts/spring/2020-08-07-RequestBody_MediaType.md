@@ -11,7 +11,7 @@ last_modified_at: 2020-08-07T18:22:00-05:00
 
 ## 1. Form Data
 
-RestAPI는 JSON을 주로 사용하기 때문에, Media Type이 application/json을 설정해서 테스트를 진행했다. 그러자 415 에러가 당당하게 터져나왔다.
+RestAPI는 JSON을 주로 사용하기 때문에, Content-Type을 application/json로 설정해서 테스트를 진행했다. 그러자 415 에러가 당당하게 터져나왔다.
 
 > Controller.java
 

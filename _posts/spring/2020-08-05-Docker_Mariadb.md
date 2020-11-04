@@ -61,7 +61,7 @@ Mac 유저라면 고민없이 localhost를 입력하면 된다. (주륵.. ^_ㅠ)
 
 <br>
 
-## 3. Docker Container 실행 및 접속
+## 3. Docker Container 실행
 
 Docker에 대한 개념과 명령어를 알고 있으면 쉽겠지만, 모르고 있어도 무방하다.
 
@@ -79,11 +79,13 @@ docker run --name mariadb -d -p 3306:3306 -e MYSQL_DATABASE=TESTDB -e MYSQL_ROOT
 
 ``-p`` 옵션의 포트 번호와 ``MYSQL_DATABASE``, ``MYSQL_USER``, ``MYSQL_PASSWORD`` 등 옵션의 Value는 properties에 본인이 설정한 것과 맞춰준다. ``MYSQL_ROOT_PASSWORD``는 본인이 원하는 대로 설정한다.
 
+이후, Spring Boot Application을 실행하거나 테스트를 통해 DB가 잘 연결되었는지 확인한다.
+
 <br>
 
-## 4. 실행
+## 4. Docker Container 접속
 
-Spring Boot Application을 실행하거나, 테스트를 통해 DB가 잘 연결되었는지 확인한다. DB 목록이나 세부 테이블을 보고 싶다면 다음과 같이 실행중인 컨테이너에 bash로 접속하고, mysql에 로그인한다.
+DB 목록이나 세부 테이블을 보고 싶다면 다음과 같이 컨테이너에 bash로 접속하고, mysql에 로그인한다.
 
 ```bash
 docker exec -it mariadb /bin/bash

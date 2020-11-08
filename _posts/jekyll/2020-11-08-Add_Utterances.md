@@ -25,6 +25,8 @@ Jekyll에서는 Disqus 및 Facebook 등 다양한 댓글 라이브러리를 간�
 
 **주의**할 점은, 해당 Repository가 반드시 Public이어야 한다. Private이면 타인이 댓글을 볼 수 없다. 나는 그냥 GitHub Page Repository에 권한을 제공했으나, GitHub Page가 Private이라면 별도의 Public Repository에 권한을 제공해야 한다.
 
+이후, 블로그 포스팅과 Issue를 맵핑하는 방식을 선택한다. pathName, pageUrl, pageTitle 등 총 5가지 방식이 있는데 기본 pathName으로 설정해준다.
+
 > _config.yml
 
 ```yml
@@ -43,6 +45,14 @@ comments:
 repository 부분은 본인의 username과 repo-name으로 수정해주고, comments 부분은 예제와 똑같이 설정하면 된다.
 
 <br>
+
+## 3. 주의점
+
+![image](https://user-images.githubusercontent.com/56240505/98458204-76cd9c80-21d1-11eb-9a36-a0936a39d524.png)
+
+Minimal Mistakes Theme에서 포스팅할 때 파일 이름은 ```YYYY-MM-DD-{NAME}.md``` 형식을 따른다. PathName으로 포스팅과 Issue를 맵핑하기 때문에, Issue 이름은 ```디렉토리/{NAME}```가 된다.
+
+만약 누군가가 해당 포스팅에 댓글을 달아 Issue가 열린 상태에서 파일명(```{NAME}```)을 변경해버리면, Issue 맵핑이 끊어져 기존 댓글들을 포스팅에서 참조할 수 없게 된다.
 
 
 <br>

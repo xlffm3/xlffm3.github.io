@@ -3,7 +3,7 @@ title: "[Java] Stream 데이터를 groupingBy로 그룹핑해 Map으로 수집�
 categories:
   - Java
 tags:
-  - Javal
+  - Java
 toc: true
 toc_sticky: true
 last_modified_at: 2020-11-08T20:05:00-05:00
@@ -25,22 +25,19 @@ T를 K로 맵핑하고, K에 저장된 List에 T를 저장한 Map을 생성한�
 > Test.java
 
 ```java
-public class Test {
-
-    public static void main(String[] args) {
-        List<Integer> numbers = Arrays.asList(1, 2, 2, 2, 3, 3, 4, 5, 6, 6);
-        Map<Integer, List<Integer>> map = numbers
-                .stream()
-                .collect(Collectors.groupingBy(n -> n));
-        System.out.println(map);
-        //{1=[1], 2=[2, 2, 2], 3=[3, 3], 4=[4], 5=[5], 6=[6, 6]}
-    }
+public static void main(String[] args) {
+    List<Integer> numbers = Arrays.asList(1, 2, 2, 2, 3, 3, 4, 5, 6, 6);
+    Map<Integer, List<Integer>> map = numbers
+            .stream()
+            .collect(Collectors.groupingBy(n -> n));
+    System.out.println(map);
+    //{1=[1], 2=[2, 2, 2], 3=[3, 3], 4=[4], 5=[5], 6=[6, 6]}
 }
 ```
 
 위의 예제는 리스트의 각 숫자들(T)을 숫자 그 자체(K)로 그룹핑한 다음, 같은 그룹(K)에 속한 리스트(T)를 생성한다. 숫자를 Key로, 리스트를 Value로 갖는 Map을 생성한다.
 
-> Test2.java
+> Test.java
 
 ```java
 public static void main(String[] args) {
@@ -82,15 +79,12 @@ T를 K로 맵핑하고, Supplier가 제공하는 Map에서 K키에 저장된 D�
 > Test2.java
 
 ```java
-public class Test2 {
-
-    public static void main(String[] args) {
-        String[] persons = {"a", "b", "a", "b", "b", "b"};
-        Map<String, Long> countsByPerson = Arrays.stream(persons)
-                .collect(Collectors.groupingBy(person -> person, HashMap::new, Collectors.counting()));
-        System.out.println(countsByPerson);
-        //{a=2, b=4}
-    }
+public static void main(String[] args) {
+    String[] persons = {"a", "b", "a", "b", "b", "b"};
+    Map<String, Long> countsByPerson = Arrays.stream(persons)
+            .collect(Collectors.groupingBy(person -> person, HashMap::new, Collectors.counting()));
+    System.out.println(countsByPerson);
+    //{a=2, b=4}
 }
 ```
 
@@ -100,7 +94,6 @@ public class Test2 {
 
 ```java
 public static void main(String[] args) {
-
     String[] persons = {"a", "b", "a", "b", "b", "b"};
     Map<String, List<String>> countsByPerson = Arrays.stream(persons)
             .collect(Collectors.groupingBy(person -> person, HashMap::new, Collectors.toList()));
@@ -113,7 +106,7 @@ downstream을 counting에서 list로 수정하면 위의 결과를 얻을 수 �
 
 <br>
 
-## 3. 그 외 Map의 활용 (메모)
+## 3. 그 외 Map의 유용한 메서드
 
 > Test3. java
 

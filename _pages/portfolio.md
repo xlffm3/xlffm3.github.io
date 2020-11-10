@@ -27,9 +27,9 @@ author_profile: true
   * 2020.08 - (진행 중)
 * Tech Stack
   * Back-End : Spring Boot, Java, JPA
-  * Front-End : Thymeleaf, Bootstrap, Javascript
+  * Front-End : Thymeleaf, Bootstrap
 * Description
-  * CRUD 기반의 게시판을 개발하는 1인 프로젝트입니다.
+  * CRUD 기반의 게시판을 개발하는 1인 토이 프로젝트입니다.
 * [Github Link](https://github.com/xlffm3/springboot-myblog)
 
 ### 🖥️ Experience

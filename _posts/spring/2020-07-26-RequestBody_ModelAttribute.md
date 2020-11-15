@@ -1,5 +1,5 @@
 ---
-title: "Spring Boot : @ModelAttribute vs @RequestBody"
+title: "Spring : @ModelAttribute vs @RequestBody"
 categories:
   - Spring & Spring Boot
 tags:

@@ -254,7 +254,7 @@ BaseballNumbers userBaseballNumbers =
 
 Spring 어플리케이션은 @ControllerAdvice 및 Logger를 통해 try-catch 없이 발생한 예외 처리 및 로그 기록을 자동화할 수 있다.
 
-반면 숫자 야구같은 콘솔 게임 프로그램의 현재의 경우는, 결국 예외 처리를 어느 수준으로 할지에 대한 문제로 귀결되며 전적으로 개발자에게 달려있다.
+반면 숫자 야구같은 콘솔 게임 프로그램같은 현재의 경우는, 결국 예외 처리를 어느 수준으로 할지에 대한 문제로 귀결되며 전적으로 개발자에게 달려있다.
 
 > Application.java
 
@@ -290,7 +290,6 @@ public class Application {
 > BaseballNumberDuplicationException.java
 
 ```java
-
 public class BaseballNumberDuplicationException extends RuntimeException {
     private static final String ERROR_MESSAGE = "숫자가 중복되었습니다. (%d)";
 
@@ -438,7 +437,7 @@ Commit 메시지를 나 혼자 읽는 것이라면 상관 없으나, 협업 환�
 
 다만 스네이크 표기법을 사용하더라도, 영어를 통해 메서드 이름을 작성하다 보면 Commit 메시지처럼 장황해지는 경우가 많았다. 테스트 메서드 이름을 한글로 작성하면 어떨까?
 
-영어보다 짧아져서 가독성도 증가하고, 테스트가 실패했을 때 어느 기능에서 문제가 발생했는지 직관적으로 알 수 있다는 장점이 있다. 또한 실제 배포시에는 테스트는 컴파일에 포함되지 않기 때문에 문제가 되지 않는다.
+영어보다 짧아져서 가독성도 증가하고, 테스트가 실패했을 때 어느 기능에서 문제가 발생했는지 직관적으로 알 수 있다는 장점이 있다. 또한 실제 배포시에 테스트는 컴파일에 포함되지 않기 때문에 문제가 되지 않는다.
 
 ![image](https://user-images.githubusercontent.com/56240505/100697537-9d9a7f80-33d9-11eb-8f95-a83eedcd7957.png)
 

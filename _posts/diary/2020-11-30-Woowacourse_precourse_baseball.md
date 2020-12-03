@@ -358,6 +358,24 @@ private String getInputBaseballNumbers() {
 
 그러나 여러 레퍼런스를 참고해보니, 예외를 통해 프로그램의 정상적인 흐름을 제어하는 것은 나쁜 프로그래밍 습관이라고 한다. 또한 재귀 호출의 특성상, 수 많은 잘못된 입력값 공격이 들어오면 StackOverFlowErrorr가 발생할 수 있다. 따라서 반복이 필요하다면 while을 사용하자.
 
++ 추가 (2020/12/03)
+
+[관련 아티클](https://woowacourse.github.io/javable/2020-04-30/iteration_vs_recursion)에 내가 고민했던 내용이 명쾌하게 정리되어 있었다.
+
+* 재귀 장점
+  * 반복 구조를 단순한 로직으로 구현이 가능함.
+  * 변수와 코드의 길이가 줄어 가독성이 상승함.
+  * 컴파일러가 꼬리 재귀 최적화를 지원하면 재귀의 단점(메모리, 성능)을 보완할 수 있음.
+* 재귀 단점
+  * 콜 스택이 쌓여서 StackOverFlow 발생할 수 있음.
+  * 스택을 구성하고 해제하는 과정에서 반복문보다 오버헤드가 들기 때문에 성능이 떨어짐.
+* 결론
+  * 성능이 중요한 과거에는 반복문이 당연했지만, 하드웨어가 발전한 오늘 날에는 성능보다 협업이 강조되는 만큼 가독성(재귀)를 고려할 필요가 있다.
+    * 특히 컴파일러가 꼬리 재귀의 최적화를 지원해주면 성능까지 얻을 수 있다.
+  * 그러나 StackOverFlow를 무시할 수 없으니, 이왕이면 깊이가 예측가능한 경우에 사용하는 것이 안전하고 현명하다.
+
+꼬리 재귀에 대한 개념은 어렵지 않으니 해당 원문 링크를 참고하길 바란다. 궁금해서 찾아봤는데, [Java 8은 꼬리 재귀 최적화를 지원하지 않는다고 한다.](https://stackoverflow.com/questions/22866491/does-java-8-have-tail-call-optimization)
+
 <br>
 
 ## 4. equals 오버라이드
@@ -524,4 +542,6 @@ BaseballGameMachine baseballGameMachine = BaseballGameMachine.initiate();
 * [8) equals 메서드를 오버라이딩 할 때는 보편적 계약을 따르자](http://egloos.zum.com/hahaha333/v/3906967)
 * [[Java] 인기있는 Unit Test 네이밍 규칙](https://hilucky.tistory.com/216)
 * [JUnit5 @Nested, @DisplayName 활용](https://www.freeism.co.kr/wp/archives/1061)
+* [반복문(iteration) vs 재귀(recursion)](https://woowacourse.github.io/javable/2020-04-30/iteration_vs_recursion)
+* [Does Java 8 have tail call optimization?](https://stackoverflow.com/questions/22866491/does-java-8-have-tail-call-optimization)
 * Effective Java 3/E (Joshua Bloch 저)

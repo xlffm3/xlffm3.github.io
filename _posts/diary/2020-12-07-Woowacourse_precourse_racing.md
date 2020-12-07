@@ -33,7 +33,7 @@ last_modified_at: 2020-12-08T08:30:00-05:00
 public List<Integer> inputBaseballNumbers() {
     System.out.print(INPUT_BASEBALL_NUMBERS_MESSAGE);
     String inputBaseballNumbers = scanner.nextLine();
-    //...
+    //중략...
 }
 ```
 
@@ -143,7 +143,7 @@ Domain에서 발생하는 예외에 대해 항상 고민을 많이 한다. 사�
 > 소프트웨어 시스템은 애플리케이션 객체를 제작하고 의존성을 서로 연결하는 준비과정과 준비과정 이후에 이어지는 런타임 로직을 분리해야 한다.<br>
 Clean Code - Robert C. Martin
 
-생성과 관련된 코드를 main이나 main이 호출하는 모듈로 옮기고, 나머지 시스템은 모든 객체가 생성되었고 모든 의존성이 연결되었다고 가정한다. 즉 main 메서드는 다음의 작업을 수행한다.
+시스템 제작과 사용을 분리를 의미한다. 생성과 관련된 코드를 main이나 main이 호출하는 모듈로 옮기고, 나머지 시스템은 모든 객체가 생성되었고 모든 의존성이 연결되었다고 가정한다. 즉 main 메서드는 다음의 작업을 수행한다.
 
 * 어플리케이션 영역에서 사용될 객체를 생성한다.
 * 각 객체 간의 의존 관계를 설정한다.
@@ -226,11 +226,7 @@ public class Application {
 ```java
 public class RacingGameController {
 
-    private final InputView inputView;
-
-    public RacingGameController(InputView inputView) {
-        this.inputView = inputView;
-    }
+    //중략
 
     public void run() {
         List<String> carNames = this.inputView.inputCarNames();
@@ -256,10 +252,381 @@ public class RacingGameController {
 
 <br>
 
----
+## 4. 코드를 까보는 습관 : String
+
+n대의 자동차 이름 입력값을 쉼표를 기준으로 분리하고, 각각의 이름에 대해 유효성 검사를 진행하는 로직이 있다.
+
+split을 통해 얻은 이름 String 배열에 대해 유효성 검사를 진행하는데, 일부 예외 케이스들은 쉼표 패턴이 잘못 되었음에도 split이 정상적인 형태의 배열을 리턴하기 때문에 예외 검사를 통과하고 있었다.
+
+* "," -> 크기가 0인 배열 []이 반환.
+* "1,2,3," -> ["1", "2"]가 반환.
+* "1,2,,,,," -> ["1", "2"]가 반환.
+* "1,2,,,,,3" -> ["1", "2", "", "", "", "3"]가 반환.
+* ",1,2,3" -> ["", "1", "2", "3"]가 반환.
+
+split을 통해 문자열을 분리할 때, 구분자의 앞 뒤 빈 문자열을 인식하고 이를 함께 분리해 리턴할 때가 있고 아닐 때가 있었다.
+
+고민하다가 그냥 정규식 패턴을 사용해서 비교하는 것이 빠르겠다는 생각이 들었다.
+
+> InputView.java
+
+```java
+public class InputView {
+    private static final String REGULAR_EXPRESSION = "^([^,])(,[^,])*$";
+
+    //중략
+
+    public String[] inputCarNames() {
+        String inputCarNames = this.scanner.nextLine();
+        if (inputCarNames.matches(REGULAR_EXPRESSION)) {
+          return inputCarNames.split(",");
+        }
+        return inputCarNames(); //패턴이 불일치면 재입력
+    }
+}
+```
+
+n대의 자동차 이름 입력값의 형태가 정해져있기 때문에, 간단하게 정규식 ``^([^,])(,[^,])*$`` 을 짤 수 있었다. String의 ``matches()`` 메서드 및 정규식을 활용하면 쉼표 앞 뒤로 정상적인 이름이 없는 예외 케이스(즉, 쉼표가 연속된 경우)를 간단하게 검사할 수 있었다.
+
+그런데 과거 Pattern 및 Matcher 클래스를 통해서도 정규식을 검사했던 기억이 났다. 정리해보니 정규식 검사를 총 세 가지 방식으로 진행할 수 있었다.
+
+> RegularExpressionTest.java
+
+```java
+String inputCarNames = this.scanner.nextLine();
+Pattern pattern = Pattern.compile("^([^,])(,[^,])*$");
+Matcher matcher = pattern.matcher(inputCarNames);
+
+boolean isMatch = inputCarNames.matches("^([^,])(,[^,])*$");
+boolean isMatch2 = Pattern.matches("^([^,])(,[^,])*$", inputCarNames);
+boolean isMatch3 = matcher.matches();
+```
+
+1. String 객체의 ``matches()`` 메서드.
+2. Pattern 클래스의 static ``matches()`` 메서드.
+3. Pattern 객체를 컴파일 한 뒤 생성한 Matcher 객체의 ``matches()`` 메서드.
+
+이 세 가지 방식에는 어떤 차이가 있을까? 갑자기 궁금해져서 코드를 까보게되었다.
+
+> String.java
+
+![image](https://user-images.githubusercontent.com/56240505/101377557-51799e80-38f5-11eb-9968-99eef24d6c73.png)
+
+먼저 String의 ``matches()`` 메서드는 내부적으로 ``Pattern.matches()``를 호출한다.
+
+> Pattern.java
+
+![image](https://user-images.githubusercontent.com/56240505/101376748-5722b480-38f4-11eb-91f8-18131d2de540.png)
+
+Pattern의 static ``matches()`` 메서드는 내부적으로 Pattern 객체를 컴파일하고 Matcher 객체를 생성한다. 이후 Matcher의 ``matches()``를 통해 정규식과 input 값을 비교한다.
+
+결론은 String 및 Pattern 클래스 모두 내부적으로 Pattern 객체를 컴파일하고 Matcher 객체를 생성한 다음 정규식을 검사하고 있었다.
+
+```java
+public String[] inputCarNames() {
+    String inputCarNames = this.scanner.nextLine();
+    if (inputCarNames.matches(REGULAR_EXPRESSION)) {
+      return inputCarNames.split(",");
+    }
+    return inputCarNames(); //패턴이 불일치면 재입력
+}
+```
+
+문제는 ``Pattern.compile()`` 메서드인데, Pattern 객체의 생성 비용이 비싸다고 한다. String의 ``matches()``를 사용하고 있는 나의 코드는, 정규식과 input을 비교할 때 마다 값비싼 Pattern 객체를 계속 생성하고 있는 셈.
+
+따라서 효율적인 정규식 검사를 위해 코드를 다음과 같이 개선했다.
+
+> InputView.java
+
+```java
+public class InputView {
+    private static final Pattern PATTERN = Pattern.compile("^([^,])(,[^,])*$");
+
+    //중략
+
+    public String[] inputCarNames() {
+        String inputCarNames = this.scanner.nextLine();
+        Matcher matcher = PATTERN.matcher(inputCarNames);
+        if (matcher.matches()) {
+          return inputCarNames.split(",");
+        }
+        return inputCarNames(); //패턴이 불일치면 재입력
+    }
+}
+```
+
+객체 생성 비용이 비싼 Pattern 객체는 정규식 패턴도 한 가지로 고정되어 있으니 전역변수로 캐싱해둔다. 이 후, 메서드 내부에서 Matcher 객체를 생성하고 이를 통해 input 값의 정규식 검사를 진행한다.
+
+이렇게 코드를 까다보니, "문제가 됬던 split 메서드도 까보면 단서가 있지 않을까?" 하는 생각이 들었다.
+
+> String.java
+
+![image](https://user-images.githubusercontent.com/56240505/101381166-c5b64100-38f9-11eb-8fad-3aedf5eb2a0f.png)
+![image](https://user-images.githubusercontent.com/56240505/101379950-3fe5c600-38f8-11eb-8ee4-100e8c9d3e54.png)
+
+아니나 다를까... 인자로 limit라는 int 값을 받는 오버라이드 메서드가 하나 있었다. :(
+
+* limit가 0이면 일반적인 ``split()`` 메서드와 동일하게 동작한다.
+  * "1,2,,3,,,,," -> {"1", "2", "", "3"}
+  * 배열 중간 중간에 껴있는 빈 문자열은 토큰으로 인식한다.
+  * 마지막이 빈 문자열인 것들은 모두 무시하고 반환하지 않는다.
+* limit가 양수면 모든 Zero-Length String을 포함하지만 배열의 최대 갯수는 limit을 넘지 못한다.
+  * limit이 3일 때, "1,2,,,7,," -> {"1", "2", ""}
+* limit이 음수면 모든 Zero-Length String을 포함한다.
+  * 찾는 패턴이 가능한 많이 적용된다.
+  * "1,2,,,7,," -> {"1", "2", "", "", "7", "", ""}
+
+> InputView.java
+
+```java
+String[] carNames = this.scanner.nextLine().split(",", -1);
+```
+
+허무하게도 이렇게 코드를 변경해주니, 잘못된 쉼표 패턴을 가진 입력값도 제대로 분리해서 모든 예외를 꼼꼼하게 처리할 수 있었다.
+
+결론 : 막힐 때는 코드를 까보자. 많은 것을 배울 수 있다. 또한 빨리 까볼수록 시간이 절약된다!
+
+<br>
+
+## 5. 팩토리 메서드 패턴
+
+정적 팩토리 메서드를 사용하면서 문득 ["팩토리 메서드 패턴"](https://gmlwjd9405.github.io/2018/08/07/factory-method-pattern.html)이 궁금해졌다.
+
+팩토리 메서드 패턴이란 객체를 생성하기 위해 인터페이스를 정의하는데, 어떤 클래스의 인스턴스를 만들지는 서브클래스에서 결정하도록 한다. 즉, 팩토리 메소드 패턴을 이용하면 클래스의 인스턴스 만드는 일을 서브클래스에게 맡길 수 있다.
+
+만약 자동차 경주 게임의 요구사항이 다양한 종류(스포츠카, SUV, 세단 등)의 자동차를 사용한다면, 다음과 같이 추상화를 할 수 있을 것이다.
+
+* Car 인터페이스
+  * RacingCar 클래스
+  * SUV 클래스
+  * ...
+* Factory 인터페이스
+  * HyundaiFactory
+  * KiaFactory
+  * ...
+
+**new** 키워드는 추상화(Abstract)와 반대되는 구상(Concrete) 클래스의 인스턴스 제작을 의미한다. 구상 클래스를 바탕으로 코딩을 하면 새로운 구상 클래스가 추가될 때 마다 코드를 수정해야 할 가능성이 높아진다. 객체간의 강결합이 발생하면, 변화에 대해 닫혀 있는 코드가 되며 이는 유연성이 떨어진다.
+
+인터페이스 및 다형성을 사용하여 코딩하면, 시스템의 변화에 대해 유연하게 대처할 수 있다. 특정 인터페이스만 구현하면 되기 때문이다.
+
+팩토리 메서드 패턴이란 바뀔 수 있는 부분을 찾아내서 바뀌지 않는 부분과 분리하는 것이 원칙이다.
+
+> Cars.java
+
+```java
+public class Cars {
+
+    private final List<Car> cars;
+
+    //중략
+
+    public static Cars createCars(List<String> carNames, MovingStrategy movingStrategy) {
+        validateDuplication(carNames);
+        List<Car> cars = carNames.stream()
+                .map(carName -> new Car(carName, movingStrategy))
+                .collect(Collectors.toList());
+        return new Cars(cars);
+    }
+}
+```
+
+Cars 객체는 List\<Car\>를 가지고 있는 일급 컬렉션 객체이며, 현재 정적 팩토리 메서드를 통해 객체를 생성한다. 이를 팩토리 메서드로 개선한다면?
+
+* Car는 클래스가 아닌 인터페이스로 변경한다.
+* CarFactory 인터페이스를 생성하고, 이를 통해 Cars를 생성하게 한다.
+
+> CarFactory.java
+
+```java
+public interface CarFactory {
+
+    public Cars createCars(List<String> name);
+}
+```
+
+> RacingCarFactory.java
+
+```java
+public class RacingCarFactory implements CarFactory {
+
+    @Override
+    public Cars createCars(List<String> name) {
+        List<Car> cars = name.stream()
+                .map(RacingCar::new, new RandomMovingStrategy())
+                .collect(Collectors.toList());
+        return new Cars(cars);
+    }
+}
+```
+
+현재 과제의 요구사항에서는 정적 팩토리 메서드로 충분하지만, 요구사항이 확대된다면 팩토리 메서드 패턴을 고려해볼만 하다.
+
+하지만 객체의 생성을 서브 클래스에게 위임하는 것은 단점도 분명하리라 생각된다. 객체를 생성하는데 필요한 정보들(파라미터, 내부 비즈니스 로직)이 Factory 등 외부로 분산 및 노출되기 때문이다. 상황에 맞게 잘 쓰자.
+
+<br>
+
+## 6. 객체의 책임과 역할 : MovingStrategy
+
+Car 객체를 구현할 때, 두 가지 방식 사이에서 고민을 했다.
+
+> Car.java
+
+```java
+public class Car {
+
+    private final String name;
+    private final MovingStrategy movingStrategy;
+    private int position = 0;
+
+    //중략
+
+    public void move() {
+        if (this.movingStrategy.isMovable()) {
+            this.position++;
+        }
+    }
+}
+```
+
+> Car.java
+
+```java
+public class Car {
+
+    private final String name;
+    private int position = 0;
+
+    //중략
+
+    public void move(MovingStrategy movingStrategy) {
+        if (movingStrategy.isMovable()) {
+            this.position++;
+        }
+    }
+}
+```
+
+큰 차이는 없다. 전자는 인스턴스 변수로 이동 전략 인터페이스를 주입받으며, 후자는 메서드 파라미터로 주입받는다.
+
+is-a 및 has-a 관계를 생각해보니, Car 객체가 인스턴스 변수로 이동 전략 인터페이스를 가지고 있는 것이 더 자연스럽다는 생각이 들었다. Car 객체가 이동할 때 마다 이동 규칙을 외부에서 파라미터로 주입받는 것은 다소 부자연스럽다. Car 객체가 생성될 때 이동 규칙을 위임하여, 객체 스스로가 움직일지 여부를 판단하는 것이 객체의 자율성을 위해 더 나은 선택인듯 싶다.
+
+<br>
+
+## 7. DTO 사용
+
+Cars 객체가 지닌 List\<Car\>를 순회하며 각 객체의 이름과 위치를 출력해야 한다.
+
+> OutputView.java
+
+```java
+public static void printRacingTryResult(Cars cars) {
+    List<Car> carList = cars.getCars();
+    carList.foreach(OutputView::printCarInformation);
+}
+```
+
+처음에 사용한 방식은 Cars 객체 내부 컬렉션을 받아와 순회하며 객체의 정보를 프린트하는 것이었다. View가 Cars의 내부 리스트에 직접적으로 접근하는 점이 다소 걸렸다.
+
+> Cars.java
+
+```java
+public List<Car> getCars() {
+    return Collections.unmodifiableList(this.cars);
+}
+```
+
+``Collections.unmodifiableList()``를 통해 리스트를 READ-ONLY로 변경시켜 수정을 막을 수 있다.
+
+그러나 Car 객체의 ``move()`` 메서드가 View에서 원치 않게 사용되는 경우 결과에 큰 영향을 주기 때문에, View와 Car 객체간의 접점을 없애고 싶었다.
+
+> Cars.java
+
+```java
+public List<CarDto> getCarDtos() {
+    return this.cars.stream()
+            .map(CarDto::from)
+            .collect(Collectors.toList());
+}
+```
+
+> OutputView.java
+
+```java
+public static void printRacingTryResult(List<CarDto> carDtos) {
+    carDtos.forEach(OutputView::printEachCarRacingResult);
+}
+```
+
+Car 객체의 정보를 담은 CarDto 클래스를 만들고, Dto 클래스만 View에 접근할 수 있도록 변경했다.
+
+<br>
+
+## 8. 예외 중복 제거
+
+> CarNameLengthException.java
+
+```java
+public class CarNameLengthException extends RuntimeException {
+
+    private CarNameLengthException(String errorMessage) {
+        super(errorMessage);
+    }
+}
+```
+
+> CarNameDuplicationException.java
+
+```java
+public class CarNameDuplicationException extends RuntimeException {
+
+    private CarNameDuplicationException(String errorMessage) {
+        super(errorMessage);
+    }
+}
+```
+
+Custom Exception을 정의하다보니, 관리해야 할 예외 클래스의 개수가 많아졌다. 비슷한 성격으로 중복되는 예외가 거슬렸다.
+
+> CarNameException.java
+
+```java
+public class CarNameException extends RuntimeException {
+    private static final String DUPLICATION_ERROR_MESSAGE = "[ERROR] 자동차 이름들 중 중복이 존재해서는 안됩니다.";
+    private static final String INVALID_LENGTH_ERROR_MESSAGE = "[ERROR] 자동차 이름의 길이는 1자 이상 5자 이하여야 합니다.";
+
+    private CarNameException(String errorMessage) {
+        super(errorMessage);
+    }
+
+    public static CarNameException ofDuplicatedNames() {
+        return new CarNameException(DUPLICATION_ERROR_MESSAGE);
+    }
+
+    public static CarNameException ofInvalidNameLength() {
+        return new CarNameException(INVALID_LENGTH_ERROR_MESSAGE);
+    }
+}
+```
+
+따라서 성격이 비슷한 예외의 경우, 공통되는 제너럴 클래스에서 정적 팩토리 메서드를 통해 호출하도록 했으며 서로 다른 에러 메시지를 갖는다.
+
+<br>
+
+
+## 9. Validator
+
+InputView 클래스 코드 라인이 100줄을 초과했다. 입력값에 대한 유효성 검사를 진행하면서 코드가 길어졌기 때문에, 유효성 검사를 별도의 Validator 유틸 클래스에 구현하는 대안을 고민했었다.
+
+유효성 체크 역할을 Validator에 위임한다면, InputView는 확실히 코드 라인이 줄고 책임도 덜 할 것이다. 그러나 InputView의 데이터에 대한 내부 검증 규칙이 외부 클래스에게 노출된다는 점이 걸린다.
+
+고민 끝에 코드가 조금 길어지더라도, InputView에서 유효성 검사를 계속 진행하도록 했다. 그러나 만약 코드 라인이 이보다 더 길어진다면, 그 때는 Util 클래스 사용에 대해 적극 고려해봐야겠다.
+
+<br>
 
 ## Reference
 
 * [클린코드 Part 2 : 적용과 개선 - 깨끗한 코드를 만들기 위한 방법 -](http://kosta.or.kr/mail/2015/download/CleanCode_Part2.pdf)
 * [custom exception을 언제 써야 할까?](https://woowacourse.github.io/javable/2020-08-17/custom-exception)
 * [클린코드 7장 - 오류 처리](http://amazingguni.github.io/blog/2016/05/Clean-Code-7-%EC%98%A4%EB%A5%98-%EC%B2%98%EB%A6%AC)
+* [Clean Code 11. System](https://devstarsj.github.io/study/2018/12/11/study.cleanCode.11/)
+* [팩토리 패턴(Factory Pattern) 정리](https://thefif19wlsvy.tistory.com/35)

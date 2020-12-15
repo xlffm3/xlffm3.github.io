@@ -1,5 +1,5 @@
 ---
-title: "[우아한테크코스] 프리코스 후기"
+title: "[우아한테크코스 3기] 프리코스 후기"
 categories:
   - Java
   - ETC

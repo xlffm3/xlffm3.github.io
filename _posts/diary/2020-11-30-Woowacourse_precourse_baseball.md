@@ -1,5 +1,5 @@
 ---
-title: "[우아한테크코스] 프리코스 1주차 미션 학습 내용 및 회고"
+title: "[우아한테크코스 3기] 프리코스 1주차 미션 학습 내용 및 회고"
 categories:
   - Java
   - ETC
@@ -13,7 +13,7 @@ last_modified_at: 2020-11-30T08:30:00-05:00
 
 ## 1. 숫자 야구 게임
 
-우아한테크코스의 프리코스 1주차 미션은 숫자 야구 게임 구현이다. 구현 내용은 [프리코스 1주차 미션 저장소](https://github.com/xlffm3/java-baseball-precourse/tree/xlffm3)에 업로드했다.
+우아한테크코스 3기의 프리코스 1주차 미션은 숫자 야구 게임 구현이다. 구현 내용은 [프리코스 1주차 미션 저장소](https://github.com/xlffm3/java-baseball-precourse/tree/xlffm3)에 업로드했다.
 
 1주차 미션을 진행하면서 고민한 내용들에 대해 개인적으로 공부하고 정리해보았다.
 

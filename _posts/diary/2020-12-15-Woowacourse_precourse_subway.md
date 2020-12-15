@@ -23,13 +23,13 @@ last_modified_at: 2020-12-15T08:30:00-05:00
 
 ## 2. Commit의 단위
 
-TDD 사이클을 적용하며 1주차 및 2주차 과제를 진행했는데, 커밋이 대략 100개 정도 됬었다.
+TDD 사이클을 적용하며 1주차 및 2주차 과제를 진행했는데, 커밋이 대략 100개 정도 되었다.
 
 * 테스트 추가 -> test 커밋
 * 기능 구현 -> feat 커밋
 * 리팩토링 -> refactor 커밋
 
-구현하고자 하는 기능의 테스트 추가(test), 기능 구현(feat), 리팩토링(refactor)를 모두 커밋에 일일이 반영하다 보니, 과제의 사이즈에 비해 커밋 이력이 너무 많아졌다.
+구현하고자 하는 기능의 테스트 추가(test), 기능 구현(feat), 리팩토링(refactor)을 모두 커밋에 일일이 반영하다 보니, 과제의 사이즈에 비해 커밋 이력이 너무 많아졌다.
 
 작게 커밋하는 습관이 나쁜 것은 아니지만, 원칙적으로 하나의 커밋은 의미있는 하나의 변경 사항을 의미한다. 나는 너무 잘게 커밋을 나누다 보니, 별 의미없는 자잘한 커밋 때문에 히스토리가 지저분해지고 가독성이 떨어졌다.
 
@@ -372,9 +372,8 @@ public class SubwayMapApplication {
             subwayMapController.deleteLine();
         }
         //중략
-      }
-
-      //... 중략 (executeSectionManagement 등)
+    }
+    //... 중략 (executeSectionManagement 등)
 }
 ```
 
@@ -486,6 +485,7 @@ Enum, Interface, Custom Exception을 별도의 패키지로 그룹할 필요가 
 이번 과제는 대략 4번 정도 갈아아엎었다. 나름 설계를 하고 들어갔지만, 도메인 지식이 부족하다 보니 추상화가 잘 이루어지지 않아서 비효율적으로 반복되는 코드들이 많았다.
 
 > MainManagementState.java
+
 ```java
 public enum MainManagementState {
     STATION_MANAGEMENT("1"),
@@ -589,7 +589,7 @@ private static void activateStationManagement() {
 }
 ```
 
-특정 관리 항목은 등록, 조회, 삭제가 모두 가능하지만 특정 관리 항목은 삭제가 불가능하다. 어떻게 하면 중복을 없앨 수 있을까? 의외로 Enum의 조합을 통해 쉽게 해결할 수 있었다.
+어떤 관리 항목은 등록, 조회, 삭제가 모두 가능하지만 어떤 관리 항목은 삭제가 불가능하다. 어떻게 하면 중복을 없앨 수 있을까? 의외로 Enum의 조합을 통해 쉽게 해결할 수 있었다.
 
 > ManagementType.java
 

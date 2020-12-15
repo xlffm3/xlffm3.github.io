@@ -234,7 +234,7 @@ public class SubwayMapController {
 
 ## 4. Controller의 단일 책임 원칙
 
-[3절](?)의 Service 레이어 추가를 통해, SubwayMapController가 많이 가벼워졌지만 약간의 문제가 있었다.
+[3절](https://xlffm3.github.io/java/etc/Woowacourse_precourse_subway/#3-mvc-%ED%8C%A8%ED%84%B4--%EB%A0%88%EC%9D%B4%EC%96%B4%EB%93%9C-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90)의 Service 레이어 추가를 통해, SubwayMapController가 많이 가벼워졌지만 약간의 문제가 있었다.
 
 과연 하나의 컨트롤러가 역 관리, 노선 관리, 구간 관리를 모두 전담하는게 맞을까? 클래스는 단 한개의 책임을 가져야한다. 이 말은 곧 클래스를 변경하는 이유는 단 한 개여야 한다는 말과 일맥상통한다.
 
@@ -463,6 +463,20 @@ SubwayMapApplication 클래스는 반복되는 코드 및 많은 인스턴스 �
 
 ## 6. Exception의 패키지 위치
 
+사용자 정의 예외는 어떻게 관리해야 할까? Station 관련 도메인 클래스들은 subway.domain.station에 위치하는데, 해당 클래스와 관련된 커스텀 예외의 관리 방법은 다음 세 가지로 나눌 수 있다.
+
+* subway.domain.station에 도메인 클래스들과 함께 위치시키기.
+* subway.domain.station.exception처럼 하위 패키지에 위치시키기.
+* subway.exceptions처럼 다른 도메인 클래스 관련 커스텀 예외들과 함께 한 곳에 몰아넣기.
+
+[Should Exceptions be placed in a separate package?](https://stackoverflow.com/questions/825281/should-exceptions-be-placed-in-a-separate-package) 라는 글에서, 커스텀 예외는 1번 처럼 도메인 클래스들과 함께 위치시키기를 권고하고 있다.
+
+> Package should be able to present a single unit of functionality. Refer this for an example. A Custom Exception, which is gonna thrown out of it, is a part of that unit of functionality, and should be in the same package.
+
+패키지는 한 개의 기능 단위를 의미하고, 커스텀 예외 또한 한 개의 기능 단위의 일부분이다. 따라서 같은 패키지에 속해 있어야 한다.
+
+Enum, Interface, Custom Exception을 별도의 패키지로 그룹할 필요가 없다. 오히려 불필요한 내부 패키지 의존성을 유발한다고 한다.
+
 <br>
 
 ## 7. Bad Smell : 중복된 코드
@@ -577,6 +591,8 @@ private static void activateStationManagement() {
 
 특정 관리 항목은 등록, 조회, 삭제가 모두 가능하지만 특정 관리 항목은 삭제가 불가능하다. 어떻게 하면 중복을 없앨 수 있을까? 의외로 Enum의 조합을 통해 쉽게 해결할 수 있었다.
 
+> ManagementType.java
+
 ```java
 public enum ManagementType {
     STATION("1",
@@ -619,6 +635,9 @@ public String inputName(ManagementType managementType, FunctionType functionType
 
 <br>
 
+---
+
 ## Reference
 
 * [commit하는 단위는 어떻게 하는 것이 좋을까요?](https://github.com/javajigi/minesweeper-ruby/issues/5)
+* [Should Exceptions be placed in a separate package?](https://stackoverflow.com/questions/825281/should-exceptions-be-placed-in-a-separate-package)

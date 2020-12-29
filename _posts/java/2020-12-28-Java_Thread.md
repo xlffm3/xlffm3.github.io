@@ -257,59 +257,49 @@ synchronized를 통해 공유 데이터를 보호하는 것은 좋으나 특정 
 
 ### Lock과 Condition을 이용한 Synchronization
 
+기존의 synchronized 블럭은 사용이 편리하지만 같은 메서드 내에서만 Lock을 걸 수 있다는 제약이 존재한다. 이럴 때 java.util.concurrent.locks 패키지가 제공하는 lock 클래스들을 이용하여 동기화를 할 수 있다.
 
+* ReentrantLock
+  * 재진입이 가능한 Lock으로 가장 일반적인 배타 Lock이다.
+  * 무조건 Lock이 있어야만 임계 영역의 코드를 수행할 수 있다.
+* ReentrantReadWriteLock
+  * 읽기에는 공유적이고, 쓰기에는 배타적인 Lock이다.
+  * 읽기 Lock이 걸려있으면, 다른 쓰레드가 읽기 Lock을 중복해서 걸고 읽기를 수행한다.
+    * 읽기는 내용을 변경하지 않기 때문이다.
+  * 그러나 읽기 Lock이 걸린 상태에서 쓰기 Lock을 거는 것은 허용되지 않으며, 반대 역시 허용되지 않는다.
+* StampedLock
+  * ReentrantReadWriteLock에 낙관적인 Lock의 가능을 추가했다.
+  * 읽기 Lock이 걸려있으면 쓰기 Lock을 얻기 위해 읽기 Lock이 풀릴 때 까지 기다려야하는데 비해, 낙관적 읽기 Lock은 쓰기 Lock에 의해 바로 풀린다.
+  * 낙관적 읽기에 실패하면, 읽기 Lock을 얻어서 다시 읽어 와야 한다.
+  * 무조건 읽기 Lock을 걸지 않고, 쓰기와 읽기가 충돌할 때만 쓰기가 끝난 후에 읽기 Lock을 건다.
 
+ReentrantLock은 임계 영역 전후로 ``lock()``과 ``unlock()``을 호출해주면 그만이다. 다만 예외 케이스들을 고려해서 확실한 Lock 반환을 위해, try - finally 혹은 synchronized 블록을 사용한다. 만약 다른 쓰레드에 의해 Lock이 걸려있을 때, Lock을 얻으려고 기다리지 않거나 지정된 시간만큼만 기다리도록 하는 ``tryLock()``을 사용할 수 있다.
 
-wait() & notify() & notifyAll()
--------------------------------
-
--	특정 쓰레드가 객체의 락을 가진 상태로 오랜 시간을 보내지 않도록 하는 것도 중요하다.<br><br>
--	임계 영역의 코드를 수행하다가 작업을 더 이상 진행할 상황이 아니면 `wait()` 을 호출하여 쓰레드가 락을 반납하고 기다리게 한다.<br><br>
--	나중에 작업을 진행할 수 있는 상황이 되면 `notify()` 를 호출하여 다시 락을 얻어 작업을 진행시킨다.<br><br>
--	Object 클래스에 정의되어 있으며, 동기화 블록 내에서만 사용이 가능하다.<br><br>
--	waiting pool은 객체마다 존재하기 때문에, 해당 메서드들은 호출된 객체의 waiting pool에만 관여한다.<br><br>
-
-기아 현상과 경쟁 상태
----------------------
-
--	운이 나쁜 일부 쓰레드는 계속 통지를 받지 못하고 오랫동안 기다리게 된다.<br><br>
--	여러 쓰레드가 lock을 받기 위해 경쟁하는 것을 경쟁 상태라고 한다.<br><br>
-
-Lock과 Condition을 이용한 동기화
---------------------------------
-
--	java.util.concurrent.locks 패키지가 제공하는 lock 클래스들을 이용하여 동기화할 수 있다.<br><br>
--	이를 통해 기아 현상 및 경쟁 상태를 해소할 수 있다.<br><br>
-
-volatile
---------
+``wait()`` 및 ``notify()``를 통해 쓰레드를 구현할 때, 쓰레드의 종류를 구분하지 않고 공유 객체의 waiting pool에 몰아넣어 기아 현상 혹은 경쟁 상태가 발생하게 된다. 따라서 특정 쓰레드를 위한 Condition을 만들고, 각각의 waiting pool에 따로 기다리도록 하면 문제를 해결할 수 있다.
 
 ```java
-volatile boolean stopped = false;
-volatile long tmp;
-volatile double tmp2;
+private ReentrantLock lock = new ReentrantLock();
+private Condition forCook = lock.newCondition();
+private Condition forCust = lock.newCondition();
+
+private void test() {
+    forCook.await(); //wait()
+    forCust.signal(); //notify()
+}
 ```
 
--	CPU 코어는 메모리에서 읽어온 값을 캐시에 저장하고, 캐시에서 값을 읽어 작업한다.<br><br>
--	같은 값을 읽어올 때는 먼저 캐시에 있는지 확인하고, 없을 때만 메모리에서 읽는다.<br><br>
--	메모리에 저장된 변수의 값이 변경되었는데도, 캐시에 저장된 값이 갱신되지 않아서 메모리에 저장된 값r과 다른 경우가 발생한다.<br><br>
--	volatile 키워드를 사용하면 코어가 변수의 값을 읽어올 때 캐시가 아닌 메모리에서 읽어오기 때문에 불일치가 해소된다.<br><br>
--	이는 synchronized 블럭의 사용과 효과가 동일하다.<br><br>
--	JVM은 데이터를 4 byte 단위로 처리하며, 4 byte 이하의 데이터는 단 하나의 명령어로 읽거나 쓰기나 가능하다.<br><br>
--	이 때문에 하나의 명령어는 최소의 작업 단위이며, 작업 중간에 다른 쓰레드가 끼어들 틈이 없다.<br><br>
--	8 byte의 자료형은 하나의 명령어로 값을 읽거나 쓸 수 없어, 다른 쓰레드가 끼어들 여지가 있다.<br><br>
--	따라서 volatile을 선언하여 해당 변수에 대한 읽기나 쓰기를 원자화시킨다.<br><br>
--	상수는 변하지 않는 값이므로 멀티 쓰레드에 안전하기 때문에 volatile을 붙이지 않는다.<br><br>
--	volatile은 원자화만 할 뿐, 동기화하는 것이 아니기 때문에 동기화에는 synchronized를 사용한다.<br><br>
+Lock을 통해 Condition을 생성하고, ``wait()`` 및 ``notify()``에 상응하는 메서드를 각 Condition 인스턴스를 통해 호출함으로써 대기와 통지의 대상을 명확하게 구분할 수 있다. Condition을 더욱 세분화하면 같은 종류의 쓰레드간의 기아 현상 및 경쟁 상태의 발생 가능성을 더 줄일 수 있다.
 
-fork & join 프레임웍
---------------------
+### volatile
 
--	프레임웍을 통해 하나의 작업을 작은 단위로 나눠서, 여러 쓰레드가 동시에 처리하는 것을 쉽게 만들어준다.<br><br>
+코어는 메모리에서 읽어온 값을 캐시에 저장하고, 캐시에서 값을 읽어서 작업한다. 다시 같은 값을 읽어올 때는 먼저 캐시에 있는지 확인하고 없을 때만 메모리에서 읽어온다.
+
+도중에 메모리에 저장된 변수의 값이 변경되었는데도 캐시에 저장된 값이 갱신되지 않아, 메모리에 저장된 값과 다른 경우가 발생한다. 이러한 경
+
+<br>
 
 ---
 
-Reference
----------
+## Reference
 
--	Java의 정석 (남궁성 저) Chapter 13
+* Java의 정석 (남궁성 저) Chapter 13

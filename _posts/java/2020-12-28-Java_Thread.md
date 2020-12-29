@@ -168,34 +168,57 @@ public class Main {
 
 ## 7. Daemon Thread
 
+데몬 쓰레드는 일반 쓰레드의 작업을 돕는 보조적인 역할을 수행하는 쓰레드이다. 일반 쓰레드가 모두 종료되면 데몬 쓰레드는 자동 종료된다.
 
+데몬 쓰레드의 예로는 가비지 컬렉터, 워드 프로세서의 자동 저장, 화면 자동 갱신 등이 있다.
 
+데몬 쓰레드는 무한 루프와 조건문을 이용해서 실행 후 대기하고 있다가, 특정 조건이 만족되면 작업을 수행하고 다시 대기되도록 작성한다.
 
-쓰레드 그룹
------------
+데몬 쓰레드의 작성 및 생성 방법은 일반 쓰레드와 다르지 않으며, ``void setDaemon(boolean on)``을 호출하면 된다. 또한 데몬 쓰레드가 생성한 쓰레드는 자동적으로 데몬 쓰레드가 된다.
 
--	쓰레드 그룹은 서로 관련된 쓰레드를 그룹으로 다루기 위한 것이다.<br><br>
--	폴더 안에 폴더를 생성할 수 있듯이, 쓰레드 그룹에 다른 쓰데르 그룹을 포함시킬 수 있다.<br><br>
+<br>
 
-데몬 쓰레드
------------
-
-```java
-boolean isDaemon() //데몬 쓰레드 여부 판별
-void setDaemon(boolean on) //true시 데몬 쓰레드로 변경
-```
-
--	데몬 쓰레드는 다른 일반 쓰레드의 작업을 돕는 보조적인 역할을 수행하는 쓰레드이다.<br><br>
--	일반 쓰레드가 모두 종료되면 데몬 쓰레드는 강제 자동 종료가 된다.<br><br>
--	가비지 컬렉터, 자동 저장, 화면 자동 갱신 등이 그 예이다.<br><br>
--	쓰레드를 실행하기 전, `setDaemon(true)` 를 호출하면 되며, 데몬 쓰레드가 생성한 쓰레드는 자동적으로 데몬 쓰레드가 된다.<br><br>
-
-쓰레드의 실행 제어
-------------------
+## 8. Thread 실행 제어
 
 ![image](https://user-images.githubusercontent.com/56240505/72275798-fbaf5e80-3671-11ea-9b9d-faae4e9bc5f9.png)<br><br> ![image](https://user-images.githubusercontent.com/56240505/72275824-0d910180-3672-11ea-9687-6d3141486a65.png)<br><br> ![image](https://user-images.githubusercontent.com/56240505/72275858-21d4fe80-3672-11ea-9b1a-fd44a822c9cf.png)<br><br>
 
--	`resume()`, `stop()`, `suspend()` 메서드는 교착 상태 이슈로 deprecated 되었다.<br><br>
+쓰레드는 주어진 실행 시간이 다 되거나 ``yield()``를 만나면 다시 실행 대기 상태가 되고, 다음 차례의 쓰레드가 실행상태가 된다.
+
+실행을 모두 마치거나 ``stop()``이 호출되면 쓰레드는 소멸된다.
+
+``stop()``은 쓰레드를 종료시키고, ``suspend()``는 실행 상태의 쓰레드를 중지시키고, ``resume()``은 정지 상태의 쓰레드를 다시 실행 대기 상태로 만든다. 그러나 세 메서드들은 교착 상태 이슈로 deprecated 되었다.
+
+### sleep(long millis)
+
+나노 세컨드까지 세밀하게 값을 지정할 수 있다. 일시정지 상태가 된 쓰레드는 지정된 시간이 다 되거나 ``interrupt()``가 호출되면 InterruptedException이 발생하며 잠에서 깨어나 실행대기 상태가 된다.
+
+```java
+void delay(long millis) {
+    try {
+      Thread.sleep(millis);
+    } catch (InterruptedException e) {
+    }
+}
+```
+
+항상 try-catch를 사용하는 것 보다 별도의 메서드를 사용하기도 한다.
+
+``sleep()``은 항상 현재 실행 중인 쓰레드에 작동하기 때문에, 참조변수 호출이 아닌 static 호출을 사용하자.
+
+### interrupt() 및 interrupted()
+
+``interrupt()``는 쓰레드의 ``boolean interrupted``의 상태를 false에서 true로 변경한다. 쓰레드를 강제로 종료시키지는 못한다.
+
+``interrupted()``는 쓰레드의 ``boolean interrupted``의 상태를 반환한 후, false로 변경한다.
+
+쓰레드가 일시정지 상태(WAITING)일 때, 해당 쓰레드에 대해 ``interrupt()``를 호출하면, InterruptedException이 발생하고 쓰레드는 실행대기 상태(RUNNABLE)로 바뀐다.
+
+``sleep()``가 종료되고 InterruptedException이 발생할 때, 쓰레드의 interrupted의 상태는 자동으로 false로 초기화된다. 따라서, ``interrupt()``를 호출하더라도 쓰레드가 ``sleep()``을 사용하고 있다면 ``isInterrupted()``가 true가 아닌 false가 나올 수 있다. catch block에서 ``interrupt()``를 다시 호출해주어야 원하는 결과가 나온다.
+
+
+
+<br>
+
 
 쓰레드의 동기화
 ---------------

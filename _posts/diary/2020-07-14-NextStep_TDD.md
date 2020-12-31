@@ -1,11 +1,11 @@
 ---
 title: "[후기] NextStep - TDD, Refactoring, Clean Code With Java 8기 과정"
 categories:
-  - ETC
+  - 회고
 tags:
   - Java
   - TDD
-  - ETC
+  - 회고
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-14T08:30:00-05:00

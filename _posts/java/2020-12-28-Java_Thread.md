@@ -4,6 +4,7 @@ categories:
   - Java
 tags:
   - Java
+  - Thread
 toc: true
 toc_sticky: true
 last_modified_at: 2020-12-28T20:05:00-05:00
@@ -188,7 +189,7 @@ public class Main {
 
 ``stop()``은 쓰레드를 종료시키고, ``suspend()``는 실행 상태의 쓰레드를 중지시키고, ``resume()``은 정지 상태의 쓰레드를 다시 실행 대기 상태로 만든다. 그러나 세 메서드들은 교착 상태 이슈로 deprecated 되었다.
 
-### sleep(long millis)
+### 8.1. sleep(long millis)
 
 나노 세컨드까지 세밀하게 값을 지정할 수 있다. 일시정지 상태가 된 쓰레드는 지정된 시간이 다 되거나 ``interrupt()``가 호출되면 InterruptedException이 발생하며 잠에서 깨어나 실행대기 상태가 된다.
 
@@ -205,7 +206,7 @@ void delay(long millis) {
 
 ``sleep()``은 항상 현재 실행 중인 쓰레드에 작동하기 때문에, 참조변수 호출이 아닌 static 호출을 사용하자.
 
-### interrupt() 및 interrupted()
+### 8.2. interrupt() 및 interrupted()
 
 ``interrupt()``는 쓰레드의 ``boolean interrupted``의 상태를 false에서 true로 변경한다. 쓰레드를 강제로 종료시키지는 못한다.
 
@@ -215,11 +216,11 @@ void delay(long millis) {
 
 ``sleep()``가 종료되고 InterruptedException이 발생할 때, 쓰레드의 interrupted의 상태는 자동으로 false로 초기화된다. 따라서, ``interrupt()``를 호출하더라도 쓰레드가 ``sleep()``을 사용하고 있다면 ``isInterrupted()``가 true가 아닌 false가 나올 수 있다. catch block에서 ``interrupt()``를 다시 호출해주어야 원하는 결과가 나온다.
 
-### yield()
+### 8.3. yield()
 
 쓰레드 자신에게 주어진 실행 시간을 다음 차례의 쓰레드에게 양보한다. ``yield()`` 및 ``interrupt()``를 잘 활용하면, 프로그램의 응답성을 높이고 보다 효율적인 실행이 가능하다.
 
-### join()
+### 8.4. join()
 
 쓰레드 자신이 하던 작업(실행)을 멈추고, 다른 쓰레드가 지정된 시간동안 작업을 수행하도록 일시정지 상태(WAITING)이 된다.
 
@@ -237,13 +238,13 @@ void delay(long millis) {
 
 Lock을 획득한 쓰레드만이 공유 데이터를 사용하는 임계 코드 영역에서 작업을 진행할 수 있고, Lock을 반납해야 다른 쓰레드가 해당 Lock을 획득해 임계 영역의 코드를 수행할 수 있다. 한 쓰레드가 진행 중인 작업을 다른 쓰레드가 간섭하지 못하도록 막는 것을 동기화라고 한다.
 
-### synchronized
+### 9.1. synchronized
 
 synchronized 키워드를 메서드에 붙이거나, 코드 일부를 block으로 감싼 뒤 그 앞에 ``synchronized(참조변수)``를 붙여주면 된다. Lock의 획득과 반납은 임계 영역의 진입 및 탈출 시 자동으로 이루어진다.
 
 모든 객체는 Lock을 하나씩 가지고 있으며, 해당 객체의 Lock을 가지고 있는 쓰레드만 임계 영역의 코드를 수행할 수 있다. 다른 쓰레드들은 Lock을 얻을 때까지 기다리게 된다.
 
-### wait() 및 notify()
+### 9.2. wait() 및 notify()
 
 synchronized를 통해 공유 데이터를 보호하는 것은 좋으나 특정 쓰레드가 한 객체의 Lock을 너무 오래 가지고 있으면, 다른 쓰레드들은 해당 객체의 락을 기다리느라 원활한 작업이 진행되지 않는다.
 
@@ -255,7 +256,7 @@ synchronized를 통해 공유 데이터를 보호하는 것은 좋으나 특정 
 
 문제는 waiting pool에서 ``notify()``가 호출되었을 때, 어떤 쓰레드가 통지받을 지 알 수 없다. 따라서 원하는 쓰레드가 통지를 받지 못하고 오랫동안 대기 상태에 빠지는 기아(starvation) 현상이 발생할 수 있다. ``notifyAll()``을 사용하면 해당 객체의 waiting pool의 모든 쓰레드에게 통지하기 때문에, 원하는 쓰레드가 Lock을 얻어 작업을 할 수 있다. 하지만 불필요한 쓰레드들까지 통지를 받아 원하는 쓰레드와 Lock을 얻기 위해 경쟁하는 경쟁(race) 상태가 유발된다.
 
-### Lock과 Condition을 이용한 Synchronization
+### 9.3. Lock과 Condition을 이용한 Synchronization
 
 기존의 synchronized 블럭은 사용이 편리하지만 같은 메서드 내에서만 Lock을 걸 수 있다는 제약이 존재한다. 이럴 때 java.util.concurrent.locks 패키지가 제공하는 lock 클래스들을 이용하여 동기화를 할 수 있다.
 
@@ -290,7 +291,7 @@ private void test() {
 
 Lock을 통해 Condition을 생성하고, ``wait()`` 및 ``notify()``에 상응하는 메서드를 각 Condition 인스턴스를 통해 호출함으로써 대기와 통지의 대상을 명확하게 구분할 수 있다. Condition을 더욱 세분화하면 같은 종류의 쓰레드간의 기아 현상 및 경쟁 상태의 발생 가능성을 더 줄일 수 있다.
 
-### volatile
+### 9.4. volatile
 
 코어는 메모리에서 읽어온 값을 캐시에 저장하고, 캐시에서 값을 읽어서 작업한다. 다시 같은 값을 읽어올 때는 먼저 캐시에 있는지 확인하고 없을 때만 메모리에서 읽어온다.
 

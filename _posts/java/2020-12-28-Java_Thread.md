@@ -19,7 +19,7 @@ last_modified_at: 2020-12-28T20:05:00-05:00
 
 프로세스가 가질 수 있는 쓰레드의 개수는 제한되어 있지 않으나, 쓰레드가 작업을 수행하는데 개별적인 메모리 공간(호출 스택)을 필요로 하기 때문에 프로세스의 메모리 한계에 따라 생성할 수 있는 쓰레드의 수가 결정된다.
 
-### Multi-Tasking vs Multi-Threading
+### 1.1. Multi-Tasking vs Multi-Threading
 
 OS는 멀티 태스킹을 지원하기 때문에, 여러 개의 프로세스가 동시에 실행될 수 있다.
 
@@ -27,7 +27,7 @@ OS는 멀티 태스킹을 지원하기 때문에, 여러 개의 프로세스가 
 
 프로세스의 성능은 단순히 쓰레드의 개수에 비례하지 않는다.
 
-### Multi-Threading 장단점
+### 1.2. Multi-Threading 장단점
 
 * 장점
   * CPU의 사용률을 향상시킨다.
@@ -306,7 +306,7 @@ JVM은 데이터를 4 byte 단위로 처리하기 때문에, int와 int보다 �
 
 <br>
 
-## fork & join Framework
+## 10. fork & join Framework
 
 fork & join Framework로 하나의 작업을 작은 단위로 나눠서 여러 쓰레드가 동시에 처리하는 것을 쉽게 만들어 준다.
 

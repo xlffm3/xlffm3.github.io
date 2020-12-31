@@ -4,7 +4,6 @@ categories:
   - Java
 tags:
   - Java
-  - Thread
 toc: true
 toc_sticky: true
 last_modified_at: 2020-12-28T20:05:00-05:00

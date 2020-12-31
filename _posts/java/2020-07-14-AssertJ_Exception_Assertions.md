@@ -4,7 +4,6 @@ categories:
   - Java
 tags:
   - Java
-  - TDD
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-14T08:00:00-05:00

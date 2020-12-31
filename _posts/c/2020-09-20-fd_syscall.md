@@ -1,5 +1,5 @@
 ---
-title: "File Descriptor 및 System Call"
+title: "[C] File Descriptor 및 System Call"
 categories:
   - C
 tags:

@@ -1,5 +1,5 @@
 ---
-title: "C Built-In Functions 정리"
+title: "[C] Built-In Functions 정리"
 categories:
   - C
 tags:

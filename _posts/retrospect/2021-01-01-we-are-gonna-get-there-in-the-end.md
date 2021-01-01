@@ -43,11 +43,11 @@ Inflearn으로 Spring을 학습하면서, NextStep에서 TDD를 통해 Java와 O
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/uYuFuS3HMtA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-> Don’t fight the feeling
-Don’t stop believing in what you know
-You can’t let go my friend
-We’re gonna get there in the end
-We’re gonna get there in the end
+> Don’t fight the feeling<br>
+Don’t stop believing in what you know<br>
+You can’t let go my friend<br>
+We’re gonna get there in the end<br>
+We’re gonna get there in the end<br>
 We’re gonna get there in the end
 
 <br>

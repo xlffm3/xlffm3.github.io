@@ -6,43 +6,43 @@ classes: wide
 author_profile: true
 ---
 
+### 💻 Career
+
+* 우아한테크코스 교육생 ``2021.02 - ``
+* Cadet of 42 Seoul, Innovation Academy ``2020.01 - 2021.01``
+
 ### 🏫 Education
 
-* Hankuk University of Foreign Studies, Seoul Campus
-[2013.02 - 2018.12]
-  * First Major : English Interpretation and Translation
-  * Second Major : Business Administration
+* Hankuk University of Foreign Studies, Seoul Campus ``2013.02 - 2018.12``
+  * Bachelor of Arts in English Interpretation and Translation
+  * Bachelor of Business Administration
 
-### 📚 Interests
+### 📚 Interest
 
-* Java
-* Spring & Spring Boot
-* [Reading Books](https://xlffm3.github.io/books/)
+* Java with Spring & Spring Boot 🌱
+* [Reading Books 📖](https://xlffm3.github.io/books/)
+* Weight Training 🏋️
 
 ### 👨‍💻 Projects
 
-#### :: My Blog ::
+> 업데이트 예정
 
-* Timeline
-  * 2020.08 - (진행 중)
-* Tech Stack
-  * Back-End : Spring Boot, Java, JPA
-  * Front-End : Thymeleaf, Bootstrap
+### ‍🖥️ Experience
+
+#### :: 우아한테크코스 ::
+
+* Timeline : ``2020.02 -``
 * Description
-  * CRUD 기반의 게시판을 개발하는 1인 토이 프로젝트입니다.
-* [Github Link](https://github.com/xlffm3/springboot-myblog)
+  * ‘배달의 민족’으로 유명한 ‘우아한형제들’의 교육코스개발팀이 진행하는 개발자 교육과정입니다.
+  * 협업 중심 교육을 통해 Back-End 기술 역량과 더불어 소통 및 팀워크 등 소프트 스킬을 쌓습니다.
+* [Project Repository](https://github.com/xlffm3/woowacourse-projects)
+* [우아한테크코스 Official Homepage](https://woowacourse.github.io/)
 
-### 🖥️ Experience
+#### :: 42 Seoul ::
 
-#### :: NextStep - TDD, Refactoring, Clean Code With Java 8기 ::
-
-* Timeline
-  * 2020.05.09 - 2020.07.04
-* Tech Stack
-  * Java
+* Timeline : ``2020.01 - 2021.01``
 * Description
-  * 총 4개의 미션으로 구성된 과정이며, Java OOP와 TDD 및 Refactoring Cycle의 의식적인 연습을 통해 Clean Code의 중요성을 배웠습니다.
-  * 과제를 수행하면 Github에서 PR을 보내 현업 개발자 리뷰어에게 피드백을 받고, 이를 반영하여 코드를 개선하는 방식으로 진행되었습니다.
-* [Github Link](https://github.com/xlffm3/NextStep-TDD)
-* [과정 후기](https://xlffm3.github.io/etc/NextStep_TDD/)
-* [NextStep Official Homepage](https://edu.nextstep.camp/)
+  * 프랑스 교육 재단 Ecole-42의 서울 캠퍼스에서 교육 프로그램을 수강했습니다.
+  * 동료 협업을 통해 C 및 Linux를 학습하고 프로젝트를 수행했습니다.
+* [Project Repository](https://github.com/xlffm3/42-Seoul)
+* [42 Seoul Official Homepage](https://42seoul.kr/)

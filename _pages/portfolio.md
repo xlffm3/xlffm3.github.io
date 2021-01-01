@@ -23,7 +23,7 @@ author_profile: true
 * [Reading Books 📖](https://xlffm3.github.io/books/)
 * Weight Training 🏋️
 
-### 👨‍💻 Projects
+### 👨‍💻 Project
 
 > 업데이트 예정
 

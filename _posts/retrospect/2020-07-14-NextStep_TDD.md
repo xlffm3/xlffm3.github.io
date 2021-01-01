@@ -4,7 +4,6 @@ categories:
   - 회고
 tags:
   - Java
-  - TDD
   - 회고
 toc: true
 toc_sticky: true

@@ -16,8 +16,7 @@ last_modified_at: 2021-01-01T08:30:00-05:00
 > I’ve been writing and noodling recently and I’ve made a little demo of a tune that I wrote a couple of weeks ago and it actually came out sounding pretty good…<br>
 The lyrics are quite apt for the times and I think I’d like to share it with you.<br>
 The song is called ‘We’re Gonna Get There In The End’.<br>
-Hope your hangovers aren’t too horrific.<br>
-Hopefully we’ll catch up soon.
+Hope your hangovers aren’t too horrific.
 
 우아한테크코스 합격 발표날, 내가 정말 좋아하는(내한 공연도 항상 챙겨가는) Oasis의 Noel Gallagher가 **We're Gonna Get There In The End**라는 신곡 데모를 발표했다. 데모 버전인데도 잘 뽑힌 사운드와 힘든 코로나 시국에 어울리는 가사가 마음에 들어 공개했다고 한다. 확실히 가사와 멜로디가 Oasis 시절을 연상시킬 만큼 밝고 희망적이다.
 

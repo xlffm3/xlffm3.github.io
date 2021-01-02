@@ -17,12 +17,6 @@ author_profile: true
   * Bachelor of Arts in English Interpretation and Translation
   * Bachelor of Business Administration
 
-### 📚 Interest
-
-* Java with Spring & Spring Boot 🌱
-* [Reading Books 📖](https://xlffm3.github.io/books/)
-* Weight Training 🏋️
-
 ### 👨‍💻 Project
 
 > 업데이트 예정
@@ -46,3 +40,9 @@ author_profile: true
   * 동료 협업을 통해 C 및 Linux를 학습하고 프로젝트를 수행했습니다.
 * [Project Repository](https://github.com/xlffm3/42-Seoul)
 * [42 Seoul Official Homepage](https://42seoul.kr/)
+
+### 📚 Interest
+
+* Java with Spring & Spring Boot 🌱
+* [Reading Books 📖](https://xlffm3.github.io/books/)
+* Weight Training 🏋️

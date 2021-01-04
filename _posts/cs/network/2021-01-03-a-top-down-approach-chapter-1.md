@@ -54,6 +54,7 @@ Host가 다른 Host로 연결되는 과정에서 가장 처음 만나는 Edge Ro
 * 인공위성
 
 #### 2. Enterprise(And Home) Access
+
 * Ethernet
   * LAN(Local Area Network)을 사용한다.
   * 학교, 회사 등 기관은 End System이 많다.
@@ -73,6 +74,7 @@ Host가 다른 Host로 연결되는 과정에서 가장 처음 만나는 Edge Ro
 Twisted-Pair Copper Wire, Coaxial Cable, Fiber Optics 등이 있다. 각 매체의 물리적 특성에 따라 전송 속도(대역폭)이 다르다.
 
 #### 2. Unguided Media
+
 * Terrestrial Radio Channel
   * 전자기적 스펙트럼을 통해 신호를 전송한다.
   * 어느 범위까지 전달되는지에 따라 크게 3가지로 구분된다.
@@ -90,15 +92,18 @@ End System들간의 통신할 때 데이터(메시지)는 Packet이라는 정보
 출발 지점의 Host가 L bit의 데이터를 전송할 때, 링크의 전송 속도가 R bits/sec이면 패킷을 전송하는데 걸리는 시간은 L/R 초이다.
 
 #### 1. Store-and-Forward Transmission
+
 * 패킷 스위치는 Queue 구조의 Buffer를 가지고 있으며 전체 패킷을 전달받은 이후에야, 그 다음 링크로 패킷의 첫 비트를 전송하기 시작한다.
 * 패킷을 시작 지점에서 목표 지점으로 전송하는데 걸리는 딜레이는 N(링크 개수) * L/R이다.
 
 #### 2. Queuing Delays and Packet Loss
+
 * 패킷 스위치는 여러 링크들과 연결되어 있으며, 다음 링크로 전송할 패킷들을 저장해놓은 Output Buffer가 있다.
 * 여러 이슈로 인해 링크가 혼잡하여 원활한 Output 작업이 진행되지 않으면, Input으로 들어온 패킷들은 대기하게 되며 Buffer에 패킷들이 쌓이기 시작한다.
 * Buffer 사이즈는 유한대이기 때문에, Buffer가 꽉 찬 경우 새로 전송 받은 패킷 혹은 Buffer에 저장된 패킷이 손실될 수 있다.
 
 #### 3. Forwarding Tables and Routing Protocols
+
 데이터 송수신이 이루어질 때, 패킷의 헤더에 도착 End System의 IP가 기록된다. 주소와 Forwarding Table를 참조하여 Router는 경로를 분석하고 다음 Router로 패킷을 Forward한다. 해당 Table은 인터넷의 여러 Routing Protocol을 통해 설정된다.
 
 ### 1.3.2. Circuit Switching
@@ -148,9 +153,11 @@ End System은 Access Network를 통해 인터넷에 연결된다. 두 Host끼리
 ### 1.4.1. Types of Delay
 
 #### 1. Nodal Processing Delay
+
 패킷의 헤더를 분석하고 어느 방향으로 이동해야할 지 결정하는 등의 처리 지연 시간이다. 패킷에 비트 레벨의 에러가 있는지 체크하는 행위 등이 포함된다. 대부분 비슷하다.
 
 #### 2. Queuing Delay
+
 Router에서 패킷이 Outbound Link로 뽑아내는 처리 속도보다, 더 빠른 속도로 트래픽이 유입되어 패킷들이 Output Buffer에 쌓이고 대기하게 되면서 발생하는 지연 시간이다. L(패킷 길이) * a(평균 패킷 유입 속도) / R(Link Bandwidth, 패킷이 처리되는 속도).
 
 이러한 Traffic Intensity는 0.7만 되더라도 Queue의 Delay가 거의 무한정 늘어나게 된다. 이는 a가 단위 평균이기 때문이다. 평균으로 볼 때는 Traffic Intensity가 1이더라도 Delay가 발생하지 않지만, 어떤 경우에는 R보다 L*a 값이 더 많아져 Delay가 급증한다.
@@ -158,9 +165,11 @@ Router에서 패킷이 Outbound Link로 뽑아내는 처리 속도보다, 더 �
 Delay가 길어져 Buffer가 꽉 차게 되면 새로 유입되는 패킷의 정보가 유실된다. 이는 이전 노드에서 재전송해야하기 때문에 리소스 낭비로 이어지고, 딜레이가 더 길어지는 원인이 된다.
 
 #### 3. Transmission Delay
+
 패킷을 Output Link로 밀어넣는데 걸리는 시간을 의미한다. 패킷의 길이와 링크의 Bandwidth에 영향을 받는다. (L/R)
 
 #### 4. Propagation Delay
+
 Node에서 다음 Node로 패킷이 링크를 따라 전파되는 시간을 의미한다. 즉, 물리적인 링크의 길이를 해당 링크 매체의 전파 속도로 나눈 값이다. (d/s)
 
 ### 1.4.2. Throughput
@@ -184,25 +193,30 @@ Node에서 다음 Node로 패킷이 링크를 따라 전파되는 시간을 의�
 각 계층은 PDU(Protocol Data Unit)를 만들어내며, 하위 계층에 해당 PDU를 전달하며 캡슐화를 한다. 이 때 하위 계층은 상위 계층에서 전달받은 PDU(Payload)에 Header를 붙여 새로운 PDU를 생성한다.
 
 #### 1. Application
+
 * 네트워크 어플리케이션을 지원하는 레이어로 HTTP, FTP, SMTP 등이 있다.
 * 유저 어플리케이션에 메시지를 생성한다.
 
 #### 2. Transport
+
 * Source Process로부터 Destination Process에게 데이터를 전달해주는 레이어이다.
 * UDP, TCP 등이 있다.
 * Application 레이어에서 내려준 메시지에 Header를 붙여서 Segment를 만든다.
 
 #### 3. Network
+
 * IP와 Routing Protocol을 통해 Source Host로부터 Destination Host까지의 라우팅을 담당한다.
 * 즉, 목표까지 도달하기 위해 여러 Hop을 이동하는 길찾기 기능을 한다.
 * Transport 레이어에서 내려준 Segment에 Header를 붙여서 Datagram을 만든다.
 
 #### 4. Link
+
 * 이웃하는 네트워크 원소들간(Hop, 경로의 한 부분)의 데이터를 전달해주는 레이어이다.
 * 하나의 Hop을 이동한다.
 * Network 레이어에서 내려준 Datagram에 Header를 붙여서 Frame을 만든다.
 
 #### 5. Physical
+
 * 비트 정보를 회선과 같은 물리적인 매체를 통해 전달하는 레이어이다.
 
 End System, Switch, Router가 가지는 Protocol Stack은 다르다. 각 네트워크 Component에서 네트워크 레이어들은 하위 계층부터 순차적으로 전달받은 Peer-PDU의 헤더를 분석하며, 올바른 경우 헤더를 분리한 뒤 Payload를 상위 계층으로 전달한다.

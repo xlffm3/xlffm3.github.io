@@ -33,7 +33,7 @@ Protocol이란 메세지의 송수신 제어에 대한 통신 규약이다. 즉,
 
 End System이 다른 End System으로 연결되는 경로에는 여러 Router들이 존재한다. Access Network는 하나의 End System과 해당 End System이 가장 처음 만나는 Edge Router 사이를 물리적으로 연결해주는 네트워크이다.
 
-#### 1. Home Access
+#### Home Access
 
 * DSL(Digital Subscriber Line)
   * 전화 회사 등이 고객의 ISP가 되어 Access Network를 제공해준다.
@@ -53,7 +53,7 @@ End System이 다른 End System으로 연결되는 경로에는 여러 Router들
   * 이론적으로 높은 속도를 기대할 수 있으나, 비싼 비용이 단점이다.
 * 인공위성
 
-#### 2. Enterprise(And Home) Access
+#### Enterprise(And Home) Access
 
 * Ethernet
   * LAN(Local Area Network)을 사용한다.
@@ -69,11 +69,11 @@ End System이 다른 End System으로 연결되는 경로에는 여러 Router들
 
 비트 정보는 물리적 매체를 통해 전파된다.
 
-#### 1. Guided Media
+#### Guided Media
 
 Twisted-Pair Copper Wire, Coaxial Cable, Fiber Optics 등이 있다. 각 매체의 물리적 특성에 따라 전송 속도(대역폭)이 다르다. 대역폭이 넓을 수록 한 번에 많은 비트 정보를 전송할 수 있기 때문에, 전송 속도가 빠르다.
 
-#### 2. Unguided Media
+#### Unguided Media
 
 * Terrestrial Radio Channel
   * 전자기적 스펙트럼을 통해 신호를 전송한다.
@@ -93,12 +93,12 @@ Packet은 통신 Link를 통해 전달된다. Packet이 목적지에 도달하�
 
 출발 지점의 Host가 L bit의 데이터를 전송할 때, 링크의 전송 속도가 R bits/sec이면 패킷을 전송하는데 걸리는 시간은 L/R 초이다.
 
-#### 1. Store-and-Forward Transmission
+#### Store-and-Forward Transmission
 
 * 패킷 스위치는 Queue 구조의 Buffer를 가지고 있으며 전체 패킷을 전달받은 이후에야, 그 다음 Router로 향하는 링크에 패킷의 첫 비트를 전송하기 시작한다.
 * 패킷을 시작 지점에서 목표 지점으로 전송하는데 걸리는 딜레이는 N(링크 개수) * L/R이다.
 
-#### 2. Queuing Delays and Packet Loss
+#### Queuing Delays and Packet Loss
 
 * 패킷 스위치는 여러 링크들과 연결되어 있으며, 다음 링크로 전송할 패킷들을 저장해놓은 Output Buffer가 있다.
 * 원활한 Output 작업이 진행되지 않으면, Input으로 들어온 패킷들은 대기하게 되며 Buffer에 패킷들이 쌓이기 시작한다.
@@ -106,7 +106,7 @@ Packet은 통신 Link를 통해 전달된다. Packet이 목적지에 도달하�
     * Buffer에서 패킷이 빠져나가는 속도보다 유입되는 패킷의 트래픽이 많은 경우 발생한다.
 * Buffer 사이즈는 유한대이기 때문에, Buffer가 꽉 찬 경우 새로 전송 받은 패킷 혹은 Buffer에 저장된 패킷이 손실될 수 있다.
 
-#### 3. Forwarding Tables and Routing Protocols
+#### Forwarding Tables and Routing Protocols
 
 데이터 송수신이 이루어질 때, 패킷의 헤더에 도착 End System의 IP가 기록된다. 주소와 Forwarding Table를 참조하여 Router는 경로를 분석하고 다음 Router로 패킷을 Forward한다. 해당 Table은 인터넷의 여러 Routing Protocol을 통해 설정된다.
 
@@ -118,7 +118,7 @@ End System들간의 통신 세션이 유지되는 동안, 버퍼와 링크(일�
 
 네트워크 링크를 확보한다는 것은 데이터의 일정한 전송 속도 확보를 의미한다. 따라서, Circuit Switching은 일정한 전송 속도를 보장할 수 있다.
 
-#### 1. Multiplexing in Circuit-Switched Networks
+#### Multiplexing in Circuit-Switched Networks
 
 링크의 Circuit은 다음 두 가지 방식 중 하나를 채택한다.
 
@@ -129,7 +129,7 @@ End System들간의 통신 세션이 유지되는 동안, 버퍼와 링크(일�
   * 시간이 고정 지속시간을 가진 여러 프레임들로 나뉘고, 각각의 프레임은 고정된 수의 시간 슬롯으로 구분된다.
   * 네트워크가 연결되면 각 프레임들이 가진 하나의 시간 슬롯을 해당 연결에 할당한다.
 
-#### 2. Packet Switching vs Circuit Switching
+#### Packet Switching vs Circuit Switching
 
 Packet Switching은 딜레이로 인한 예측불가능한 변수들로 인해 실시간 서비스에 적합하지 않다는 비판을 받는다. 하지만 Circuit Switching에 비해 더 간단하고 효율적이며 비용이 저렴하다.
 
@@ -161,11 +161,11 @@ End System은 Access Network를 통해 인터넷에 연결된다. 두 Host끼리
 
 ### 1.4.1. Types of Delay
 
-#### 1. Nodal Processing Delay
+#### Nodal Processing Delay
 
 패킷의 헤더를 분석하고 어느 방향으로 이동해야할 지 결정하는 등의 처리 지연 시간이다. 패킷에 비트 레벨의 에러가 있는지 체크하는 행위 등이 포함된다. 대부분 비슷하다.
 
-#### 2. Queuing Delay
+#### Queuing Delay
 
 Router의 Buffer에 담긴 패킷들이 Outbound Link(다음 Router로 향하는 Link)로 빠져나가는 처리 속도보다, 패킷들이 유입되는 트래픽 속도가 더 빠른 경우 발생한다. Outbound Link의 처리 속도(대역폭)이 현재 트래픽에 비해 충분하지 않아, 처리해야 할 패킷들이 Buffer에 쌓이게 되는 지연 시간이다.
 
@@ -175,11 +175,11 @@ Router의 Buffer에 담긴 패킷들이 Outbound Link(다음 Router로 향하는
 
 Delay가 길어져 Buffer가 꽉 차게 되면 새로 유입되는 패킷의 정보가 유실된다. 이는 이전 노드에서 재전송해야하기 때문에 리소스 낭비로 이어지고, 딜레이가 더 길어지는 원인이 된다.
 
-#### 3. Transmission Delay
+#### Transmission Delay
 
 패킷을 Output Link로 밀어넣는데 걸리는 시간을 의미한다. 패킷의 길이와 링크의 Bandwidth에 영향을 받는다. (L/R)
 
-#### 4. Propagation Delay
+#### Propagation Delay
 
 Node에서 다음 Node로 패킷이 링크를 따라 전파되는 시간을 의미한다. 즉, 물리적인 링크의 길이를 해당 링크 매체의 전파 속도로 나눈 값이다. (d/s)
 
@@ -205,31 +205,31 @@ Node에서 다음 Node로 패킷이 링크를 따라 전파되는 시간을 의�
 
 각 계층은 PDU(Protocol Data Unit)를 만들어내며, 하위 계층에 해당 PDU를 전달하며 캡슐화를 한다. 이 때 하위 계층은 상위 계층에서 전달받은 PDU(Payload)에 Header를 붙여 새로운 PDU를 생성한다.
 
-#### 1. Application Layer
+#### Application Layer
 
 * 네트워크 어플리케이션을 지원하는 레이어로 HTTP, FTP, SMTP 등이 있다.
 * 유저 어플리케이션에서 메시지를 생성한다.
 
-#### 2. Transport Layer
+#### Transport Layer
 
 * Source Process로부터 Destination Process에게 데이터를 전달해주는 레이어이다.
   * 네트워크는 엄밀하게 말하면 두 Host가 아닌 두 Host의 Process 끼리 통신하는 것이다.
 * UDP, TCP 등이 있다.
 * Application 레이어에서 내려준 메시지에 Header를 붙여서 Segment를 만든다.
 
-#### 3. Network
+#### Network
 
 * IP와 Routing Protocol을 통해 Source Host로부터 Destination Host까지의 라우팅을 담당한다.
 * 즉, 목표까지 도달하기 위해 여러 Hop을 이동하는 길찾기 기능을 한다.
 * Transport 레이어에서 내려준 Segment에 Header를 붙여서 Datagram을 만든다.
 
-#### 4. Link
+#### Link
 
 * 이웃하는 네트워크 원소들간(Hop, 경로의 한 부분) 데이터를 전달해주는 레이어이다.
 * 하나의 Hop을 이동한다.
 * Network 레이어에서 내려준 Datagram에 Header를 붙여서 Frame을 만든다.
 
-#### 5. Physical
+#### Physical
 
 * 비트 정보를 회선과 같은 물리적인 매체를 통해 전달하는 레이어이다.
 

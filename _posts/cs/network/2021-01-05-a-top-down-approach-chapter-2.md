@@ -13,7 +13,7 @@ last_modified_at: 2021-01-05T16:55:00-05:00
 
 ### 2.1.1. Network Application Architectures
 
-#### 1. Client-Server Architecture
+#### Client-Server Architecture
 
 Server Host는 항상 작동 중이어야 하며, 영구적으로 할당된 IP를 가지고 있다.
 
@@ -21,7 +21,7 @@ Client Host는 Server Host와 통신할 뿐, Client들 끼리 직접적으로 �
 
 Server Host가 Client Host의 요청을 처리해주는데, 요청 트래픽이 많은 경우 하나의 Server Host로 감당하기 어려워진다. 거대 컨텐츠 제공자들은 대규모 서비스 제공을 위해 여러 개의 데이터 센터를 가지고 있다.
 
-#### 2. P2P(Peer-To-Peer) Architecture
+#### P2P(Peer-To-Peer) Architecture
 
 별도의 Server에 크게 의존하지 않고 End System들끼리 직접 통신하면서 서로의 요청을 주고 받거나 서비스를 제공한다. 이 때, End System을 Peer라고 칭한다.
 
@@ -67,7 +67,7 @@ HTTP 프로토콜은 80 포트 번호를 사용한다.
 
 인터넷은 크게 TCP와 UDP라는 두 가지 Transport Protocol을 제공하고 있다.
 
-#### 1. TCP(Transmission Control Protocol)
+#### TCP(Transmission Control Protocol)
 
 * Connection-Oriented Service
   * Application의 메시지가 전달되기 전에 Handshaking을 통해 Client와 Server의 Process간의 연결을 먼저 셋업한다.
@@ -91,7 +91,7 @@ HTTP 프로토콜은 80 포트 번호를 사용한다.
 
 미디어 어플리케이션은 단위 시간당 전달받아 처리할 데이터 양이 최소 기준을 충족해야 하는 경우가 많다. (예 : 동영상 어플리케이션은 60 프레임.) 이 때 Flow나 Congestion Control을 하는 TCP는 데이터를 중간에 전달하지 않고 홀드할 수 있기 때문에 원하지 않는 결과가 발생할 수 있다.
 
-#### 2. UDP(User Datagram Protocol)
+#### UDP(User Datagram Protocol)
 
 UDP는 가벼운 프로토콜로서 최소한의 서비스만을 제공한다. 모든 데이터가 순서대로, 정상적으로 도착했는지 보장할 수 없는 Unreliable Data Transfer이다.
 
@@ -122,7 +122,7 @@ HTTP는 기본적으로 무상태(Stateless) 프로토콜이다. Server는 Clien
 
 ### 2.2.2. Non-Persistent and Persistent Connections
 
-#### 1. Non-Persistent HTTP
+#### Non-Persistent HTTP
 
 HTTP 1.0의 경우에 해당한다. 1개의 TCP 연결은 1개의 Object만을 전송할 수 있는 프로토콜이다.
 
@@ -145,7 +145,7 @@ RTT(Round Trip Time)이란 작은 패킷이 클라이언트에서 서버로 갔�
 
 다만 Transport Layer에서 Socket을 할당하는 작업(TCP 연결)은 OS의 책임이기 때문에, 연결을 여러 개 만드는 경우 OS 오버헤드가 발생한다. 각각의 TCP 커넥션마다 소켓과 버퍼를 할당해야 하기 때문이다.
 
-#### 2. Persistent HTTP
+#### Persistent HTTP
 
 1개의 TCP 연결이 N개의 Object를 전송할 수 있는 프로토콜이다. 처음 TCP 연결 이후, 서버가 클라이언트에게 Object를 담은 응답을 보내도 TCP 연결이 계속 유지된다.
 
@@ -155,7 +155,7 @@ RTT(Round Trip Time)이란 작은 패킷이 클라이언트에서 서버로 갔�
 
 HTTP 메시지는 Request와 Response 두 가지로 구분된다.
 
-#### 1. HTTP Request Message
+#### HTTP Request Message
 
 * Request Line : GET, POST 등의 메서드 타입과 요청 URL.
 * Header Lines : Host, User-Agent, 인코딩, 커넥션, 브라우저 정보, 언어, 컨텐츠 타입 등.
@@ -167,7 +167,7 @@ HTTP 메시지는 Request와 Response 두 가지로 구분된다.
 
 HTTP/1.0에서는 GET과 POST 및 HEAD 메서드만이 존재했다. HEAD는 Response 메시지는 보내되, 요청한 Object는 보내지 않는 메서드이다. 이후 HTTP/1.1에서는 PUT과 DELETE 메서드가 추가되었다.
 
-#### 2. HTTP Response Message
+#### HTTP Response Message
 
 * Status : HTTP 버전과 Status 코드 및 메시지.
 * Header Lines : 날짜, 시간, 수정 시간, 커넥션(TCP Close or Keep-Alive 등), 컨텐츠 길이, 타입 등.
@@ -239,14 +239,14 @@ HTTP는 클라이언트가 서버에 접촉하여 자료를 가져오는 Pull Pr
 
 받는 쪽 서버가 최종 유저에게 메시지를 전달할 때 사용하는 프로토콜이다. G-Mail 등은 HTTP를 사용한다. 과거에는 POP 혹은 POP를 개선한 IMAP 등을 사용하기도 했다.
 
-#### 1. POP 3 Protocol
+#### POP 3 Protocol
 
 * Authorization Phase : 클라이언트가 유저 및 패스워드 커맨드를 보내 인증하고, 서버가 응답하는 단계이다.
 * Transaction Phase : Client가 메일 리스트를 조회하고, 번호를 통해 개별 메시지를 상세 조회하고, 메시지를 삭제하거나 프로토콜을 종료한다.
 
 수신된 메일이 있으면 클라이언트 쪽으로 다운로드 하게 되는데, 과거에는 Download-and-Delete여서 한 번 읽으면 다른 클라이언트 Local PC에서는 메일을 확인하지 못했다. Download-and-Keep 등의 개선 방안이 나왔다.
 
-#### 2. IMAP
+#### IMAP
 
 모든 메시지를 하나의 장소(서버)에 저장한다. 유저가 메일 박스 속의 메시지들을 관리할 수 있다. 또한 한 세션에서 메일과 관련된 작업을 해도, 다음 세션에도 그 결과물들이 유지된다.
 

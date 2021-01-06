@@ -362,11 +362,11 @@ Request Chunks란 이웃하고 있는 Peer들 중 가장 희소한 청크를 가
 
 <br>
 
-## 2.6.1. Socket Programming with UDP
+## 2.6. Socket Programming
 
 소켓이란 Application과 Transport Layer 사이의 인터페이스이다.
 
-### 1. UDP
+### 2.6.1. UDP
 
 서버가 먼저 작동하고 있으며, 클라이언트와 서버 사이의 핸드쉐이킹을 통한 선제 연결은 없다.
 
@@ -380,7 +380,7 @@ Sender는 IP 도착 주소와 포트 정보를 모든 패킷에 부착한다. Re
   * 이 때, 클라이언트 주소와 포트 번호를 명시해야 한다.
 * 클라이언트는 소킷을 통해 응답 Datagram을 읽는다.
 
-### 2. TCP
+### 2.6.2. TCP
 
 클라이언트가 서버에게 먼저 접촉한다.
 

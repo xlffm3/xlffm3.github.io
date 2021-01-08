@@ -47,7 +47,7 @@ Client의 Application Layer에는 여러 프로세스들이 존재하며, 각각
   * 여러 호스트들에게서 받은 메시지들이 Network Layer를 통해 Transport Layer로 올라온다.
   * Transport Layer는 각 메시지들의 헤더를 분석하여 목적지 프로세스(Port)를 식별한 뒤, 해당 Port의 소켓에 메시지를 밀어넣어 Application Layer로 올려 보내준다.
 
-#### Connectionless Multiplexing and Demultiplexing
+### Connectionless Multiplexing and Demultiplexing
 
 UDP의 경우 Client와 Server 모두 소켓을 1개만 보유한다. 소켓은 Application Layer에 위치한 프로세스가 Transport Layer와 소통할 수 있는 창구이며, Port 번호로 식별한다. 소켓이 생성될 때, OS가 암묵적으로 해당 Host의 프로세스의 Local Port 번호를 할당해준다.
 
@@ -57,7 +57,7 @@ Demultiplexing은 Receiver에서 일어나는데, 클라이언트와 서버는 �
 
 이 때문에 IP 주소를 Segment의 Header에서 기록하고 분석하는 등 Network Layer의 서비스가 Transport Layer에서도 사용된다.
 
-#### Connection-Oriented Multiplexing and Demultiplexing
+### Connection-Oriented Multiplexing and Demultiplexing
 
 TCP를 사용하는 서버는 도어 소켓이 있고, 클라이언트의 각 요청마다 소켓을 새로 생성한다. 따라서 Demultiplexing을 위해서 Dest IP 및 Port 뿐만 아니라 Host IP 및 Host Port에 대한 정보도 필요하다. 서버가 가지고 있는 여러 소켓들 중 어떤 클라이언트 호스트의 어떤 프로세스가 요청한 커넥션인지 확인해야 하기 때문이다.
 
@@ -282,18 +282,18 @@ TCP는 Additive Increase와 Multiplicative Decrease를 반복하며 혼잡을 �
 
 TCP는 cwnd 바이트만큼 Segment를 보내고 ACK 응답이 오기까지 RTT만큼을 기다린다. 따라서 TCP의 전송 속도는 대략 cwnd / RTT (bytes/sec)에 수렴한다.
 
-#### Slow Start
+### Slow Start
 
 TCP 연결이 시작되면 초기 cwnd는 1MSS이다. 처음에는 파이프로 Segment를 1개만 보낸다. TCP는 ACK 응답이 1개 올 때 마다 cwnd를 1씩 증가시킨다. 따라서 cwnd는 매 RTT마다 2배씩 Exponential하게 증가한다.
   * 1, 2, 4, 8, 16...
 
-#### Congestion Avoidance
+### Congestion Avoidance
 
 ssthresh라는 Threshold 값이 있으며, cwnd는 해당 값보다 낮을 땐 Slow Start를 사용하여 지수처럼 증가한다. cwnd가 ssthresh를 넘는 순간부터 Congestion Avoidance가 시작되면서 cwnd는 매 RTT마다 1씩 증가한다. (선형적이다.)
 
 ssthresh는 OS가 세팅하는 기본값이며, 패킷 손실이 발생할 때 ssthresh 또한 cwnd / 2로 조정된다.
 
-#### Fast Recovery
+### Fast Recovery
 
 ssthresh는 로스가 발생하면 cwnd / 2로 줄어든다. TCP는 크게 두 가지 방식으로 로스를 감지한다.
 
@@ -306,7 +306,7 @@ ssthresh는 로스가 발생하면 cwnd / 2로 줄어든다. TCP는 크게 두 �
 
 예정 방식인 TCP Tahoe는 로스를 감지하면 무조건 cwnd를 1 MSS로 설정한다.
 
-#### Macroscopic Description of TCP Throughput
+### Macroscopic Description of TCP Throughput
 
 Pipelining을 통해 여러 개의 Segment들이 거의 동시에 전송되고 ACK 응답 또한 거의 동시에 들어오기 때문에, 1개의 Segment를 송수신한 것이 아니더라도 1 RTT로 간주할 수 있다.
 

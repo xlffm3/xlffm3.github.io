@@ -206,354 +206,244 @@ NAT IP를 사용하면 Subnet에 속한 Local Host들은 일련의 IP 블록을 
 
 효율적으로 IP 자원을 사용할 수 있지만, Network Layer인 Router가 포트 번호같은 Transport Layer까지 건들이기 때문에 논란이 다소 많다. 또한 NAT Traversal 문제가 있다. 서버가 NAT IP를 사용하는 Subnet에 속해 있으면 Private이며, 외부에 있는 클라이언트는 해당 서버를 향한 NAT IP를 먼저 알 수 없다. Subnet 내부의 서버가 먼저 외부의 클라이언트에 접촉을 시도해야 Private IP - NAT IP간의 Translation Table 정보가 라우터에 저장되기 때문이다.
 
-이에 대한 솔루션으로 테이블을 수동 생성하는 것이다. 정적으로 특정 포트 번호로 온 연결 요청을 서버로 Forwarding하도록 설정하는 것이며, UPNP를 통해 이를 자동화할 수 있다.
-
-  * 서버가 나트 라우터에게 public IP 주소를 배움.
-  * p2p 방식은 nat 뒤 숨겨진 서버 문제를 관리하기 어려움. 클라-서버는 가능한데..
+이에 대한 솔루션으로 테이블을 수동 생성하는 것이다. 정적으로 특정 포트 번호로 온 연결 요청을 서버로 Forwarding하도록 설정하는 것이며, UPNP를 통해 이를 자동화할 수 있다. P2P 방식은 NAT 뒤에 숨겨진 서버 문제를 관리하기 어렵다.
 
 ### 4.4.3. Internet Control Message Protocol (ICMP)
 
-호스트와 라우터들이 사용하며, 네트워크 레벨 정보를 통신하기 위해. (소스 호스트에게 어떤 에러가 있는지를.)
-  * 에러 리포팅, 리퀘스트나 리플라이 에코 (핑, 서로 살아있는지 확인) 등.
-  * ICMP는 IP(네트워크 레이어)위에 있다.
-    * ICMP 메시지는 IP 데이타그램 안에 인캡슐화된다 (tcp 세그먼트처럼.)
-icmp 메시지 : 타입, 문제가 퇴는 아이피 데이터그램의 코드.
+Host와 Router들이 Network Lever 정보를 전달할 때 사용한다. Source Host에게 어떤 에러가 있었는지 리포팅하거나 요청과 응답에 대한 Ping을 Echo하여 서로의 상태를 체크한다.
 
+ICMP는 IP(Network Layer) 위에 존재하며, ICMP 메시지는 TCP 등의 Segment처럼 IP Datagram 내부로 캡슐화된다.
 
-TTL(Time to Live) : 패킷이 라우터에서 폐기되기 전에 네트워크에 존재하는 시간. 또는 홉을 나타냄.
+TTL(Time To Live)란 패킷이 Router에서 폐기되기 전 까지 네트워크에 존재할 수 있는 시간, 혹은 홉을 의미한다. Traceroute 같은 서비스는 ICMP 메시지에 TTL을 활용하여 패킷의 경로와 목적지 도착 여부 등을 확인한다.
 
-Traceroute : TTL을 1부터 차근차근올리며 계속 udp를 보냄. 소스에서 출발하다가 중간에 계속 EXPIRED되지만 특정 N이 됬을때 DEST에 도착. 근데 dest port를 이상한걸로 설정해놧기 때문에 응답으로 port unreachable 응답이옴. 이걸통해 경로확인.
+### 4.4.4. IPv6
 
-## IPv6
+기술의 발전으로 인해 IP 할당 수요는 폭발적으로 증가함에 따라 할당가능한 32bit인 IPv4의 개수는 고갈되고 있다. CIDR, DHCP, NAT를 통해 IP 자원을 효율적으로 사용하더라도 IP 주소가 부족하다. IPv6는 길이가 더 긴 128bit의 주소 체계를 정의하여 주소 고갈 문제를 해결할 수 있다.
 
-32비트 주소들은 조만간 전부 할당될것임. 주소가 부족해!
-CIDR, DHCP, NAT로 타이트하게 관리해도 부족함.
-IPv6는 128비트를 씀.
+과거에는 Link 쪽의 Transmission 속도로 인해 병목 현상이 많이 발생했으나, 네트워크의 물리적인 기술이 발달하면서 현재는 Router의 Switching 부분에서 병목 현상이 주로 발생한다. Router의 Forwarding 최적화를 위해 IPv6에서는 가변 길이가 아닌 40byte 고정 길이의 헤더 포맷을 사용하도록 디자인되었다. 또한 Fragmentation을 허용하지 않으며, 패킷의 크기를 Link가 처리하지 못하는 경우에 대한 예외 코드가 추가되었다.
 
-추가적으로 디자인하면서 고려한 사항
-  * 네트워크의 물리적 기술 발달하면서, 과거에는 link transimission이 오래걸려서 이쪽이 보틀넥났는데 계쏙 빨라지면서 이젠 Router의 스위칭부분이 보틀넥남.
-  * 라우터쪽 처리, 포와딩을 최적화하기 위해서는 헤더 포맷을 고정 길이 헤더로 만드려고 함. 40바이트짜리. (가변길이 안쓰려고함, Optional로 뒤에 헤더 붙이는 방식으로 대체.)그리고 fragmentation 허용안하게.
-    * ICMPv6에서 패킷이 투 빅하다에 대한 예외 코드가 생김!.
-    QoS 헤더를 지원한다 (미래엔 멀티미디어가 중요하기 때문에)
+QoS(Quality of Service) 헤더를 지원하는데, 이를 통해 플로우에 있는 Datagram의 우선 순위를 설정하고 데이터 전송에 특정 수준의 성능을 보장하려고 한다. 미래에는 멀티미디어 등이 중요하기 때문이다.
 
-  * 포맷
-    * priority (플로우의 데이터그램들중 우선순위)
-    * flow Label : 같은 플로우에서 데이터그램들을 식별하는것.
-    * nextHeader : Optional 헤더가 있는지, 아니면 다음에 오는게 UDP인지 tcp 헤더인지 등.
+IPv6 Datagram의 Header 포맷에는 IPv4에 없는 다음과 같은 필드들이 존재한다.
 
-  CHECKSUM 등 삭제됨.
-  멀티캐스트 그룹 관리 기능을 제공.
+* Priority : 플로우의 Datagram의 우선 순위에 대한 필드이다.
+* Flow Label : 같은 플로우의 Datagram을 식별하는 필드이다.
+* Next Header : Optional 헤더가 있는지, 아니면 다음에 오는 헤더가 UDP인지 TCP인지 등을 구분한다.
 
-## transition IPv4 to v6
+Checksum 등의 필드가 삭제되었으며 IPv6는 멀티캐스트 그룹 관리 기능을 제공한다.
 
-* 모든 라우터들이 동시에 업그레이드 불가능.
-* 하루아침에 v6되는게 아니고 중간 중간에 추가, Tunneling.
-  ipv4와 ipv6가 서로 이해하는게 관건인데 터널링을 사용함.
-    * ipv6 데이터그램이 ipv4 라우터들과 ipv4 데이터그램 속에서 페이로드로 사용되게 인캡슐해서 사용함.
-    * ipv6 사이에잇는 ipv4들이 컴파일 에러가 나지 않게 하도록.
-    * 즉 ipv6들끼리는 지들 헤더로 소통하게 하는데 ipv4를 만나면 ipv4가 이해하게끔 ipv4 데이터 형태로 주는거임.
+모든 Network 시스템들이 동시에 IPv6로 업그레이드되는 것은 불가능하다. 점진적으로 IPv4를 사용하는 시스템들이 IPv6로 업그레이드가 되는데, 불가피하게 IPv4와 IPv6가 공존하는 과도기를 겪게 된다. IPv4를 사용하는 시스템은 IPv6 메시지를 이해할 수 없기 때문에 Tunneling을 사용하게 된다.
 
-## routing 알고리즘 프로토콜.
-
-* 라우팅 알고리즘의 목적 : 패킷이 목적지에 찾아갈 수 있도록 경로 분석하고 패킷의 포워딩 테이블을 세팅해놓은것
-
-Graph abstraction으로 추상화하는데
-
-vortex set(set of routers), set of links (edge set)으로 Graph 객체만듬
-
-인터넷에서는 모든 링크의 코스트를 1로 둠, 경우에 따라서 각각 다르게 줄 수 있음.
-* 링크의 bandwidth가 크면 클수록 코스트가 낮고, congestion 등 관련해서..
-* 링크 사용 비용 등을 넣어서 추정할수도있음.
-
-라우팅 알고리즘의 목적 : 최소 비용의 경로를 발견해내는것.
-가중치 등을 분석해서 하겠지 ㅇㅇ
-
-## 라우팅 알고리즘 분류
-
-* global (link state)
-  * 각 라우터가 네트워크 전체 정보를 가지고 있음.
-  * 각 라워의 정보는 항상 consistent하게 모든 라우터가 전체 정보를 유지해야함.
-* decentralized(distance vector)
-  * 각 라우터는 지엽적인 (물리적으로 가까운 이웃, 이웃과 연결 코스트)만 직접 안다.
-  * 옆집들과 소통함, 나는 xx 서브넷 갈 수 있는데 코스트가 얼마야 정보를 주변 이웃과 교환함.
-
-다른 분류 기준
-
-  * static vs dynamic?
-    * static 알고리즘 (route 변화가 시간에 따라 천천히 변화하는거)
-      * 링크의 길이 등은 코스트가 거의 변함없어서 라우트 네트워크가 변함이 많이없음. 그래서 라우트 (알고리즘)업데이트 주기가 길어도됨.
-    * dynamic :  route 변화 빠름 (주기적 업데이트, 링크 비용 변화에 따른 변화)
-      * route를 더 효율적으로 하기 위해 dynamic 알고리즘을 쓸 수 있음. 자주 변함. 빈번하게 라우팅 인포메이션이 바뀌면서 오버헤드가 많이 발생할 수 있으나, 주기를 너무 길게 잡으면 필요한만큼 주기가 빨리 바뀌지않음.
-
-## global r.a
-
-Dijkstra's algorithm
-
-* 하나의 소스 노드로부터 네트웤의 다른 모든 n개의 destination과의 짧은 경로를 계산하고 찾음.
-  * 하나의 노드는 다른 노드들과의 정보를 모두 브로드캐스트함.
-  * 이를 통해 전체 그래프를 만듬.
-
-* n번의 반복이 발생.
-* 이를 통해 node tree graph를 만들어서 한 노드에서 다른 노드와의 최단거리 구하기 가능.
-  * 비교는 최대 n * (n+1)  / 2를 하다보니 O(n^2)
-  * 가장 효율적으로 구현하면 O(nlogn)
-
-## distance vector(decentralized)
-
-Bellman-Ford Equation
-
-x에서 y까지의 최소 비용경로는 x의 이웃들까지 가는 비용 + 이웃들에서 y가는 비용들 중 최소값.
-
-DV를 위해서는 각 노드 x는 이웃들과의 비용을 알고 있고, 이를 이웃들에게 업데이트함.
-
-각 노드들이 변경되는 것은 크게 2가지이다 (본인의 로컬 링크 코스트가 변하거나, 이웃으로부터 변경 메시지를 받거나.)
-그럼 다시 내 주변 이웃들간의 거리를 재계산하고, Distance Vector(다른 노드까지의 최단거리)들에 대해 이웃에게 노티.
-
-* 좋은소식은 빨리 가면 좋은데..
-링크코스트가 바꼈는데 두 노드들간 count to infinity 문제가 발생함. distance가 현실 반영을 못해서,,,  a노드 b노드가 c노드로 가는길을 a와 b가 의존을하게되서
-b타면 2 a타면3 b타면4..... n넘었을대 그제서야 판단함.
-  * 두 노드가 의존하게 되면서 현재 개븅신짓이란걸나중에 알게됨.
-* posinoned reverse : z라우트가 x로 가는데 y를 통해야 한다면, z는 y한테 x로 가는 길이 무한이다 라고 먼저 말함.  그러면 infinity로 생각해서 해당 길은 고려안하게되고 다른길 파악해서 무한루프를 줄일수잇음.
-  * 모든 경우를 완벽하게 해결하진못함.
-
-
-* 단점 bad news travels slow : 어느 노드와의 길이 끊어진경우. 다른 노드들이 해당 노드와의 거리를 무한으로 산정해서 계속 반복돌게됨. 알고리즘이 안정화되기  까지 그 이전에 반복을 꽤 많이 돔. (x 노드로 가는거 무한이야 아직 계산이안되서) 그래서 계속 루플를 돌며 계산하게됨.
-  * posinoned reverse? 있는데 이건 나중에..
-
-## 비교
-
-message complexity
-* LS : N개 노드와 E개 링크 있으면 O(N^E) 메시지 센트
-* DV : 근접 이웃들관의 메시지 교환
-
-convergence speed (정보 변경으로 라우팅 업데이트)
-LS : O(n^2) 앍골맂므은 O(n^E) 메시지 필요
-DV : Convergence는 다양. 좋을땐 라우팅 루프만큼 돌지만, 최악은 무한대로 돌수있음.
-
-robustness : 만약 라우터가 맛이가면?
-
-LS : 노드는 잘못된 링크 비용을 홍보한다. 각노드는 자기의 테이블만을 계산. 문제가 발생한 부분근처의 경로는 잘못되겠지만 나머지쪽은 그래도 괜찮음.
-DV : DV 노드는 잘못된 경로 비용을 홍보한다 (모든 목적지에 대한 경로 비용을 계산하다보니.). 각 노드들의 테이블은 다른 노드들이 사용하기 때문에 에러가 네트워크 전반으로 펼쳐져벼린다.
-
-## discussion
-
-
-* oscillations possible : 다이나믹 링크 비용은 트래픽의 양과 같다.
-  * 어느 특정 링크에서 발생하는 트래픽이 많으면, 그만큼 병목현상 등 비용이 많이 발생할 수 있으니 다른 링크를 찾으려고 라우팅을 업데이트함.
-  * 이런 트래픽 상황에 기반한 노드의 비용이 계속 바뀌기 때문에 계속 업데이트 되며, 다이나믹 라우팅 알고리즘을 채택하면 계속 테이블과 목적지에 대한 경로가 바뀌게 됨.
-    * tcp는 순서대로 오는게 중요한데, 데이터 전송중에 계속 다이나믹하게 경로가 변경되면 outoforder가 올 수 있음.
-    * 이는 ack 재전송 등 앱 계층 성능에 영향, 또한 데이터가 전송되는 와중에 테이블이 변경되는데 미처 모두에게 퍼지지 못해 잘못된 정보로 가는 애들은 routing loop에 빠짐.
-
-## Hierarchical Routing
-
-네트웤이 커지면?
-
-LS : 노드들이 가져야하는 정보가 방대해질 수 있음
-DV : 또한 커지면 커짐 ㅠ
-
-전체 네트웤을 하나의 알고리즘으로 돌리지는 않음.  왜? 네트웤 스케일이 엄청나게 큼. routing table exchange 규모가 너무 커질 수 있음.
-
-administrative autonomy 기관 : internet이란 네트워크의 네트워크. 네트워크 어드민은 자신의 네트워크 속에서 라우팅을 컨트롤하고싶을수있다. (외부에게 내부 테이블 정보를 일일이 알리지 않고.)
-
-따라서 라우팅을 Autonomous system(as)로 나눈다. 제한된 지역의 한 기관에 속한 라우터들을 aggregate하는건데, 같은 AS에 속한 라우터들은 같은 라우팅 프로토콜을 돌린다.
-속해있는 라우터들에 대한 라우팅 테이블을 만듦.
-
-이를 Intra AS 라우팅 프로토콜이라고 하며, 서로 다른 AS에 속한 라우터들은 다른 라우팅 프로토콜을 돌릴 수도 있다.
-
-AS와 AS의 엣지에 있는 라우터들끼리를 연결해주는것은 gateway router라고 한다.
-
-Intra AS Subnet과 Interconnected AS 두가지로 나뉠수있다.
-intra는 하나의 프로토콜로 다 돌릴 수 있으나, inter된 as들간의 라우팅을 위해 inter AS 라우팅 프로토콜이 있음. 이걸 협력해서 포워딩 테이블 만듬.
-
-AS 내에 속한 subnet들은 하나의 라우팅 프로토콜 이용, Gateway router간을 통해,
-이 때 InterAS routing 프로토콜을 사용. 다른 AS를 통해 어떤 목적지에 도달할 수 있는지 정보를 교환해야함. 또한 해당 정보를 as 내의 다른 노드들(gateway router가 아닌 것들)에게도 해당 정보를 공유함. 이 모든게 interAS routing의 일.
-
-만약 하나의 AS에서 다른 AS의 서브넷으로 가는데 복수개의 외부 as를 거칠 수 있다면, 어떻게 라우팅을 셋팅하는가? 이 또한 inter AS routing이 협력.
-
-이 때 hot potato routing을 자주 쓰는데, 이동해야할 때 여러개의 gateway router중 현재 나와 가장 가까운 gateway router를 통해 갈 수있는 경로를 선택한다. 현재 내가 속한 AS에서 가장 리소스를 덜 사용하고 Gateway를 통해 빠져나갈 수 있는 경로를 택하는것. 나와 거리가 먼 gateway router를 사용해 다른 as로 나가는 경로를 택하면, 현재 as에서 많은 홉을 이동하며 자원쓰기때문.
+IPv6를 사용하는 라우터들끼리 통신할 때 IPv4 라우터를 거쳐야한다면, IPv6 Datagram을 Payload로 하고 IPv4의 Header를 붙여 IPv4가 이해할 수 있는 Datagram으로 캡슐화한다. IPv4 라우터는 해당 Datagram을 정상적으로 처리할 수 있게 되며, IPv6 라우터는 전달받은 IPv4 Datagram을 IPv6 Datagram으로 디캡슐화하여 사용하게 된다.
 
 <br>
 
-## Intra-AS Routing 프로토콜들
+## 4.5. Routing Algorithms
 
-IGP(Interior Gateway Protocol)이라고 함.
+라우팅 알고리즘은 패킷이 Source에서 Destination에 도달할 수 있도록 경로를 분석하고 Forwarding Table을 세팅하는 것이다.
 
-RIP, OSPF, IGRP 등이 유명.
+Graph Abstraction을 사용하는데, Router Set(Vortex)과 Link Set(Edge)로 Graph 객체를 만든다. Link의 Bandwidth과 Congestion 혹은 사용료에 따라서 Cost 가중치가 다르게 설정된다. 라우팅 알고리즘은 이런 가중치 등을 분석해서 최소 비용의 경로를 발견하는 것이다.
 
-rip : 가장 초창기에 사용, distance vector 사용. routing information protocol.
-  * 링크 코스트들을 매우 단순하게 측정하여, (대부분 링크가 비슷한 그런 네트워크를 대상으로함)결국 링크 코스트의 합은 hop counts가 됨. distance metric. 맥스 hop 카운트는 15.
-  * 30초마다 이웃들의 응답메시지에 반응하여 DV 정보를 교환함.
-  * advertisement 메시지에 Distance vector를 실어 보냄. 실릴 수 있는 목적지 서브넷의 개수는 최대 25개.
-  * link failrue가 발생하면? 두 라우터가 더이상 정보를 공유할수없음 ad. 180초동안 이웃들과 통신안되면 link가 fail 했다고 판단하며 해당 이웃을 통해 갈 수 있는 경로들을 전부 무효화시킨 뒤, 다시 경로 측정해서 이웃들에게 전파.
-  * poision reverse : DV 방식이라 3개 노드가 관여된 경로에서 한개 경로의 링크코스트 변경되었을 때 계속 무한루프돌수있으나 최대 경로가 16이기 때문에 어느정도 방지.
-  * rip는 라우팅 프로토콜로 어플리케이션 레벨 프로세스 레이어임. route-d 데몬.
-  * advertisement 메시지를 만들고 udp 패킷에 해당 정보를 실음. network 계층에 ip datagram만들어서 주변과 통신. 그래서 네트워크 계층의 포워딩 테이블이 업데이트됨.
+라우팅 알고리즘은 크게 두 가지 방식으로 분류될 수 있다.
 
-### OSPF(Open Shortest Path First)
+* Global : LS(Link State) 방식이 대표적이다.
+  * 각 라우터는 네트워크 전체 정보를 가지고 있으며, 항상 모든 라우터가 일관되게 전체 정보를 유지해야 한다.
+* Decentralized : DV(Distance Vector) 방식이 대표적이다.
+  * 각 라우터는 물리적으로 가까우며 연결된 이웃들에 대한 지엽적인 비용 정보만을 안다.
+  * 이웃들과 "나는 XX 서브넷에 갈 수 있고 비용은 YY야" 등의 정보를 교환한다.
 
-RIP는 제한이 있어서 대규모 라우팅에 적용하기 어려움.
-* public availabe한 프로토콜임.
-* Link State 알고리즘 사용.
-  * 각 노드들은 전체 맵 그래프를 그리게 되고, 자신의 소스로 하는 Dijkstra 알고리즘을 통해 라우팅 계산.
-  * OSPF advertisement는 하나의 엔트리를 이웃들에게 전달, 그리고 이건 전체 AS에게 흘러들어감.
-  * OSPF 프로토콜은IP 바로 위에서 구현되어, UDP나 TCP에 캡슐화되지 않음.
+다른 분류 기준도 존재한다.
 
-### ospf 장점
-  * rip와 다르게 더 큰 규모의 네트워크에서 계층적인 OSPF 사용.
-  * 보안. (모든 ospf 메시지는 인가됨.)
-  * rip는 링크코스트를 1로 뭉뚱, ospf는 링크코스트를 다양하게 적용. (delay, bandwith, money 등). 각 링크코스트를 adv하며 각 링크코스트에 대한 다양한 table을 가짐.
-    * multiple cost metirics가 가능함.
-  * 멀티캐스트 라우팅을 제공함. (MOSPF). 하나의 메시지가 전체에 퍼지게하도록.
-  * 또한 특정 목적지까지 가는 경로가 같은 비용인게 여러개이면 rip는 1개만 테이블에 남겼는데, ospf는 여러개를 모두 남김.
+* Static
+  * Link의 길이와 같은 비용은 거의 변함없기 때문에, Forwarding Table이 자주 변하지 않는다.
+  * 시간에 따라 천천히 변화해도 되기 때문에 라우트 알고리즘 업데이트 주기가 긴 편이다.
+* Dynamic
+  * 라우트 알고리즘 업데이트가 주기적으로 진행되며, Forwarding Table 변화가 빠르다.
+  * 라우팅 성능을 위해 Link의 비용 변화를 체크하고 이를 지속적으로 Forwarding Table과 알고리즘에 반영하는 것이다.
+  * Static과 비교했을때 동적이고 빈번하게 라우팅 정보들이 업데이트 되기 때문에, 오버헤드가 많이 발생할 수 있다.
+  * 그러나 업데이트 주기를 너무 길게 잡으면 최신 비용 정보가 반영되지 못해 의도했던 성능 상 이점이 떨어지게 된다.
 
+Dynamic 방식의 비용은 트래픽의 양과 같다. 어느 특정 링크에 발생하는 트래픽이 많으면 병목현상 등 비용이 높아지기 때문에 다른 링크를 찾으려고 라우팅을 업데이트한다. 트래픽 상황에 기반한 알고리즘은 노드의 비용이 계속 변경되기 때문에 Dynamic하게 업데이트되면서 테이블과 목적지에 대한 경로 또한 계속 변경된다.
 
-## hierarchical ospf
+TCP 등 데이터 전달 순서가 중요한 경우, 데이터가 전달되는 과정에서 계속 경로가 변경됨에 따라 Out Of Order가 발생할 수 있다. Receiver는 ACK 재전송 등을 해야하기 때문에 Application Layer 성능에 영향을 줄 수 있다.
 
-LS는 패킷 정보가 전체로 퍼저야하기때문에 크기가 커질수록 (AS 등) 패킷 전송량이 많아져서 부하큼.
+또한 데이터가 전달되는 과정에서 테이블이 변경될 때, 변경 내용이 미처 모두에게 퍼지지 못해 잘못된 정보의 경로를 타게 되는 경우 라우팅 루프에 빠질 수 있다(Oscillation).
 
-AS를 여러개로 나누어 inter as 적용하듯. h.ospf는 여러 지역을 나누고 지역 내부에서는 LS Broadcasting함. 각 지역을 각 크기를 일정하게 유지하기 때문에.
+### 4.5.1. The Link-State (LS) Routing Algorithm
 
-각 area마다 border router는 (gateway router와 유사) 우리 area안에 속한 라우터들과의 거리 및 정보를 알고 summary를 알고 외부 as들과 교환함. (니네 as에는 그게잇니? 우린 이게있단다.)
+Dijkstra 알고리즘을 사용한다. 하나의 노드는 네트워크의 다른 모든 N개의 노드들과 정보를 브로드캐스트하며 최단 경로를 찾는다. N번의 반복을 통해 Node Tree Graph를 그리게 되고, 하나의 노드에서 다른 노드와의 최단 거리를 구할 수 있다.
 
-area border routers들은 backbone이라는 지역 내에서 연결되는데
-border routers를 연결해주는 것은 backbone 안의 backbone router들임.
-backbone 내부에서는 또한 하나의 OSPF 프로토콜이 동작. (LS broadcasting이 일어남)
+그래프에서 경로 탐색을 위한 비교는 최대 N * (N+1) / 2만큼 수행될 수 있기 때문에 O(N^2) 시간 복잡도를 가지나, 효율적으로 구현하면 O(NlogN)이 된다.
 
-backbone 또한 boundary router가 있고 다른 외부 backbone의 boundary router들과 내부 backbone 노드들에 대한 정보들을 inter 교환하고 ... 또 위에 계층ㅇ적.
+### 4.5.2. The Distance-Vector (DV) Routing Algorithm
 
-**two level hierachy** local area,  backbone
-  * link state는 area 내부에서만 발생함.
-  * 각 노드들은 area 내부 안의 그래프만을 알고.
-  * area border router는 다른 area border router와 통신하여 서로간의 정보를 공유함.
-  * backbone router들은 backbone 지역 내부에 위치한 area border router들을 연결.
-  * boundary router는 backbone 지역의 가장자리에 위치해서 다른 지역의 backbone과 연결...
+Bellman-Ford Equation을 사용하며, X 노드에서 Y 노드까지의 최소 비용 경로는 X 노드에서 X 노드의 이웃으로 가는 비용 + 이웃에서 Y까지 가는 비용의 합들 중 최소값이다.
 
-  계층 ㄱ
+DV를 위해 각 노드는 이웃들과의 비용을 알고 있고, 이를 이웃들에게 업데이트 한다. 노드가 본인의 Local Link 비용을 변경하거나, 이웃으로부터 비용 변경 메시지를 받을 때 알고리즘(혹은 테이블)이 업데이트된다. 업데이트가 되면 노드는 다시 이웃들간의 거리를 재계산하고, Distance Vector(다른 노드까지의 최단 거리)들에 대해 이웃들에게 노티한다.
 
-## Inter AS Routing : BGP
+DV의 단점으로는 좋은 정보(비용이 줄어드는 경우)는 반영이 빠르지만, 나쁜 정보는 반영이 느리다. 비용이 늘어나는 경우 각 노드들은 DV를 계산하는데 시간이 오래 걸려, 전송 중이던 패킷들이 목적지에 도달하지 못하고 무한 루프(count to infinity)에 빠질 수 있다.
 
-Border Gateway Protocol.
-딱 1개의 inter domain 라우팅 프로토콜임.
+Poison Reverse로 이러한 문제를 어느정도 해결할 수 있으나 3개 이상의 노드가 관여되어 있을 때 등 예외 케이스들은 해결할 수 없다.
 
-eBGP : 지역 AS로부터 서브넷 도달가능성 정보를 가져옴.
-iBGP : 받아온 이웃 서브넷 도달 정보를 AS 내부 라우터들에게 전파.
+#### A Comparison of LS and DV Routing Algorithms
 
-* 도달 정보 및 정책 등에 기반하여 다른 네트워크에 대한 "좋은 라우터"를 구별함.
-  * 정책 등..
-서브넷이 다른 인터넷에게 자신의 존재를 홍보하는 방법인셈.
+* Message Complexity
+  * LS : N개의 노드와 E개의 링크가 있으면 O(N^E) 메시지를 보낸다.
+  * DV : 근접한 이웃들간의 메시지 교환이 발생한다.
+* Convergence Speed : 정보 변경으로 인한 라우팅 업데이트.
+  * LS : o(N^2) 알고리즘으로 인해 메시지는 O(N^E)만큼이 필요하다.
+  * DV : Convergence는 다양하다. 좋은 정보는 준수하지만 최악의 경우 무한 루프에 빠질 수 있다.
+* Robustness : 라우터가 맛이 간다면?
+  * LS : 노드는 잘못된 링크 비용을 홍보하고 각 노드는 자기의 테이블만을 계산한다.
+    * 문제가 발생한 부분 근처의 경로는 잘못되겠지만, 나머지 부분은 문제가 발생하지 않는다.
+  * DV : 노드는 모든 잘못된 경로 비용을 홍보한다.
+    * 한 노드의 테이블은 다른 노드의 테이블이 사용하기 때문에, 에러가 네트워크 전반으로 전파된다.
 
-BGP basic
-  * BGP Session : 두 인근 BGP router들 (gateway)이 BGP 메시지를 교환함.
-    * semi-permanent TCP 커넥션을 다른 as에게 우리 as 내부에 어떤 prefix의 라우터 도착지들이 있는지 경로 등을 홍보 도착지로 갈 수 있는 내가 아는 prefix 경로들을 홍보함.
-    * 정보 교환은 향후 해당 정보로 요청오면 forward 해주겠다는 의미.
+### 4.5.3 Hierarchical Routing
 
-BGP 라우터들이 주고받는 핵심 정보
-   * 목적지 서브넷의 prefix + attribute(경로정보) = "route"
-Attribute의 핵심 두가지
-  * AS-PATH : 해당 프레픽스까지 가는데 거쳐야 하는 AS들 (as68, as17)
-  * NEXT-HOP : 어느 프레픽스를 가기 위해 내부 as router(gateway)가 다음 홉 as 어디로 가야하는지 정보를 제공함. (두 as간에 multiple 링크가 맺어져있을 수 있기 때문에, 다음 as의 어떤 gateway를 타야하는지.)
+네트워크가 커지면 LS와 DV 방식 모두 하나의 노드가 가져야하는 정보의 양이 많아진다. 실제로 전체 네트워크를 하나의 네트워크 알고리즘으로 돌리지 않는데, 네트워크 스케일 때문에 Routing Table Exchange 규모가 너무 커지기 때문이다.
 
-advertisement를 받은 게이트웨이 라우터들은 승인 혹은 거절할 때 중요한 정책을 사용함.
-  * 정책 기반의 라우팅.
+또한 각 기관들의 네트워크 어드민은 외부에 내부 네트워크 테이블을 알리지 않고 자신의 네트워크 라우팅을 컨트롤하고 싶어할 수 있다.
 
-BGP route selection.
+라우팅 또한 Subnet처럼 계층적으로 관리할 수 있다. 제한된 지역의 한 기관에 속한 Router들을 Aggregate하고 이들을 1개의 AS(Autonomous System)에 속하게 한다. 같은 AS에 속한 라우터들은 같은 라우팅 프로토콜을 사용하며, 속해있는 라우터들에 대한 라우팅 테이블을 만든다. 이를 Intra AS Routing Protocol이라고 한다. 서로 다른 AS에 속한 라우터들은 다른 라우팅 프로토콜을 사용할 수 있다.
 
-다른 as에 갈 수 있는 gateway가 여러개라면? hot potato를 통해 선택하는데
+하나의 AS Edge에서 다른 AS의 Router와 연결되는 Router를 Gateway Router라고 한다. 하나의 AS에서 다른 AS 내부의 목적지와 통신하기 위해 사용되는 것이 Inter AS Routing Protocol이다. 서로 다른 AS의 Gateway Router들은 Inter AS Routing Protocol을 통해 다른 AS를 사용하면 어떤 목적지에 도달할수 있는지 등의 정보를 교환한다. Inter AS Routing Protocol은 또한 해당 정보를 AS 내의 노드들에게 공유하는 역할을 한다. 이러한 협력을 통해 AS들간의 라우팅을 위한 Forwarding Table을 만들게 된다.
 
-BGP는 1) 정책 (보안 등)의 이슈, 2) 짧은 AS 경로, 3) hot potato routing, 4) 그 외 기준을 통해 선택한다.
+만약 1개의 AS에서 다른 AS의 서브넷으로 이동하는데 다양한 Gateway Router(즉, 다양한 AS)를 거칠 수 있는 경우, Inter AS Routing Protocol을 통해 라우팅을 선택하게 된다.
 
-BGP 메시지 : as들간 tcp 통신을 통해 연결만드는 메시지. OPEN, UPDATE, KEEPALIVE, NOTIFICATION 등 내용.
-
-## shortest path bgp route 방식
-
-nexthop이란 as path를 시작하는 라우터 인터페이스(게이트웨이)의 ip 주소이다.
-라우터는 ospf를 통해 현재 위치에서 가장 가까운 as게이트웨이로 가는 경로를 택한다.
-
-## hot potato routing.
-
-2개 이상의 inter routes가 있다고 해보자. 가장 짧은 next hop을 가진 루트를 선택한다.
+* Hot Potato Routing을 주로 사용하는데, 현재 Source Node 위치에서 가장 가까운 AS 내부 Gateway Router를 통해 갈 수 있는 경로를 택한다.
+* 내가 속한 AS에서 리소스를 가장 덜 사용하면서 Gateway Router를 통해 빠져나갈 수 있는 경로를 선택하기 때문이다.
+* 나와 거리가 먼 Gateway Router를 통해 다른 AS로 빠져나가면, 그만큼 현재 AS에서 많은 Hop을 이동하며 자원을 사용하게 된다.
 
 <br>
 
-summary : prefix를 위한 라우터 아웃풋을 결정.!
+## 4.6. Routing in the Internet
 
-## BGP routing policy
+### 4.6.1. Intra-AS Routing in the Internet: RIP
 
-import policy : 남한테 들은 advertisement를 내가 take해서 내부에 전파할거냐 정책.
+IGP(Interior Gateway Protocol)라고도 한다.
 
-beast as path 선정할때 policy도 사용함. 그리고 외부에 알릴지도 .
+RIP(Routing Information Protocol)은 가장 초창기에 사용한 프로콜이며, Distance Vector 라우팅 알고리즘을 사용한다.
 
-customer network가 2개의 provider network에 연결되어 있을 때, customer는 a provider에게 b를 b에게 a 라우트 정보를 알려주지 않는다.
+Link 코스트를 매우 단순하게 측정하기 때문에 대부분의 링크가 비슷한 네트워크를 대상으로 한다. 링크 코스트는 대게 1이며 링크 코스트의 합은 Hop Counts가 된다. 최대 Hop Counts는 15이다.
 
-( dual homed) : 굳이 내가 알려줄 필요가 없는 정보들은 bgp routing policy에 의해 정보 공유안함. (나없어도 잘 갈수있는 path인데?)
+30초마다 이웃들의 응답 메시지에 반응하며 DV 정보를 교환하는데, Advertisement 메시지에 실릴 수 있는 목적지 서브넷의 개수는 최대 25개이다. 만약 180초 동안 이웃들과 통신되지 않으면 Link Failure가 발생했다고 간주하고, 해당 이웃을 통해 갈 수 있는 경로들을 전부 무효화시킨 뒤 다시 경로를 계산해서 이웃들에게 전파한다.
+
+DV는 Poison Reverse를 사용해도 count to infinity 무한 루프 문제를 해결할 수 없으나, RIP는 최대 경로가 15이기 때문에 무한 루프 문제에서 자유롭다.
+
+RIP는 라우팅 프로토콜로 Application Layer의 프로세스이다. Advertisement 메시지를 만들고 UDP/TCP 패킷에 해당 정보를 싣고, Network Layer의 IP Datagram을 통해 주변과 통신한다. 이를 통해 Network Layer의 Forwarding Table이 업데이트된다.
+
+### 4.6.2. Intra-AS Routing in the Internet: OSPF
+
+RIP는 여러 제약사항으로 인해 대규모 라우팅에 적용하기 어렵다. OSPF(Open Shortest Path First)는 Public Availabe한 프로토콜이다. Link State 알고리즘 사용을 사용하며, OSPF 프로토콜은 IP 바로 위에서 구현되기 때문에 UDP나 TCP에 캡슐화되지 않는다.
+
+RIP와 다르게 더 큰 규모의 네트워크에서 계층적으로 사용할 수 있으며, 모든 OSPF 메시지가 인가되기 때문에 보안상 이점이 있다. 또한 RIP는 Link 비용을 모두 1로 고정하지만, OSPF는 Delay, Bandwidth, Money 등 다양하게 계산하여 적용할 수 있다.
+  * 각 Link 비용을 Advertise하기 때문에 각 Link 비용에 따른 다양한 Table(Multiple Cost Metrics)가 가능하다.
+  * 멀티캐스트 라우팅(MOSPF)를 제공한다.
+  * 특정 목적지까지 가는 같은 비용의 경로가 여러개인 경우 RIP는 1개만 테이블에 기록하지만, OSPF는 모두 기록한다.
+
+**Hierarchical OSPF?**
+
+LS는 패킷 정보가 노드 전체로 퍼져야하기 때문에, 네트워크 규모가 클 수록 패킷 전송량이 많아져서 오버헤드가 커진다. AS를 여러 개로 나누어 Inter AS Routing Protocol을 적용하듯, OSPF 또한 1개 AS를 일정한 크기의 여러 Area로 나누고 해당 지역 내부에서는 LS Broadcasting한다.
+
+각 Area의 Border Router(Gateway Router와 유사)는 자신이 속한 Area의 내부 Router들의 그래프를 알고 이를 외부 Area의 Border Router들과 교환한다.
+
+Area Border Router들은 Backbone이라는 지역 내에서 서로 연결되며, 해당 라우터들을 연결해주는 것은 Backbone Router들이다. Backbone 내부에서는 또한 하나의 OSPF 프로토콜(즉, LS Broadcasting)이 동작한다.
+
+Backbone 또한 Boundary Router가 있고, 다른 외부의 Backbone의 Boundary Router들과 Backbone 내부 및 하위에 있는 경로들과 그래프를 Inter 교환하는 식으로 계층적인 OSPF를 구현한다.
+
+### 4.6.3. Inter-AS Routing: BGP
+
+BGP(Border Gateway Protocol)은 Inter Domain간에 사용하는 유일한 프로토콜이다. Subnet이 다른 인터넷 네트워크에게 자신의 존재를 홍보하는 방법이다.
+
+* eBGP : 외부 AS들과 교환을 통해 Subnet 경로 정보를 가져온다.
+* iBGP : 받아온 외부 Subnet 경로 정보를 AS 내부 라우터들에게 전파한다.
+
+경로 정보 및 기타 정책 등에 기반하여 다른 네트워크에 대한 "좋은 라우터"를 구별한다.
+
+* BGP 원리
+  * 두 AS의 Gateway Router들이 Semi-Permanent TCP 커넥션을 통해 BGP 메시지를 교환한다.
+    * OPEN, KEEPALIVE, UPDATE 등의 정보가 담겨있다.
+    * 자신이 속한 AS 내부의 Prefix를 홍보한다.
+  * 정보 교환은 향후 해당 정보로 요청이 들어오면 상대방쪽으로 Forward 해주겠다는 의미이다.
+
+BGP 라우터들이 주고받는 핵심 정보는 다음과 같다.
+
+* 목적지 서브넷의 Prefix + Attribute = "Route"
+* Attirbute(경로 정보)의 핵심 정보는 다음 두 가지이다.
+  * AS-PATH : 해당 Prefix를 가는데 거쳐야 하는 AS(예, AS68)를 의미한다.
+  * NEXT-HOP : Gateway Router가 다음 Hop에 어느 AS로 가는지 등을 의미한다.
+    * 두 AS간에 Multiple한 링크가 맺어졌을 수 있기 때문에, 어떠한 Gateway를 선택해야 하는지 정보가 필요하다.
+
+Advertisement를 통지받은 Gateway Router들은 내부 중요 정책들을 기반으로 승인 혹은 거절한다.
+
+이전 장에서도 언급했지만, 다른 AS로 갈 수 있는 Gateway Router가 여러개 인 경우 여러 정책들을 기반으로 경로를 선택하게 된다.
+
+* 1) 보안 정책 등의 이슈.
+* 2) 짧은 AS 경로.
+* 3) Hot Potato Routing.
+* 4) 기타 기준.
+
+BGP는 라우팅 루프 문제가 발생하지 않는다.
+
+#### Routing Policy
+
+외부에서 전달받은 경로를 내부에 전파하거나, 내부 정보를 외부로 유출시킬 때 정책에 영향을 받는다.
+
+Dual Homed와 같이 여러 네트워크들이 서로 연결되어 있는 경우, 하나의 AS가 외부에 정보를 알려주지 않아도 다른 AS들이 더 빠르게 갈 수 있는 경우 정책에 의거해 라우트 정보를 공유하지 않는다.
+
+* Policy,
+  * Intra : 싱글 어드민이 컨트롤하기 때문에 정책 결정 시스템이 필요없다.
+  * Inter : 어드민이 어떻게 누가 트래픽을 라우트하는지 등 컨트롤을 원한다.
+* Scale,
+  * 계층적인 라우팅은 Forwarding Table 크기과 궁극적으로 업데이트 트래픽을 줄인다.
+* Performance.
+  * Intra : 성능에 초점을 둘 수 있다.
+  * Inter : 성능보다 Policy가 중요할 수 있다.
 
 <br>
 
-## intra inter as routing 차이?
+## 4.7, Broadcast and Multicast Routing
 
-policy
-  * inter : 어드민이 어떻게 트래픽이 라우트 되는지, 누가 네트워크를 통해 라우터하는지 등 컨트롤을 원함.
-  * intra : 싱글 어드민이 컨트롤함, 정책 결정 필요 x
+4.6.장 까지는 Unicast와 관련된 내용들이었다.
 
-scale
-  * 계층적인 라우팅은 포워딩 테이블 크기를 줄임, 업데이트 트래픽 또한 줄어듬.
+Broadcast란 하나의 노드에서 여러 목적지 노드로 패킷을 전달하는 것을 말한다. 별도의 브로드캐스트 혹은 멀티캐스트 라우팅없이 유니캐스트 라우팅으로도 이를 구현할 수 있다.
 
-performance
-  * intra : 성능에 초점을 둘 수 있음.
-  * inter : 성능보다 policy가 중요할수도.
+```
+r1 -> r2 -> r3
+         -> r4
+```
 
-BGP는 라우팅 루프 문제가 생기지 않는다.
+그러나 위와 같은 네트워크 경로가 있을 때, r1이 모든 노드들에게 데이터를 전달한다고 가정해보자. Source인 r1이 r2, r3, r4에게 모두 데이터를 전달하면, Source와 가까운 링크에서 복사가 많이 일어나며 부하가 심해진다.
 
+목적지 개수만큼 Duplication이 발생하기 때문에 비효율적이며, Source가 네트워크에 있는 모든 목적지에 대해 다 알아야하는 문제도 있다.
 
-요기까진 unicast여씀.
+### 4.7.1. Broadcast Routing Algorithms
 
+* Flooding.
+  * 노드가 브로드캐스트 패킷을 받으면 자기와 연결된 이웃들에게 모두 복사해서 보낸다.
+  * 내가 예전에 브로드캐스트했던 패킷이 또 오면, 이를 또 이웃들에게 다시 뿌리는 Broadcast Storm 단점이 있다.
+* Controlled Flooding.
+  * 노드는 자기가 브로드캐스트하지 않은 패킷에 대해서만 브로드캐스트한다.
+    * 자기가 브로드캐스트한 패킷 아이디를 일정 기간동안 외워둔다.
+  * RPF(Reverse Path Forwarding).
+    * 자기와 Source간의 거리가 짧은 패킷에 대해서만 브로드캐스트 포워딩을 한다.
+    * Spanning Tree를 대략적으로 그리는 방식이다.
+* Spanning Tree.
+  * Tree에 속한 노드들만 브로드캐스트를 송수신한다.
+  * 그러나 먼저 트리 그래프를 그려야한다.
 
-## 4.7. broadcast and multicast routing
+Unicast는 그래프만 알면 됬었지만, Multicast는 그래프와 더불어서 그래프 어디에 멀티캐스트를 필요로 하는 호스트가 있는지를 확인해야 한다. 따라서 멀티캐스트를 위한 별도의 테이블이 필요하다.
 
-브로드캐스트 : 하나의 소스에서 모든 소스로 패킷을 다 전달해야함.
-
-멀티,브로드 라우팅없이 유니캐스트 라우팅을 이용해서 구현할수있음. 그러나 이렇게 하면 r1 -> r2 -> r3
-                    -> r4일때
-
-r1이 r2 r3 r4 모두에게 주는데,, source와 가까운 링크에서 복사가 많이 일어나서 부하가 심해짐. 비효율적임. 목적지 개수만큼 dup이 발생하다보니.. 또한 source가 네트워크에 있는 모든 목적지에 대해 다 알아야하는 문제..
-
-어케 효율적으로 캐스트해야하나?
-
-## in-network duplication
-
-* flooding : 노드가 브로드ㅐ스트 패킷을 받으면, 자기와 연결된 이웃들에게 모두 복사해서 보냄.
-  * 문제는 브로드캐스트 스톰. 내가 예전에 브로드캐스트 했던 패킷이 또 오면 또 이웃들에게 다시 다 뿌리게됨
-* controlled flooding : 노드는 패킷을 온ㄹ리 브로드캐스트함, 한번도 자기가 브로드캐스트하지 않은것에 대해서만
-  * 자기가 브로드캐스트한 패킷 아이디를 일정기간동안 외워둠.
-  * RPF(Reverse path forwarding) : 소스와 자기 노드간 거리가 짧은 것에 대해서만 브로드캐스트 포워딩해주고 아닌건 자기가 걍 먹음. spanning tree를 대략적으로 그리는 방식이기도 함.
-* spanning tree
-  * 그래프에 모든 노드를 다 지나는 트리. tree에 속하는 노드들만 브로드캐스트를 낭비없이 보냄.  노드들이 불필요한 패킷을 수신받지않음. 그러나 그래프를 그려야함.
-  * 브로드캐스트를 위한 spanning tree를 만들고 브로드캐스는 걔네만 하면된다.
-
-
-## multicast 라우팅 :
-
-군데군데 멀티캐스트에 해당하는 호스트가 있음.
-유니캐스트는 그냥 그래프만 알면 됬었지만, 멀티캐스트는 그래프 + 어디어디에 멀티캐스트를 필요로하는 호스트가 있는지를 알아야함.
-
-멀티캐스트를 위한 별도의 테이블이 있어야한다.
-
-멀티캐스트의 호스트에 따른 그래프를 또 만들면 n개의 트리를 만듬.
-그럼 그냥 멀티캐스트들을 위한 shared-tree를 그릴 수 있음.
-  * 가장 optimal한 모든 호스트들이 사용할 수 있는. 그러나 시간이 오래 걸릴수있음.
-  * 적당히 그리는 center based tree
-    * 멀티캐스트 소스들의 정보를 센터 라우터에게 보내고, 멀티캐스트는 센터를 소스로하는 경로만을 사용하면됨. 문제는 경로가 최적은아님. 다만 네트워크 규모가 크면 사용할수있음.
-
-
-group member라는 개념으로 멀티캐스트 브랜치 멤버인지 아닌지 확인.
-
-shared-tree (각 소스별로 shortest path를 그리고) 하는등..
-
-approachs
-  * source-based tree : 한 소스별로 트리 하나를 그림. 이후 n개를 그려야함.
-  * group-shared-tree  
-  * center-based tree : 하나의 라우터가 트리의 중심이 되고, 거기서 모든 정보를 딜리버해준다.
-
+* Source-Based Tree.
+  * 멀티캐스트 호스트 소스에 따른 트리를 N개 그린다.
+  * 각 소스별로 최단 경로를 확인할 수 있는 최적의 방법이지만 Shared-Tree 특성상 시간이 오래 걸린다.
+* Center-Based Tree.
+  * 멀티캐스트 소스들의 정보를 Center Router에게 보내고, 멀티캐스트는 센터를 소스로 하는 경로만을 사용한다.
+  * 가장 최적화된 경로가 아니라는 단점이 있다.
+  * 네트워크 규모가 크면 사용할 수 있다.
+* Group-Shared-Tree.
+  * IPv6 헤더 등에서 사용하는 Group Member 개념으로 멀티캐스트 브랜치 멤버인지 아닌지 확인한다.
 
 <br>
 

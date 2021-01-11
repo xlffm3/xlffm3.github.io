@@ -331,7 +331,7 @@ Link 코스트를 매우 단순하게 측정하기 때문에 대부분의 링크
 
 DV는 Poison Reverse를 사용해도 count to infinity 무한 루프 문제를 해결할 수 없으나, RIP는 최대 경로가 15이기 때문에 무한 루프 문제에서 자유롭다.
 
-RIP는 라우팅 프로토콜로 Application Layer의 프로세스이다. Advertisement 메시지를 만들고 UDP/TCP 패킷에 해당 정보를 싣고, Network Layer의 IP Datagram을 통해 주변과 통신한다. 이를 통해 Network Layer의 Forwarding Table이 업데이트된다.
+RIP는 라우팅 프로토콜로 Application Layer의 프로세스이다. Advertisement 메시지를 만들고 UDP 패킷에 해당 정보를 싣고, Network Layer의 IP Datagram을 통해 주변과 통신한다. 이를 통해 Network Layer의 Forwarding Table이 업데이트된다.
 
 ### 4.6.2. Intra-AS Routing in the Internet: OSPF
 

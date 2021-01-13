@@ -3,7 +3,6 @@ title: "[우아한테크코스 3기] 프리코스 후기"
 categories:
   - 우아한테크코스
 tags:
-  - Java
   - 우아한테크코스
 toc: true
 toc_sticky: true

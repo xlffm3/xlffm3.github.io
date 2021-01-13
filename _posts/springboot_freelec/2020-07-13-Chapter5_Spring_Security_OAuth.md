@@ -4,7 +4,6 @@ categories:
   - Spring & Spring Boot
 tags:
   - Spring & Spring Boot
-  - Spring Security
 toc: true
 toc_sticky: true
 last_modified_at: 2020-07-13T10:55:00-05:00

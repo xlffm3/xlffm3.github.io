@@ -3,7 +3,6 @@ title: "[우아한테크코스 3기] 웹 백엔드 최종 오프라인 코딩 �
 categories:
   - 우아한테크코스
 tags:
-  - Java
   - 우아한테크코스
 toc: true
 toc_sticky: true

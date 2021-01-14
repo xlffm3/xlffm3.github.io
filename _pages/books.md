@@ -2,6 +2,7 @@
 title: "Book Archive"
 permalink: /books/
 layout: single
+author_profile: true
 ---
 
 ## 📚 Reading Books

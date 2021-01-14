@@ -14,6 +14,8 @@ layout: single
 * 그림으로 배우는 HTTP & Network
 * Effective Java
 
+<br>
+
 ## 📖 To Read List
 
 읽어보고 싶은 책 목록을 정리합니다.

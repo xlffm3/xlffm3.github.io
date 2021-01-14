@@ -2,6 +2,8 @@
 title: "👨‍💻 Portfolio"
 permalink: /portfolio/
 layout: single
+classes: wide
+toc: false
 ---
 
 ## 🏫 Education

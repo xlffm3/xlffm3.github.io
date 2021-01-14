@@ -289,3 +289,13 @@ defaults:
       toc_ads: true
       toc_sticky: true
       author_profile: true
+
+defaults:
+  # _portfolio
+  - scope:
+      path: "_portfolio"
+      type: portfolio
+    values:
+      layout: single
+      author_profile: false
+      share: true

@@ -6,7 +6,7 @@ classes: wide
 author_profile: true
 ---
 
-### 🏫 Education
+## 🏫 Education
 
 * 우아한테크코스 ``2021.02 - ``
 * 42 Seoul, Innovation Academy ``2020.01 - 2021.01``
@@ -14,11 +14,11 @@ author_profile: true
   * Bachelor of Arts in English Interpretation and Translation
   * Bachelor of Business Administration
 
-### 👨‍💻 Project
+## 👨‍💻 Project
 
 > 업데이트 예정
 
-### ‍🖥️ Experience
+## ‍🖥️ Experience
 
 #### :: 우아한테크코스 ::
 

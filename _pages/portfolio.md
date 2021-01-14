@@ -1,7 +1,9 @@
 ---
 title: "👨‍💻 Portfolio"
 permalink: /portfolio/
-layout: single
+layout: collection
+collection: portfolio
+entries_layout: grid
 classes: wide
 toc: false
 ---

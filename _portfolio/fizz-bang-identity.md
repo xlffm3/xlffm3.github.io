@@ -1,6 +1,6 @@
 ---
 title: "Fizz Bang Identity"
-excerpt: "Fizz Bang design system including logo mark, website design, and branding applications."
+excerpt: "Fizz Bang Application Front-End React API development with node.js and AWS S3."
 header:
   image: /assets/images/unsplash-gallery-image-2.jpg
   teaser: assets/images/unsplash-gallery-image-2-th.jpg
@@ -10,7 +10,7 @@ sidebar:
     image_alt: "logo"
     text: "Back-End Developer"
   - title: "Responsibilities"
-    text: "Back-End API development, deployment, and maintenance."
+    text: "Back-End Spring API development including deployment and maintenance."
 gallery:
   - url: /assets/images/unsplash-gallery-image-1.jpg
     image_path: assets/images/unsplash-gallery-image-1-th.jpg

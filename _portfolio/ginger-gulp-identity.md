@@ -1,6 +1,6 @@
 ---
 title: "Ginger Gulp Identity"
-excerpt: "Ginger Gulp design system including logo mark, website design, and branding applications."
+excerpt: "Ginger Gulp Auto-Trading-Bot Application with BeautifulSoup and Selenium."
 header:
   image: /assets/images/unsplash-gallery-image-3.jpg
   teaser: assets/images/unsplash-gallery-image-3-th.jpg
@@ -10,7 +10,7 @@ sidebar:
     image_alt: "logo"
     text: "Back-End Developer"
   - title: "Responsibilities"
-    text: "Back-End API development, deployment, and maintenance."
+    text: "Back-End Spring API development including deployment and maintenance."
 gallery:
   - url: /assets/images/unsplash-gallery-image-1.jpg
     image_path: assets/images/unsplash-gallery-image-1-th.jpg

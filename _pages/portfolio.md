@@ -8,6 +8,8 @@ classes: wide
 toc: false
 ---
 
+<br>
+
 ## 🏫 Education
 
 * 우아한테크코스 ``2021.02 - ``
@@ -16,9 +18,7 @@ toc: false
   * Bachelor of Arts in English Interpretation and Translation
   * Bachelor of Business Administration
 
-## 👨‍💻 Project
-
-> 업데이트 예정
+<br>
 
 ## ‍🖥️ Experience
 
@@ -35,10 +35,12 @@ toc: false
 
 * Timeline : ``2020.01 - 2021.01``
 * Description
-  * 프랑스 교육 재단 Ecole-42의 서울 캠퍼스에서 교육 프로그램을 수강했습니다.
-  * 동료 협업을 통해 C 및 Linux를 학습하고 관련 프로젝트를 수행했습니다.
+  * 프랑스 교육 재단 Ecole-42의 서울 캠퍼스에서 제공하는 교육 프로그램입니다.
+  * 동료 협업을 통해 C 및 Linux를 학습하고 관련 프로젝트를 수행합니다..
 * [Project Repository](https://github.com/xlffm3/42-Seoul)
 * [42 Seoul Official Homepage](https://42seoul.kr/)
+
+<br>
 
 ## 📚 Interest
 

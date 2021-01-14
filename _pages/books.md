@@ -6,7 +6,7 @@ classes: wide
 author_profile: true
 ---
 
-### 📚 Reading Books
+## 📚 Reading Books
 
 개발 관련 서적을 읽고 학습 내용 및 감상 등을 정리합니다.
 
@@ -16,7 +16,7 @@ author_profile: true
 * 그림으로 배우는 HTTP & Network
 * Effective Java
 
-### 📖 To Read List
+## 📖 To Read List
 
 읽어보고 싶은 책 목록을 정리합니다.
 

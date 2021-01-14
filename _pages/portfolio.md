@@ -6,13 +6,10 @@ classes: wide
 author_profile: true
 ---
 
-### 💻 Career
-
-* 우아한테크코스 교육생 ``2021.02 - ``
-* Cadet of 42 Seoul, Innovation Academy ``2020.01 - 2021.01``
-
 ### 🏫 Education
 
+* 우아한테크코스 ``2021.02 - ``
+* 42 Seoul, Innovation Academy ``2020.01 - 2021.01``
 * Hankuk University of Foreign Studies, Seoul Campus ``2013.02 - 2018.12``
   * Bachelor of Arts in English Interpretation and Translation
   * Bachelor of Business Administration
@@ -37,7 +34,7 @@ author_profile: true
 * Timeline : ``2020.01 - 2021.01``
 * Description
   * 프랑스 교육 재단 Ecole-42의 서울 캠퍼스에서 교육 프로그램을 수강했습니다.
-  * 동료 협업을 통해 C 및 Linux를 학습하고 프로젝트를 수행했습니다.
+  * 동료 협업을 통해 C 및 Linux를 학습하고 관련 프로젝트를 수행했습니다.
 * [Project Repository](https://github.com/xlffm3/42-Seoul)
 * [42 Seoul Official Homepage](https://42seoul.kr/)
 

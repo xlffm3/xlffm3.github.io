@@ -9,6 +9,7 @@ toc: false
 ---
 
 <br>
+<br>
 
 ## 🏫 Education
 

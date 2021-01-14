@@ -20,7 +20,7 @@ author_profile: true
 
 ## ‍🖥️ Experience
 
-#### :: 우아한테크코스 ::
+### :: 우아한테크코스 ::
 
 * Timeline : ``2020.02 -``
 * Description
@@ -29,7 +29,7 @@ author_profile: true
 * [Project Repository](https://github.com/xlffm3/woowacourse-projects)
 * [우아한테크코스 Official Homepage](https://woowacourse.github.io/)
 
-#### :: 42 Seoul ::
+### :: 42 Seoul ::
 
 * Timeline : ``2020.01 - 2021.01``
 * Description
@@ -38,7 +38,7 @@ author_profile: true
 * [Project Repository](https://github.com/xlffm3/42-Seoul)
 * [42 Seoul Official Homepage](https://42seoul.kr/)
 
-### 📚 Interest
+## 📚 Interest
 
 * Java with Spring & Spring Boot 🌱
 * [Reading Books 📖](https://xlffm3.github.io/books/)

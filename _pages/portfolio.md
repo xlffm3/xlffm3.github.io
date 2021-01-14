@@ -8,8 +8,6 @@ classes: wide
 toc: false
 ---
 
-> 새로운 도전을 즐기는 개발자, 박진홍입니다.
-
 ## 🏫 Education
 
 * 우아한테크코스 ``2021.02 - ``

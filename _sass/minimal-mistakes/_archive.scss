@@ -150,7 +150,8 @@
 }
 
 .grid__item {
-  margin-bottom: 2em;
+  /* original margin-bottom : 2em*/
+  margin-bottom: 1em;
 
   @include breakpoint($small) {
     float: left;

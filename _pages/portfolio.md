@@ -18,7 +18,7 @@ toc: false
 
 <br>
 
-## ‍🖥️ Experience
+## ‍💻 Experience
 
 ### :: 우아한테크코스 ::
 

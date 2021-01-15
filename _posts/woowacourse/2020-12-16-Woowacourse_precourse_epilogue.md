@@ -1,9 +1,9 @@
 ---
 title: "[우아한테크코스 3기] 프리코스 후기"
 categories:
-  - 우아한테크코스
+  - Woowacourse
 tags:
-  - 우아한테크코스
+  - Woowacourse
 toc: true
 toc_sticky: true
 last_modified_at: 2020-12-16T08:30:00-05:00

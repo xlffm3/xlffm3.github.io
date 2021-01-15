@@ -1,9 +1,9 @@
 ---
 title: "[우아한테크코스 3기] 웹 백엔드 최종 오프라인 코딩 테스트 후기"
 categories:
-  - 우아한테크코스
+  - Woowacourse
 tags:
-  - 우아한테크코스
+  - Woowacourse
 toc: true
 toc_sticky: true
 last_modified_at: 2020-12-20T08:30:00-05:00

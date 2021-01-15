@@ -2,9 +2,9 @@
 title: "We're Gonna Get There In The End"
 excerpt: "👋 Goodbye, 2020"
 categories:
-  - 회고
+  - Retrospective
 tags:
-  - 회고
+  - Retrospective
 toc: true
 toc_sticky: true
 last_modified_at: 2021-01-01T08:30:00-05:00

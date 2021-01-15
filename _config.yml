@@ -279,7 +279,6 @@ defaults:
       comments: true # true
       share: true
       related: true
-      breadcrumbs: true
 
   # _pages
   - scope:

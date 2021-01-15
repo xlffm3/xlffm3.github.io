@@ -2,6 +2,9 @@
 title: "Book Archive"
 permalink: /books/
 layout: single
+toc: true
+toc_ads: true
+toc_sticky: true
 author_profile: true
 ---
 

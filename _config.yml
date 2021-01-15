@@ -284,9 +284,6 @@ defaults:
       path: "_pages"
       type: pages
     values:
-      toc: true
-      toc_ads: true
-      toc_sticky: true
       author_profile: true
 
   # _portfolio

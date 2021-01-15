@@ -1,9 +1,9 @@
 ---
 title: "[우아한테크코스 3기] 프리코스 1주차 미션 학습 내용 및 회고"
 categories:
-  - Woowacourse
+  - 우아한테크코스
 tags:
-  - Woowacourse
+  - 우아한테크코스
 toc: true
 toc_sticky: true
 last_modified_at: 2020-11-30T08:30:00-05:00

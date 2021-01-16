@@ -2,7 +2,6 @@
 title: "Spring Boot와 Maria DB 연동 (Windows Docker Toolbox)"
 categories:
   - Spring & Spring Boot
-  - Docker
 tags:
   - Spring & Spring Boot
   - Docker

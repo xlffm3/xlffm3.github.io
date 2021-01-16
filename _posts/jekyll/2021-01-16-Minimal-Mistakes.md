@@ -70,7 +70,7 @@ Minimal Mistakes는 여러가지 검색 도구를 지원합니다. 기본으로 
 
 * [Include "Back to top" Icon #1731](https://github.com/mmistakes/minimal-mistakes/issues/1731)
 
-HTML, SCSS, Liquid, Minimal Mistakes의 디렉토리 구조를 파악하고 커스터마이징 연습하는데 **Chrome 개발자 도구**가 정말 큰 도움이 됩니다. 적극 이용하시길 추천합니다.
+HTML, SCSS, Liquid, Minimal Mistakes의 디렉토리 구조 등을 파악하고 커스터마이징 연습하는데 **Chrome 개발자 도구**가 정말 큰 도움이 됩니다.
 
 ![image](https://user-images.githubusercontent.com/56240505/104806176-e76be780-5818-11eb-9b61-2eb9fe75f210.png)
 

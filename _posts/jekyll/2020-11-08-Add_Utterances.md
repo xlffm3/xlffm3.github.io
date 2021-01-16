@@ -1,9 +1,9 @@
 ---
-title: "Jekyll Blog(Minimal Mistakes Theme)에 Utterances 댓글 기능 추가하기"
+title: "[Jekyll Blog] Minimal Mistakes Theme에 Utterances 댓글 기능 추가하기"
 categories:
-  - Jekyll
+  - Jekyll Blog
 tags:
-  - Jekyll
+  - Jekyll Blog
 toc: true
 toc_sticky: true
 last_modified_at: 2020-11-08T14:05:00-05:00

@@ -6,6 +6,9 @@ toc: true
 toc_ads: true
 toc_sticky: true
 author_profile: true
+header:
+  overlay_image: /assets/images/unsplash-gallery-image-1.jpg
+  show_overlay_excerpt: false
 ---
 
 ## 📚 Reading Books

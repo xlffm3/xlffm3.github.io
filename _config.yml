@@ -290,6 +290,7 @@ defaults:
     values:
       author_profile: true
 
+  
   # _portfolio
   - scope:
       path: "_portfolio"

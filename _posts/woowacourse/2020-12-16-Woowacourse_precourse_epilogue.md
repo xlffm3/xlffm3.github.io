@@ -12,7 +12,7 @@ last_modified_at: 2020-12-16T08:30:00-05:00
 
 ## 1. 서론
 
-![image](https://user-images.githubusercontent.com/56240505/102237424-00425e00-3f38-11eb-8f80-a56697afc5fe.png)
+![image](../../assets/images/woowacourse.png)
 
 3주간의 프리코스 과정이 끝났습니다. 지하철 노선도 과제는 코드를 짜고 갈아엎고를 반복하다 보니, 마지막 3일은 거의 밤을 샜네요. 지저분하고 중복되는 코드들을 리팩토링하다 보니...
 

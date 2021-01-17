@@ -12,7 +12,7 @@ last_modified_at: 2021-01-01T08:30:00-05:00
 
 ## 👋 We're Gonna Get There In The End
 
-![133773488_4806557246085330_5827517438996252665_o](https://user-images.githubusercontent.com/56240505/103434769-3a567400-4c49-11eb-9aba-72ea4611f3df.jpg)
+![teaser](../../assets/images/weregonnagetthereintheend.jpg)
 
 > I’ve been writing and noodling recently and I’ve made a little demo of a tune that I wrote a couple of weeks ago and it actually came out sounding pretty good…<br>
 The lyrics are quite apt for the times and I think I’d like to share it with you.<br>

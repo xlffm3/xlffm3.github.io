@@ -279,6 +279,8 @@ defaults:
       comments: true # true
       share: true
       related: true
+      header:
+        overlay_image: /assets/images/unsplash-gallery-image-1.jpg
 
   # _pages
   - scope:

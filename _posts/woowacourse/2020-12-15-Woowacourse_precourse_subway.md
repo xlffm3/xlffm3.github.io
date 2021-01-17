@@ -2,7 +2,7 @@
 title: "[우아한테크코스 3기] 프리코스 3주차 미션 학습 내용 및 회고"
 excerpt: "지하철 노선도, 어떻게 중복을 줄일 수 있을까?"
 categories:
-  - 우아한테크코스
+  - Woowacourse
 tags:
   - 우아한테크코스
 toc: true

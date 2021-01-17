@@ -2,7 +2,7 @@
 title: "[우아한테크코스 3기] 프리코스 후기"
 excerpt: "안녕, 즐거웠던 3주간의 프리코스!"
 categories:
-  - 우아한테크코스
+  - Woowacourse
 tags:
   - 우아한테크코스
 toc: true

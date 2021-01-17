@@ -2,7 +2,7 @@
 title: "[우아한테크코스 3기] 프리코스 2주차 미션 학습 내용 및 회고"
 excerpt: "객체와 클래스를 극단적으로 분리해보자."
 categories:
-  - 우아한테크코스
+  - Woowacourse
 tags:
   - 우아한테크코스
 toc: true

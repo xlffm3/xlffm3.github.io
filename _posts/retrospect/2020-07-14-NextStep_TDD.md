@@ -2,7 +2,7 @@
 title: "[후기] NextStep - TDD, Refactoring, Clean Code With Java 8기 과정"
 excerpt: "교육에서 배운 Java는 내가 알던 Java가 아니었다."
 categories:
-  - 회고
+  - Retrospect
 tags:
   - 회고
 toc: true

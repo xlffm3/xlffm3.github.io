@@ -27,7 +27,7 @@ repository               : "xlffm3/xlffm3.github.io" # GitHub username/repo-name
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : "Chasing Yesterday" # overrides the website title displayed in the masthead, use " " for no title
-breadcrumbs            : false # true, false (default)
+breadcrumbs            : true # true, false (default)
 words_per_minute         : 200
 comments:
   provider               : "utterances" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "custom"
@@ -281,7 +281,7 @@ defaults:
       related: true
       header:
         overlay_image: /assets/images/unsplash-gallery-image-1.jpg
-        show_overlay_excerpt: false
+        #show_overlay_excerpt: false
 
   # _pages
   - scope:
@@ -289,8 +289,10 @@ defaults:
       type: pages
     values:
       author_profile: true
+      header:
+        overlay_image: /assets/images/unsplash-gallery-image-1.jpg
+      excerpt: "It's a shame how a memory fades to grey."
 
-  
   # _portfolio
   - scope:
       path: "_portfolio"

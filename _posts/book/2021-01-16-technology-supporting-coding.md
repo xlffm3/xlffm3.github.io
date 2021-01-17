@@ -2,16 +2,16 @@
 title: "《코딩을 지탱하는 기술》을 읽고"
 excerpt: "프로그래밍 언어는 편리함을 위한 도구다."
 categories:
-  - 도서
+  - Book
 tags:
   - 도서
 date: 2021-01-16
 last_modified_at: 2021-01-16
 ---
 
-![image](https://user-images.githubusercontent.com/56240505/104808772-c3fe6800-582b-11eb-830f-82cbb778a460.png)
-
 ## 1. 왜 이렇게 다를까?
+
+![image](https://user-images.githubusercontent.com/56240505/104808772-c3fe6800-582b-11eb-830f-82cbb778a460.png)
 
 Java를 하다가 C를 접하면서 큰 충격을 먹었던 기억이 난다. ``boolean``과 ``try-catch`` 예외 처리가 없다니? int 반환값에 따라서 예외 처리하는 코드를 짜다가, "Java는 정말 편한 언어구나"를 느꼈다. 이후 어셈블리어를 통해 C 표준 함수들을 리코딩할 기회가 있었다. 이번에는 "C는 정말 편한 언어구나"를 느꼈다. 당연하게 여겼던 개념인 조건문 및 반복문 없이 함수를 작성하려고 하다보니 어려움이 이만저만이 아니었다.
 

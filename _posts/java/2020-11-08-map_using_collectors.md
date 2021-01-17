@@ -1,5 +1,6 @@
 ---
 title: "[Java] Stream 데이터를 groupingBy로 그룹핑해 Map으로 수집하기"
+excerpt: "강력한 함수형 데이터 처리 기능을 사용해보자."
 categories:
   - Java
 tags:

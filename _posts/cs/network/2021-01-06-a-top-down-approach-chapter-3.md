@@ -1,5 +1,6 @@
 ---
-title: "[Computer Networking : A Top-Down Approach] CH 3. Transport Layer"
+title: "[A Top-Down Approach] CH 3. Transport Layer"
+excerpt: "Computer Networking : A Top-Down Approach(James F. Kurose 저) - 3장."
 categories:
   - Network
 tags:
@@ -334,5 +335,5 @@ UDP와 Pararell TCP 연결 또한 공정함과 대치된다. 하나의 어플리
 
 ## Reference
 
-* Computer Networking: A Top-Down Approach
+* Computer Networking : A Top-Down Approach(James F. Kurose 저)
 * [KOCW 컴퓨터 네트워크](http://www.kocw.net/home/cview.do?mty=p&kemId=1046412)

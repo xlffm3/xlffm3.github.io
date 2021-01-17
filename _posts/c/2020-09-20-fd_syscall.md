@@ -1,5 +1,6 @@
 ---
 title: "[C] File Descriptor 및 System Call"
+excerpt: "프로그램은 어떻게 파일을 열고 읽는 것일까?"
 categories:
   - C
 tags:
@@ -19,7 +20,7 @@ last_modified_at: 2020-09-20T20:13:00-05:00
 
 ![image](https://user-images.githubusercontent.com/56240505/95673524-223ffd00-0be4-11eb-9d70-ed247a50218e.png)
 
-FD가 3번이라는 것은, FD 테이블의 3번 항목이 가르키고 있는 파일이라는 의미이다. FD 테이블의 각 항목은 FD 플래그와 파일 테이로의 포인터를 가지고 있다. FD를 통해 포인터를 사용하여 시스템의 파일을 참조할 수 있게 된다.
+FD가 3번이라는 것은, FD 테이블의 3번 항목이 가르키고 있는 파일이라는 의미이다. FD 테이블의 각 항목은 FD 플래그와 파일 테이블의 포인터를 가지고 있다. FD를 통해 포인터를 사용하여 시스템의 파일을 참조할 수 있게 된다.
 
 <br>
 

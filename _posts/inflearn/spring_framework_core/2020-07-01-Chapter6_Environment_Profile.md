@@ -1,5 +1,6 @@
 ---
-title:  "Spring Framework 핵심 기술 - 6장 : Profile"
+title:  "[Spring Framework 핵심 기술] 6장 : Profile"
+excerpt: "Inflearn에 있는 백기선님의 [스프링 프레임워크 핵심 기술] 강의를 듣고 정리한 필기입니다."
 categories:
   - Spring & Spring Boot
 tags:

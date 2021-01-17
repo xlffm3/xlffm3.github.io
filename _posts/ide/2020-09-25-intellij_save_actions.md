@@ -1,5 +1,6 @@
 ---
 title: "IntelliJ IDEA Code Convention Formatting 자동화"
+excerpt: "자주 사용하는 Code Convention 자동화 설정들을 정리한다."
 categories:
   - IDE
 tags:

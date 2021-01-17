@@ -1,5 +1,6 @@
 ---
 title: "Spring Security의 PasswordEncorder 적용하기"
+excerpt: "Password String을 간단하게 인코딩해보자."
 categories:
   - Spring & Spring Boot
 tags:

@@ -1,5 +1,6 @@
 ---
 title: "Data Address"
+excerpt: "OSI 계층에 따른 다양한 데이터 주소들에 대해 알아보자."
 categories:
   - Network
 tags:

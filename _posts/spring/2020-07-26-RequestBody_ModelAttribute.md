@@ -1,5 +1,6 @@
 ---
 title: "Spring : @ModelAttribute vs @RequestBody"
+excerpt: "전달받은 데이터들을 맵핑하는 두 어노테이션을 비교해보자."
 categories:
   - Spring & Spring Boot
 tags:
@@ -40,6 +41,7 @@ public void 본문_JSON_전송_실패() throws Exception {
            .content(objectMapper.writeValueAsString(dto))
            .contentType(MediaType.APPLICATION_JSON_VALUE))
            .andExpect(status().isBadRequest());
+}
 ```
 
 Http Request Body(요청 본문)에 있는 값(JSON)을 DTO 객체에 바인딩하지 못한다.
@@ -63,6 +65,7 @@ public void 본문_JSON_전송_성공() throws Exception {
            .content(objectMapper.writeValueAsString(dto))
            .contentType(MediaType.APPLICATION_JSON_VALUE))
            .andExpect(status().isOk());
+}
 ```
 
 요청 본문의 JSON 값을 정상적으로 DTO 객체로 변환시킨다.

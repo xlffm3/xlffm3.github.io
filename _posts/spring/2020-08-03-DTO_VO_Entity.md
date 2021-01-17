@@ -1,5 +1,6 @@
 ---
 title: "DTO vs VO vs Entity"
+excerpt: "DTO와 VO는 정확하게 어떤 차이가 있을까?"
 categories:
   - Spring & Spring Boot
 tags:

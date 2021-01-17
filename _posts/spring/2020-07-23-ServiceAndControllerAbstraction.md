@@ -1,5 +1,6 @@
 ---
 title: "Spring Controller 및 Service 추상화"
+excerpt: "반복되는 CRUD 구조를 추상화하여 중복을 제거해보자."
 categories:
   - Spring & Spring Boot
 tags:

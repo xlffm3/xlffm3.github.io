@@ -1,5 +1,6 @@
 ---
 title: "Subnet Mask"
+excerpt: "IP 자원을 효율적으로 사용하기 위한 방법에 대해 알아보자."
 categories:
   - Network
 tags:

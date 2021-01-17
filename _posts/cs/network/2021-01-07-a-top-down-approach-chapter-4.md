@@ -1,5 +1,6 @@
 ---
-title: "[Computer Networking : A Top-Down Approach] CH 4. Network Layer"
+title: "[A Top-Down Approach] CH 4. Network Layer"
+excerpt: "Computer Networking : A Top-Down Approach(James F. Kurose 저) - 4장."
 categories:
   - Network
 tags:
@@ -451,5 +452,5 @@ Unicast는 그래프만 알면 됬었지만, Multicast는 그래프와 더불어
 
 ## Reference
 
-* Computer Networking: A Top-Down Approach
+* Computer Networking : A Top-Down Approach(James F. Kurose 저)
 * [KOCW 컴퓨터 네트워크](http://www.kocw.net/home/cview.do?mty=p&kemId=1046412)

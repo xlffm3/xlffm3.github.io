@@ -1,5 +1,6 @@
 ---
-title: "Spring Boot와 AWS로 혼자 구현하는 웹 서비스 - 5장 : Spring Security & OAuth"
+title: "[Spring Boot와 AWS로 혼자 구현하는 웹 서비스] 5장 : Spring Security & OAuth"
+excerpt: "Spring Boot와 AWS로 혼자 구현하는 웹 서비스(이동욱 저) : 5장."
 categories:
   - Spring & Spring Boot
 tags:
@@ -811,4 +812,4 @@ public class JpaConfig {
 
 ## Reference
 
-*	스프링 부트와 AWS로 혼자 구현하는 웹 서비스 (이동욱 저)
+*	스프링 부트와 AWS로 혼자 구현하는 웹 서비스(이동욱 저)

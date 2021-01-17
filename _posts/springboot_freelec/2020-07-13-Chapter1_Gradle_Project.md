@@ -1,5 +1,6 @@
 ---
-title: "Spring Boot와 AWS로 혼자 구현하는 웹 서비스 - 1장 : Gradle"
+title: "[Spring Boot와 AWS로 혼자 구현하는 웹 서비스] 1장 : Gradle"
+excerpt: "Spring Boot와 AWS로 혼자 구현하는 웹 서비스(이동욱 저) : 1장."
 categories:
   - Spring & Spring Boot
 tags:
@@ -59,4 +60,4 @@ dependencies {
 
 ## Reference
 
-* 스프링 부트와 AWS로 혼자 구현하는 웹 서비스 (이동욱 저)
+* 스프링 부트와 AWS로 혼자 구현하는 웹 서비스(이동욱 저)

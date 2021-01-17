@@ -1,5 +1,6 @@
 ---
-title: "Spring Boot와 AWS로 혼자 구현하는 웹 서비스 - 4장 : Mustache 실습"
+title: "[Spring Boot와 AWS로 혼자 구현하는 웹 서비스] 4장 : Mustache 실습"
+excerpt: "Spring Boot와 AWS로 혼자 구현하는 웹 서비스(이동욱 저) : 4장."
 categories:
   - Spring & Spring Boot
 tags:
@@ -8,7 +9,6 @@ toc: true
 toc_sticky: true
 last_modified_at: 2020-07-13T10:55:00-05:00
 ---
-
 
 ## Server Template Engine
 
@@ -422,4 +422,4 @@ public class IndexController {
 
 ## Reference
 
-*	스프링 부트와 AWS로 혼자 구현하는 웹 서비스 (이동욱 저)
+*	스프링 부트와 AWS로 혼자 구현하는 웹 서비스(이동욱 저)

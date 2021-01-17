@@ -1,5 +1,6 @@
 ---
 title: "Spring 에러 : Neither BindingResult nor plain target object for bean name available as request attribute"
+excerpt: "객체가 없다면 객체를 실어서 보내자."
 categories:
   - Spring & Spring Boot
 tags:

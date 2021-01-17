@@ -1,5 +1,6 @@
 ---
 title: "WebTestClient Reference 번역 및 테스트 예제"
+excerpt: "Mockito는 그만! 새로운 테스트 프레임워크를 사용해보자."
 categories:
   - Spring & Spring Boot
 tags:

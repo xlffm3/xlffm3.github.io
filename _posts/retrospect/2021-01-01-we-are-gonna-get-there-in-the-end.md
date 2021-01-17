@@ -1,6 +1,6 @@
 ---
 title: "We're Gonna Get There In The End"
-excerpt: "👋 Goodbye, 2020"
+excerpt: "👋 Goodbye, 2020!"
 categories:
   - 회고
 tags:

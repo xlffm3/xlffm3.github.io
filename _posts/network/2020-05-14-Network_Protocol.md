@@ -1,5 +1,6 @@
 ---
 title: "Network & Protocol"
+excerpt: "Network의 기본 개념을 학습해보자."
 categories:
   - Network
 tags:

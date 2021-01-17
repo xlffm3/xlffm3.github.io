@@ -1,5 +1,6 @@
 ---
 title: "[Java] JUnit의 @ParameterizedTest 외"
+excerpt: "JUnit을 통해 단위 테스트를 작성해보자."
 categories:
   - Java
 tags:
@@ -8,7 +9,6 @@ toc: true
 toc_sticky: true
 last_modified_at: 2020-07-14T08:20:00-05:00
 ---
-
 
 ## @ParameterizedTest
 

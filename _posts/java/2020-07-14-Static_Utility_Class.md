@@ -1,5 +1,6 @@
 ---
 title: "[Java] 정적 유틸리티 클래스의 객체 생성을 막는 방법"
+excerpt: "클래스 용도를 확실하게 명시하는 것이 좋다."
 categories:
   - Java
 tags:

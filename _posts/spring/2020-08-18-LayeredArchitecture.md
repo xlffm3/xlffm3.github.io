@@ -1,5 +1,6 @@
 ---
 title: "Layered Architecture와 Spring"
+excerpt: "Spring에서 Layered Architecture란 무엇인가?"
 categories:
   - Spring & Spring Boot
 tags:

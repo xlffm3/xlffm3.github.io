@@ -1,5 +1,6 @@
 ---
 title: "[Java] AssertJ의 Exception Assertions"
+excerpt: "AssertJ를 통해 Exception을 테스트해보자."
 categories:
   - Java
 tags:

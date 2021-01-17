@@ -1,5 +1,6 @@
 ---
 title: "[Jekyll Blog] Minimal Mistakes Theme에 Utterances 댓글 기능 추가하기"
+excerpt: "GitHub 계정으로 댓글을 달 수 있는 기능을 구현한다."
 categories:
   - Jekyll Blog
 tags:

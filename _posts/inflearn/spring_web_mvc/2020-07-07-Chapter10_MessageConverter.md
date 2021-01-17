@@ -1,5 +1,6 @@
 ---
-title: "Spring Web MVC - 10장 : MessageConverter"
+title: "[Spring Web MVC] 10장 : MessageConverter"
+excerpt: "Inflearn에 있는 백기선님의 [스프링 웹 MVC] 강의를 듣고 정리한 필기입니다."
 categories:
   - Spring & Spring Boot
 tags:

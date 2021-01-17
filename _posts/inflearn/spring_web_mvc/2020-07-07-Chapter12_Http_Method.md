@@ -1,5 +1,6 @@
 ---
-title: "Spring Web MVC - 12장 : Http Method"
+title: "[Spring Web MVC] 12장 : Http Method"
+excerpt: "Inflearn에 있는 백기선님의 [스프링 웹 MVC] 강의를 듣고 정리한 필기입니다."
 categories:
   - Spring & Spring Boot
 tags:

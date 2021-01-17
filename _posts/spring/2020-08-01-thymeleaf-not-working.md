@@ -1,5 +1,6 @@
 ---
 title: "Spring Boot에서 Thymeleaf를 사용할 때의 404 ERROR"
+excerpt: "Spring이 Thymeleaf을 인식하지 못하는 에러를 해결해보자."
 categories:
   - Spring & Spring Boot
 tags:

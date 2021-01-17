@@ -1,5 +1,6 @@
 ---
-title: "Spring Boot와 AWS로 혼자 구현하는 웹 서비스 - 3장 : JPA"
+title: "[Spring Boot와 AWS로 혼자 구현하는 웹 서비스] 3장 : JPA"
+excerpt: "Spring Boot와 AWS로 혼자 구현하는 웹 서비스(이동욱 저) : 3장."
 categories:
   - Spring & Spring Boot
 tags:
@@ -575,4 +576,4 @@ public void dateTest() {
 
 ## Reference
 
-* 스프링 부트와 AWS로 혼자 구현하는 웹 서비스 (이동욱 저)
+* 스프링 부트와 AWS로 혼자 구현하는 웹 서비스(이동욱 저)

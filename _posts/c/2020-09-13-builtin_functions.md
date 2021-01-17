@@ -1,5 +1,6 @@
 ---
 title: "[C] Built-In Functions 정리"
+excerpt: "파일 입출력과 프로세스를 제어하는 시스템 내장 함수들을 정리한다."
 categories:
   - C
 tags:

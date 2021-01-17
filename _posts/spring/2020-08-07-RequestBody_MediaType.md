@@ -1,5 +1,6 @@
 ---
 title: "Post 요청과 Content-Type 및 WebTestClient 테스트"
+excerpt: "WebTestClient로 Form Data 테스트를 작성해보자."
 categories:
   - Spring & Spring Boot
 tags:

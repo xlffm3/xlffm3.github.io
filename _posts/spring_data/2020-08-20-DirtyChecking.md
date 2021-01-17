@@ -1,5 +1,6 @@
 ---
 title: "Dirty Checking"
+excerpt: "Update 메서드가 없는데 Update가 된다?"
 categories:
   - Spring Data
 tags:

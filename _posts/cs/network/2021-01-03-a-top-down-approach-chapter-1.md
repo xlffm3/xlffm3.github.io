@@ -1,5 +1,6 @@
 ---
-title: "[Computer Networking : A Top-Down Approach] CH 1. Computer Networks and the Internet"
+title: "[A Top-Down Approach] CH 1. Computer Networks and the Internet"
+excerpt: "Computer Networking : A Top-Down Approach(James F. Kurose 저) - 1장."
 categories:
   - Network
 tags:
@@ -279,5 +280,5 @@ End System, Switch, Router 등의 컴포넌트가 가지는 Protocol Stack은 �
 
 ## Reference
 
-* Computer Networking: A Top-Down Approach
+* Computer Networking : A Top-Down Approach(James F. Kurose 저)
 * [KOCW 컴퓨터 네트워크](http://www.kocw.net/home/cview.do?mty=p&kemId=1046412)

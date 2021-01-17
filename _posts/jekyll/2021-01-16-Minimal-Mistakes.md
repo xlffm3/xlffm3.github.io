@@ -1,6 +1,6 @@
 ---
 title: "[Jekyll Blog] Minimal Mistakes Theme 커스터마이징 관련 유용한 참고 사이트 모음"
-excerpt: "Minimal Mistakes Theme을 통해 Jekyll Blog를 커스터마이징할 때 유용한 참고 사이트들을 정리한다."
+excerpt: "Minimal Mistakes Theme 커스터마이징 관련 유용한 참고 사이트들을 정리한다."
 categories:
   - Jekyll Blog
 tags:

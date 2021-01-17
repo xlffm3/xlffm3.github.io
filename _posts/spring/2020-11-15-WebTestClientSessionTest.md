@@ -1,5 +1,6 @@
 ---
 title: "WebTestClient로 Session 테스트하기"
+excerpt: "WebTestClient로 HTTP Session 테스트를 작성해보자."
 categories:
   - Spring & Spring Boot
 tags:

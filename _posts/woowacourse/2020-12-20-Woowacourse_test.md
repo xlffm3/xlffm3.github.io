@@ -1,5 +1,6 @@
 ---
 title: "[우아한테크코스 3기] 웹 백엔드 최종 오프라인 코딩 테스트 후기"
+excerpt: "최선을 다했지만 아쉬움이 남는 시험이었다."
 categories:
   - 우아한테크코스
 tags:
@@ -107,8 +108,7 @@ private PathResponseDto calculateShortestPath(List<Station> stations) {
     return new PathResponseDto(distanceTotal, timeTotal, stationNames);
 }
 
-private int getEdgeWeightTotal(List<Station> stations, WeightedMultigraph<Station,
-        DefaultWeightedEdge> weightedMultigraph) {
+private int getEdgeWeightTotal(List<Station> stations, WeightedMultigraph<Station, DefaultWeightedEdge> weightedMultigraph) {
     int stationCounts = stations.size();
     int edgeWeightTotal = ZERO;
     for (int i = ZERO; i < stationCounts - ONE; i++) {

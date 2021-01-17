@@ -1,5 +1,6 @@
 ---
-title: "[Computer Networking : A Top-Down Approach] CH 2. Application Layer"
+title: "[A Top-Down Approach] CH 2. Application Layer"
+excerpt: "Computer Networking : A Top-Down Approach(James F. Kurose 저) - 2장."
 categories:
   - Network
 tags:
@@ -399,5 +400,5 @@ Sender는 IP 도착 주소와 포트 정보를 모든 패킷에 부착한다. Re
 
 ## Reference
 
-* Computer Networking: A Top-Down Approach
+* Computer Networking : A Top-Down Approach(James F. Kurose 저)
 * [KOCW 컴퓨터 네트워크](http://www.kocw.net/home/cview.do?mty=p&kemId=1046412)

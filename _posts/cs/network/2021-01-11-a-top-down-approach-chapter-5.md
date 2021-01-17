@@ -1,5 +1,6 @@
 ---
-title: "[Computer Networking : A Top-Down Approach] CH 5. Link Layer"
+title: "[A Top-Down Approach] CH 5. Link Layer"
+excerpt: "Computer Networking : A Top-Down Approach(James F. Kurose 저) - 5장."
 categories:
   - Network
 tags:
@@ -35,5 +36,5 @@ IP 계층에서, Node들은 목적지 Host IP뿐만 아니라 라우팅을 통�
 
 ## Reference
 
-* Computer Networking: A Top-Down Approach
+* Computer Networking : A Top-Down Approach(James F. Kurose 저)
 * [KOCW 컴퓨터 네트워크](http://www.kocw.net/home/cview.do?mty=p&kemId=1046412)

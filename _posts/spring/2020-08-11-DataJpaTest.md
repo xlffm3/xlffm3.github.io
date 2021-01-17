@@ -1,5 +1,6 @@
 ---
 title: "Spring Boot의 @DataJpaTest"
+excerpt: "JPA를 통한 데이터 조작에 대해 테스트를 작성해보자."
 categories:
   - Spring & Spring Boot
 tags:
@@ -11,7 +12,7 @@ last_modified_at: 2020-08-11T18:22:00-05:00
 
 ## 1. @DataJpaTest
 
-JPA 관련 설정만 로드하며, DataSource 및 JPA를 통한 데이터의 테스트가 가능하다. 실제 DB를 사용하지 않고 내장형 DB로 테스트할 수 있는 장점이 있다.
+JPA 관련 설정만 로드하며, DataSource 및 JPA를 통한 데이터 조작 등에 대해 테스트가 가능하다. 실제 DB를 사용하지 않고 내장형 DB로 테스트할 수 있는 장점이 있다.
 
 <br>
 

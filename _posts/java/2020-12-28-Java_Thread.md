@@ -1,5 +1,6 @@
 ---
 title: "[Java] Thread 정리"
+excerpt: "Thread의 개요와 핵심 개념들 및 사용 방법을 정리한다."
 categories:
   - Java
 tags:

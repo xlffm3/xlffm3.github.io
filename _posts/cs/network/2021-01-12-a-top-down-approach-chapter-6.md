@@ -1,5 +1,6 @@
 ---
-title: "[Computer Networking : A Top-Down Approach] CH 6. Wireless and Mobile Networks"
+title: "[A Top-Down Approach] CH 6. Wireless and Mobile Networks"
+excerpt: "Computer Networking : A Top-Down Approach(James F. Kurose 저) - 6장."
 categories:
   - Network
 tags:
@@ -97,5 +98,5 @@ Network Core에 모바일 기기 위치 변경 등의 정보를 노출하지 않
 
 ## Reference
 
-* Computer Networking: A Top-Down Approach
+* Computer Networking : A Top-Down Approach(James F. Kurose 저)
 * [KOCW 컴퓨터 네트워크](http://www.kocw.net/home/cview.do?mty=p&kemId=1046412)

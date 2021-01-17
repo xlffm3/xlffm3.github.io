@@ -1,5 +1,6 @@
 ---
-title: "Spring Boot와 AWS로 혼자 구현하는 웹 서비스 - 2장 : TDD"
+title: "[Spring Boot와 AWS로 혼자 구현하는 웹 서비스] 2장 : TDD"
+excerpt: "Spring Boot와 AWS로 혼자 구현하는 웹 서비스(이동욱 저) : 2장."
 categories:
   - Spring & Spring Boot
 tags:
@@ -142,4 +143,4 @@ public class HelloResponseDtoTest extends TestCase {
 
 ## Reference
 
-* 스프링 부트와 AWS로 혼자 구현하는 웹 서비스 (이동욱 저)
+* 스프링 부트와 AWS로 혼자 구현하는 웹 서비스(이동욱 저)

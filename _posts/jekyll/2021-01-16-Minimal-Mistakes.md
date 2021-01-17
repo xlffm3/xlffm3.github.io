@@ -1,6 +1,6 @@
 ---
 title: "[Jekyll Blog] Minimal Mistakes Theme 커스터마이징 관련 유용한 참고 사이트 모음"
-excerpt: "Minimal Mistakes Theme을 통해 Jekyll Blog를 커스터마이징할 때 유용한 참고 사이트들을 정리."
+excerpt: "Minimal Mistakes Theme을 통해 Jekyll Blog를 커스터마이징할 때 유용한 참고 사이트들을 정리한다."
 categories:
   - Jekyll Blog
 tags:
@@ -24,6 +24,14 @@ Minimal Mistakes 커스터마이징은 크게 두 가지로 분류할 수 있습
 
 [Quick-Start Guide](https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/)는 Minimal Mistakes 공식 레퍼런스입니다. Minimal Mistakes 테마가 제공하는 공식 기능들에 대한 Configuration 파일 설정 방법이 잘 기술되어 있습니다. 해당 문서만 잘 참고하셔도 블로그 커스터마이징 기능 대부분을 사용할 수 있습니다.
 
+또한 해당 사이트는 Minimal Mistakes 테마를 이용해서 제작되었습니다. Minimal Mistakes 레포지토리의 docs 디렉토리에 위치한 파일들이 실제 사이트를 구성하고 있는 파일들입니다.
+
+![image](https://user-images.githubusercontent.com/56240505/104830351-75031200-58c1-11eb-91ed-36311ee70634.png)
+
+Quick-Start Guide 문서 외에도, 제작자가 해당 사이트에 다양한 종류의 커스터마이징을 적용한 샘플 포스팅을 튜토리얼 느낌으로 많이 올려두었습니다. 커스터마이징을 적용했을 때의 모습을 사진으로 확인해보고, 마음에 들면 docs 디렉토리 내부의 설정 파일 및 코드들을 참고하여 커스터마이징에 적용하시면 됩니다.
+
+* 헤더 및 티저 이미지를 포스팅에 삽입하는 커스터마이징 기능을 구현할 때 개인적으로 많은 도움이 되었습니다.
+
 <br>
 
 ## 3. GitHub Pages 블로그 따라하기 시리즈
@@ -44,13 +52,13 @@ Quick-Start Guide가 영문으로 작성되어 있어 읽기 불편하거나, �
 
 **2절**과 **3절**의 사이트들만 참고해도 어지간한 커스터마이징 기능들을 다 사용할 수 있지만, 블로그 디자인을 극한으로 마개조하고 싶다면 [[Github 블로그] Minimal-Mistakes 테마의 디렉터리 구조](https://ansohxxn.github.io/blog/jekyll-directory-structure/)를 참조하시길 바랍니다.
 
-Jekyll과 Minimal Mistakes 테마의 디렉토리 구조 등을 잘 정리해놓은 글인데, 몰랐던 기능들과 더불어서 디자인 커스터마이징에 대한 인사이트를 많이 배울 수 있었습니다.
+Jekyll과 Minimal Mistakes 테마의 디렉토리 구조 등을 잘 정리해놓은 글인데, 몰랐던 커스터마이징 기능들과 더불어서 디자인에 대한 인사이트를 많이 배울 수 있었습니다.
 
 * Grid, Collection Layout 등.
 
 ![image](https://user-images.githubusercontent.com/56240505/104799528-0ebfb600-5813-11eb-86c4-46828133dbb7.png)
 
-여담으로, 해당 포스팅의 블로그는 제가 본 Minimal Mistakes 블로그들 중 디자인 커스터마이징이 가장 멋있었습니다. SCSS와 Liquid 또한 많이 공부하시고 다채롭게 수정한것 같은데, 열정에 감탄하면서 블로그를 구경했습니다. 🤩
+여담으로, 해당 포스팅의 블로그는 제가 본 Minimal Mistakes 블로그들 중 디자인 커스터마이징이 가장 멋있었습니다. SCSS와 Liquid를 많이 공부하시고 다채롭게 수정한것 같은데, 열정에 감탄하면서 블로그를 구경했습니다. 🤩
 
 만약 커스터마이징을 하는데 SCSS와 Liquid 조작이 어렵다면, 해당 블로그 제작자님의 GitHub에 있는 정적 블로그 Repository의 코드를 참고/비교하며 연습해보시길 추천드립니다.
 

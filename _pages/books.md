@@ -13,7 +13,7 @@ author_profile: true
 개발 관련 서적을 읽고 학습 내용 및 감상 등을 정리합니다.
 
 * 객체지향의 사실과 오해
-* 코딩을 지탱하는 기술
+* [코딩을 지탱하는 기술](https://xlffm3.github.io/book/technology-supporting-coding/)
 * SQL 첫걸음
 * 그림으로 배우는 HTTP & Network
 * Effective Java

@@ -1,6 +1,6 @@
 ---
 title:  "[Spring Boot 개념과 활용] 1장 : 의존성 관리"
-excerpt: "Inflearn에 있는 백기선님의 [스프링 부트 개념과 활용] 강의를 듣고 정리한 필기입니다."
+excerpt: "Inflearn에 있는 백기선님의 [스프링 부트 개념과 활용] 강의를 듣고 정리한 필기이다."
 categories:
   - Spring & Spring Boot
 tags:
@@ -58,4 +58,4 @@ last_modified_at: 2020-07-11T08:03:00-05:00
 
 ## Reference
 
-* 스프링 부트 개념과 활용 (백기선, Inflearn)
+* 스프링 부트 개념과 활용(백기선, Inflearn)

@@ -1,6 +1,6 @@
 ---
 title: "[Spring Web MVC] 25장 : @RequestBody & HttpEntity"
-excerpt: "Inflearn에 있는 백기선님의 [스프링 웹 MVC] 강의를 듣고 정리한 필기입니다."
+excerpt: "Inflearn에 있는 백기선님의 [스프링 웹 MVC] 강의를 듣고 정리한 필기이다."
 categories:
   - Spring & Spring Boot
 tags:
@@ -81,4 +81,4 @@ public void createEvent() throws Exception {
 
 ## Reference
 
-*	스프링 웹 MVC (백기선, Inflearn)
+*	스프링 웹 MVC(백기선, Inflearn)

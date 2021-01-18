@@ -1,6 +1,6 @@
 ---
 title: "[Spring Web MVC] 6장 : Spring MVC 설정"
-excerpt: "Inflearn에 있는 백기선님의 [스프링 웹 MVC] 강의를 듣고 정리한 필기입니다."
+excerpt: "Inflearn에 있는 백기선님의 [스프링 웹 MVC] 강의를 듣고 정리한 필기이다."
 categories:
   - Spring & Spring Boot
 tags:
@@ -128,4 +128,4 @@ spring.mvc.view.suffix=.jsp
 
 ## Reference
 
-*	스프링 웹 MVC (백기선, Inflearn)
+*	스프링 웹 MVC(백기선, Inflearn)

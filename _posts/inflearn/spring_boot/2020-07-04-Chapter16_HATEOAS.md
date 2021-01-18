@@ -1,6 +1,6 @@
 ---
 title:  "[Spring Boot 개념과 활용] 16장 : HATEOAS"
-excerpt: "Inflearn에 있는 백기선님의 [스프링 부트 개념과 활용] 강의를 듣고 정리한 필기입니다."
+excerpt: "Inflearn에 있는 백기선님의 [스프링 부트 개념과 활용] 강의를 듣고 정리한 필기이다."
 categories:
   - Spring & Spring Boot
 tags:
@@ -65,4 +65,4 @@ public void hateoas() throws Exception {
 
 ## Reference
 
-* 스프링 부트 개념과 활용 (백기선, Inflearn)
+* 스프링 부트 개념과 활용(백기선, Inflearn)

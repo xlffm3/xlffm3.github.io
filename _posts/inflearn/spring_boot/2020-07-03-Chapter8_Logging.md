@@ -1,6 +1,6 @@
 ---
 title:  "[Spring Boot 개념과 활용] 8장 : Logging"
-excerpt: "Inflearn에 있는 백기선님의 [스프링 부트 개념과 활용] 강의를 듣고 정리한 필기입니다."
+excerpt: "Inflearn에 있는 백기선님의 [스프링 부트 개념과 활용] 강의를 듣고 정리한 필기이다."
 categories:
   - Spring & Spring Boot
 tags:
@@ -73,4 +73,4 @@ private Logger logger = LoggerFactory.getLogger(AppRunner.class);
 
 ## Reference
 
-* 스프링 부트 개념과 활용 (백기선, Inflearn)
+* 스프링 부트 개념과 활용(백기선, Inflearn)

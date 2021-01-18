@@ -1,6 +1,6 @@
 ---
 title:  "[Spring Framework 핵심 기술] 3장 : @Autowired"
-excerpt: "Inflearn에 있는 백기선님의 [스프링 프레임워크 핵심 기술] 강의를 듣고 정리한 필기입니다."
+excerpt: "Inflearn에 있는 백기선님의 [스프링 프레임워크 핵심 기술] 강의를 듣고 정리한 필기이다."
 categories:
   - Spring & Spring Boot
 tags:
@@ -53,4 +53,4 @@ last_modified_at: 2020-07-09T08:08:00-05:00
 
 ## Reference
 
-*	스프링 프레임워크 핵심 기술 (백기선, Inflearn)
+*	스프링 프레임워크 핵심 기술(백기선, Inflearn)

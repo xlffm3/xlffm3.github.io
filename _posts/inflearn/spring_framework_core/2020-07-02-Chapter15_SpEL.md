@@ -1,6 +1,6 @@
 ---
 title:  "[Spring Framework 핵심 기술] 15장 : SpEL"
-excerpt: "Inflearn에 있는 백기선님의 [스프링 프레임워크 핵심 기술] 강의를 듣고 정리한 필기입니다."
+excerpt: "Inflearn에 있는 백기선님의 [스프링 프레임워크 핵심 기술] 강의를 듣고 정리한 필기이다."
 categories:
   - Spring & Spring Boot
 tags:
@@ -70,4 +70,4 @@ public class Test {
 
 ## Reference
 
-*	스프링 프레임워크 핵심 기술 (백기선, Inflearn)
+*	스프링 프레임워크 핵심 기술(백기선, Inflearn)

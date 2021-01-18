@@ -1,6 +1,6 @@
 ---
 title: "[Spring Web MVC] 11장 : 기타 WebMvcConfigurer 설정 및 요약"
-excerpt: "Inflearn에 있는 백기선님의 [스프링 웹 MVC] 강의를 듣고 정리한 필기입니다."
+excerpt: "Inflearn에 있는 백기선님의 [스프링 웹 MVC] 강의를 듣고 정리한 필기이다."
 categories:
   - Spring & Spring Boot  
 tags:
@@ -88,4 +88,4 @@ last_modified_at: 2020-07-15T08:02:00-05:00
 
 ## Reference
 
-*	스프링 웹 MVC (백기선, Inflearn)
+*	스프링 웹 MVC(백기선, Inflearn)

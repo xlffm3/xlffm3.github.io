@@ -1,11 +1,11 @@
 ---
-title: "Spring Boot에서 Thymeleaf를 사용할 때의 404 ERROR"
-excerpt: "Spring이 Thymeleaf을 인식하지 못하는 에러를 해결해보자."
+title: "Spring Boot가 Thymeleaf 경로를 인식하지 못하는 에러"
+excerpt: "간단한 Get 요청마저 404 에러가 발생하는 이슈를 해결해보자."
 categories:
   - Spring & Spring Boot
 tags:
   - Spring & Spring Boot
-  - Thymeleaf
+  - Error
 toc: true
 toc_sticky: true
 last_modified_at: 2020-08-01T18:22:00-05:00
@@ -13,7 +13,7 @@ last_modified_at: 2020-08-01T18:22:00-05:00
 
 ## 1. 문제
 
-정말 간단한 @GetMapping조차도 컨트롤러가 View Page를 resolve하지 못하고 계속 404 에러를 띄웠다. 컨트롤러에 명시된 Path가 문제라기 보다는, Spring이 Path를 잘 인식하지 못하는 것으로 보였다.
+정말 간단한 @GetMapping조차도 컨트롤러가 View Page를 resolve하지 못하고 계속 404 에러를 띄웠다. 컨트롤러에 명시된 Path가 문제라기 보다는, Spring 자체가 Thymeleaf 관련 파일들의 Path를 잘 인식하지 못하는 것으로 보였다.
 
 <br>
 

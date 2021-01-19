@@ -1,5 +1,5 @@
 ---
-title: "Spring : @ModelAttribute vs @RequestBody"
+title: "@ModelAttribute vs @RequestBody"
 excerpt: "전달받은 데이터들을 맵핑하는 두 어노테이션을 비교해보자."
 categories:
   - Spring & Spring Boot

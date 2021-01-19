@@ -1,11 +1,11 @@
 ---
-title: "Spring 에러 : Neither BindingResult nor plain target object for bean name available as request attribute"
+title: "Neither BindingResult nor plain target object for bean name available as request attribute"
 excerpt: "객체가 없다면 객체를 실어서 보내자."
 categories:
   - Spring & Spring Boot
 tags:
   - Spring & Spring Boot
-  - Thymeleaf
+  - Error
 toc: true
 toc_sticky: true
 last_modified_at: 2020-09-12T14:13:00-05:00

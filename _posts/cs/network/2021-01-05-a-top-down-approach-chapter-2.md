@@ -117,7 +117,7 @@ Application이 만들어내는 메시지 또한 특정 프로토콜을 준수한
 
 HTTP(Hypertext Transfer Protocol)는 웹 어플리케이션 레이어의 프로콜이다. Client-Server Model을 따르며, Client는 요청 메시지를 보내고 응답을 받으면 웹 자원 오브젝트들을 보여주는 Brower이다. Server는 Client의 요청에 맞는 오브젝트들을 응답으로 보내주는 웹 서버이다.
 
-HTTP는Data Integrity가 중요하기 때문에 TCP를 사용한다. Client가 Server와 소켓을 만들어 연결을 맺으며, 포트 번호는 80번이다. 이후 Server가 승인하게 되고, HTTP 메시지를 통해 브라우저와 웹 서버간 메시지 교환이 발생한다. 작업이 마무리되면 TCP 커넥션이 닫히게 된다.
+HTTP는 Data Integrity가 중요하기 때문에 TCP를 사용한다. Client가 Server와 소켓을 만들어 연결을 맺으며, 포트 번호는 80번이다. 이후 Server가 승인하게 되고, HTTP 메시지를 통해 브라우저와 웹 서버간 메시지 교환이 발생한다. 작업이 마무리되면 TCP 커넥션이 닫히게 된다.
 
 HTTP는 기본적으로 무상태(Stateless) 프로토콜이다. Server는 Client가 이전에 보낸 Request 히스토리를 기억할 수 없다. 만약 저장하는 경우, 크래시가 발생했을 때 Server와 Client의 View를 일치시키는 것이 매우 복잡해지기 때문이다.
 
@@ -269,7 +269,7 @@ DNS는 다음과 같은 기능을 수행할 수 있다.
   * Mail Server로서 메일 주소 도메인을 알려준다.
   * Load Distribution.
     * 모든 클라이언트 요청을 1개 서버가 담당하게 되면 트래픽 부하가 심해진다.
-    * 하나의 어플리케이션이 여러 웹 서버(즉, 여러 IP)를 가지게 하고, 클라이언트들이 하나의 호스트 네임으로 접속 및 요청을 해도 DNS를 통해 요청을 여러 웹 서버로 분산시킨다.
+    * 하나의 어플리케이션이 여러 웹 서버(즉, 여러 IP)를 가지게 하고, 클라이언트들이 하나의 호스트 네임으로 접속 및 요청을 해도 DNS를 통해 요청을 여러 웹 서버 IP로 분산시킨다.
 
 ### 2.4.2. Overview of How DNS Works
 

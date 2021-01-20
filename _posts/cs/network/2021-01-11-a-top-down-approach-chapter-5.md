@@ -20,15 +20,13 @@ MAC(LAN, Physical, Ethernet) 주소란 Link Layer상의 하나의 인터페이�
 
 Network Layer는 어떻게 특정 MAC 주소가 Datagram이 가고자 하는 IP 주소의 네트워크 인터페이스인지 식별할 수 있을까?
 
-ARP(Address Resolution Protocol)라는 프로토콜은 ARP Table을 제공하며, LAN 상의 호스트와 라우터 등 IP 노드들은 ARP Table을 가지고 있다. ARP Table은 노드들의 IP와 MAC 주소간의 맵핑 정보와 해당 맵핑 정보가 어느 시간 유지되는지 TTL 등을 제공한다.
+ARP(Address Resolution Protocol)라는 프로토콜은 ARP Table을 제공하며, LAN 상의 호스트와 라우터 등 노드들은 ARP Table을 가지고 있다. ARP Table은 노드들의 IP와 MAC 주소간의 맵핑 정보와 해당 맵핑 정보가 어느 시간 유지되는지 TTL 등을 제공한다.
 
-A 노드에서 B 노드로 Datagram을 보내려고 할 때, A는 B 노드의 MAC 주소를 알아야 한다. B 노드의 MAC 주소를 모른다면, A는 ARP 쿼리 패킷에 B의 IP 주소를 담아 브로드캐스트한다. LAN 상의 모든 노드들이 ARP 쿼리를 받으며, B는 자신의 IP를 식별하여 MAC 주소와 함께 응답을 보낸다. A는 B의 MAC 주소로 데이터를 전송할 수 있게 된다.
+A 노드는 B 노드의 MAC 주소를 알아야 Frame을 전달할 수 있다. 만약 모른다면 A는 ARP 쿼리 패킷에 B의 IP 주소를 담아 브로드캐스트한다. LAN 상의 모든 노드들이 ARP 쿼리를 받으며, B는 자신의 IP를 식별하여 MAC 주소와 함께 응답을 보낸다. A는 B의 MAC 주소로 데이터를 전송할 수 있게 된다.
 
 주로 20분 정도 IP-MAC 주소를 ARP 테이블에 캐싱해둔다. 어드민이 ARP 테이블 작성 등에 개입할 필요 없이 노드가 스스로 브로드캐스팅을 통해 ARP 테이블을 제작할 수 있다. (plug-and-play).
 
-IP 계층에서, Node들은 목적지 Host IP뿐만 아니라 라우팅을 통해 다음 Node의 IP가 무엇인지 알게 된다. Link(Ethernet) 계층에서는 경로상 다음 Hop에 위치한 Node의 MAC 주소를 ARP 브로드캐스팅을 통해 알아낸다.
-
-이후 Datagram에 MAC 주소 등 헤더를 달아 Frame을 만든다. Frame은 1개 Hop을 이동하고 다음 Node에서도 똑같은 작업을 거치며 마침내 목적지 Host에 도달하게 된다.
+노드는 IP 계층에서 목적지 Host IP뿐만 아니라 라우팅을 통해 다음 노드의 IP가 무엇인지 알게 된다. Link(Ethernet) 계층에서는 경로상 다음 Hop에 위치한 노드의 MAC 주소를 ARP 브로드캐스팅을 통해 알아낸다. 이후 Datagram에 MAC 주소 등 헤더를 달아 Frame을 만든다. Frame은 1개 Hop을 이동하고 다음 노드에서도 이러한 작업을 반복한다. 다음 노드의 MAC 주소를 식별하고 1개 HOP을 이동하는 작업을 반복하다 보면 패킷은 마침내 목적지 Host에 도달하게 된다.
 
 <br>
 

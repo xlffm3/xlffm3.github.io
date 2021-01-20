@@ -305,7 +305,7 @@ ssthresh는 로스가 발생하면 cwnd / 2로 줄어든다. TCP는 크게 두 �
   * ssthresh는 cwnd / 2가 되고, cwnd도 절반으로 줄어든다.
   * 따라서 cwnd는 선형적으로 증가하게 된다.
 
-예정 방식인 TCP Tahoe는 로스를 감지하면 무조건 cwnd를 1 MSS로 설정한다.
+예전 방식인 TCP Tahoe는 로스를 감지하면 무조건 cwnd를 1 MSS로 설정한다.
 
 ### Macroscopic Description of TCP Throughput
 

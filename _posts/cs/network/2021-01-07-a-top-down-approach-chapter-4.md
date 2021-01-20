@@ -32,7 +32,7 @@ Datagram을 전달하는 채널을 위한 서비스 모델은 크게 두 가지�
   * Datagram의 전달 순서와 최소 Bandwidth 플로우를 보장한다.
   * 각 패킷 사이의 간격 등을 제한하는 서비스가 있다.
 
-Network는 크게 Circuit Switching과 Packet Switching으로 나뉘며, Packet Switching은 Virtual Circuit과 Datagram으로 나뉜다. Network Layer에서 Virtual Circult은 Connection-Oriented Service를 제공하며, Datagram은 Connectionless Service를 제공한다. 이는 TCP와 UDP 관계와 비슷하다. 그러나 다음과 같은 차이점이 있다.
+Network는 크게 Circuit Switching과 Packet Switching으로 나뉘며, Packet Switching은 Virtual Circuit과 Datagram으로 나뉜다. Network Layer에서 Virtual Circuit은 Connection-Oriented Service를 제공하며, Datagram은 Connectionless Service를 제공한다. 이는 TCP와 UDP 관계와 비슷하다. 그러나 다음과 같은 차이점이 있다.
 
 * TCP/UDP는 Transport Layer에서 Process간의 통신이지만, Virtual Circuit과 Datagram은 Host-To-Host 서비스를 의미한다.
 * TCP/UDP는 Network Edge의 Process간의 상호작용이라면, Virtual Circuit과 Datagram은 Network Core에 있는 모든 것들이 협력해서 구현하는 결과이다.
@@ -49,10 +49,10 @@ Virtual Circuit은 데이터 전송 전후로 연결에 대한 Call Setup과 Tea
 
 * Call Setup을 위한 메시지가 목적지에게 도달하면서 Hop이 어디부터 어디까지인지 등 VC 경로가 결정된다.
 * Call Setup시 VC에 해당하는 아이디가 부여되는데, 전송되는 패킷들이 해당 아이디를 헤더에 달고 있다.
-* Packet Switching에 속하지만 Bandwidth 및 버퍼와 같은 Link와 Router 자원들이 VC에 할당(Predictable and Dedicated)될 수 있다.
+* Packet Switching에 속하지만 Bandwidth 및 버퍼와 같은 Link와 Router 자원들이 VC에 예약(Predictable and Dedicated)될 수 있다.
 * VC 경로에 위치한 Router들은 자신들을 통과하는 연결에 대해 상태 정보를 유지하고 있어야 한다.
 
-VC별로 경로와 VC 번호(ID)를 할당할 때, 해당 정보들을 Forwarding Table에 저장한다. 해당 VC에 속한 패킷들은 도착지 IP가 아닌 VC 번호를 통해 Link와 Router를 이동한다. 이 때, VC 번호는 A부터 B까지 가는 모든 경로의 링크들이 동일하지 않고, 경로에서 링크가 바뀜에 따라(Router를 만나 갈아탐에 따라) 서로 다른 VC 번호들이 부여된다.
+VC별로 경로와 VC 번호(ID)를 할당할 때, 해당 정보들을 Forwarding Table에 저장한다. 해당 VC에 속한 패킷들은 도착지 IP가 아닌 VC 번호를 통해 Link와 Router를 이동한다. 이 때 VC 번호는 A부터 B까지 가는 모든 경로의 링크들이 동일하지 않고, 경로에서 링크가 바뀜에 따라(Router를 만나 갈아탐에 따라) 서로 다른 VC 번호들이 부여된다.
 
 예를 들어, Call Setup시 경로 상의 N번째 Router는 이전의 N-1번째 Router에게 "내게 Datagram을 보낼 때 VC 번호 K를 붙여라"는 식으로 설정된다.
 
@@ -92,7 +92,7 @@ Management Control Plane은 프로토콜을 통해 Routing을 계산하는 등 S
 
 ### 4.3.1. Input Processing
 
-Input Port 내부는 크게 3가지로 구분된다. 패킷을 Physical - Link - Network Layer 순으로 헤더를 떼서 Segment로 만든다.
+Input Port 내부는 크게 3가지로 구분된다. 패킷을 Physical - Link - Network Layer 순으로 헤더를 떼서 Datagram으로 만든다.
 
 * Input Port Function(Line Termination).
   * 전달받은 패킷을 bit 단위로 인식하며, bit를 모아서 Frame을 형성한다.
@@ -103,13 +103,13 @@ Input Port 내부는 크게 3가지로 구분된다. 패킷을 Physical - Link -
   * 제대로 된 Frame이라면 Forwarding Table을 참조하여 경로를 찾고 Queue에서 대기한다.
   * 이상적인 목표는 Link Transmission Rate(Bandwidth)로 들어오는 패킷들을 병목 없이 처리하는 것이다.
 
-여러 Link를 통해 Router로 유입된 Datagram이 Input Port의 Queue 버퍼에서 대기하고 있으면, Switching Fabric은 Datagram을 뽑아 적합한 Output Link로 옮겨준다. Switching Fabric의 처리 속도가 느리다면 Input Port의 Queue 버퍼가 쌓이게 되면서 딜레이 및 패킷 손실이 발생한다.
+Router로 유입된 Datagram이 Input Port의 Queue 버퍼에서 대기하고 있으면, Switching Fabric은 Datagram을 뽑아 적합한 Output Link로 옮겨준다. Switching Fabric의 처리 속도가 느리다면 Input Port의 Queue 버퍼가 쌓이게 되면서 딜레이 및 패킷 손실이 발생한다.
 
-특히 Switching Fabric은 2개 이상의 패킷을 동일한 Output Link로 동시에 옮기지 못한다. 이 때, HOL(Head Of Line) 블락킹이 발생하게 된다. 2개의 Input Port가 있고 각각의 Queue 버퍼에서 대기 중인 선두의 Datagram들이 동일한 Output Link로 나가기 위해 경쟁한다고 가정해보자. 경쟁에 패배한 Datagram은 다른 Datagram이 Output Link로 옮겨지는 동안 대기해야 한다. 경쟁에 패배한 Datagram은 Queue의 선두에 있기 때문에, 그 뒤에 위치한 Datagram들은 자신이 가고자 하는 Output Link가 유휴상태임에도 최선두 Datagram 때문에 처리되지 못하고 대기해야 한다.
+특히 Switching Fabric은 2개 이상의 패킷을 동일한 Output Link로 동시에 옮기지 못한다. 이 때, HOL(Head Of Line) 블락킹이 발생하게 된다. 2개의 Input Port가 있고 각각의 Queue 버퍼에서 대기 중인 선두의 Datagram들이 동일한 Output Link로 나가기 위해 경쟁한다고 가정해보자. 경쟁에 패배한 Datagram은 다른 Datagram이 Output Link로 옮겨지는 동안 대기해야 한다. 경쟁에 패배한 Datagram은 Queue의 선두에 그대로 있기 때문에, 그 뒤에 위치한 Datagram들은 자신이 가고자 하는 Output Link가 유휴상태임에도 최선두 Datagram 때문에 처리되지 못하고 대기해야 한다.
 
 ### 4.3.2. Switching
 
-Input으로 들어온 Segment를 Output Link로 전달해주는 Switching Rate는 N Inputs / Output Line Rate이다. Switching Fabric에서 Switching 작업이 발생하게 된다. Switching 작업은 크게 3가지로 구현될 수 있다.
+Input으로 들어온 Datagram을 Output Link로 전달해주는 Switching Rate는 N Inputs / Output Line Rate이다. Switching Fabric에서 Switching 작업이 발생하게 된다. Switching 작업은 크게 3가지로 구현될 수 있다.
 
 * Switching via Memory.
   * 1세대 방식으로, 고전적인 컴퓨터의 CPU 통제 하에 Switching이 발생한다.
@@ -128,7 +128,7 @@ Input으로 들어온 Segment를 Output Link로 전달해주는 Switching Rate�
 
 ### 4.3.3. Output Processing
 
-Input Port 구조와 동일하지만 순서만 다르다. Input Port가 Physical - Link - Network Layer 순으로 패킷의 헤더를 때고 Segment로 만들면 Switching Fabric에서 길을 찾는다. 이후 Output Port에서 Network - Link - Physical Layer 순으로 Segment에 Header를 붙여 Link를 물리적으로 1 Hop씩 이동하게 된다.
+Input Port 구조와 동일하지만 순서만 다르다. Input Port가 Physical - Link - Network Layer 순으로 패킷의 헤더를 때고 Datagram으로 만들면 Switching Fabric에서 길을 찾는다. 이후 Output Port에서 Network - Link - Physical Layer 순으로 Datagram에 Header를 붙여 전송함으로써 Link를 물리적으로 1 Hop씩 이동하게 된다.
 
 Queue에 쌓인 Datagram을 전송하는 방식에는 다양한 스케쥴링 규칙이 있다. 똑같이 Buffering으로 인한 패킷 손실이 발생할 수 있다.
 
@@ -198,7 +198,7 @@ CIDR은 클래스 기반의 IP 할당 전략이지만, 어떤 클래스는 가�
 NAT는 Subnet의 각 End System들에게 IP를 할당하는 것이 아니라, Subnet 자체에게 하나의 IP를 주는 것이다. Subnet에 속한 End System들은 Private IP를 사용하지만, 외부 Subnet과 Datagram을 주고 받을 때에는 모두 하나의 NAT IP 주소를 통해 소통한다. 다만 End System별로 포트 번호가 다르다.
 
 * 원리.
-  * 다른 Subnet과 소통할 수 있는 Subnet의 First Edge Router가 있다.
+  * Subnet의 First Edge Router는 다른 Subnet과 소통할 수 있다.
   * Private IP 및 포트 번호를 가진 Subnet 내부 Host의 Datagram이 외부로 나갈 때, First Edge Router는 Datagram의 Source 주소를 NAT IP 주소와 새로운 포트 번호로 변경한다.
   * 이후 외부에서 NAT IP를 Destination 주소로 하는 Datagram이 First Edge Router로 들어온다.
   * First Edge Router는 포트 번호와 Translation Table을 참고하여 NAT IP로 이루어진 Destination 주소를 실제 Host의 Private IP 주소로 변경하고 Datagram을 전달한다.
@@ -211,11 +211,11 @@ NAT IP를 사용하면 Subnet에 속한 Local Host들은 일련의 IP 블록을 
 
 ### 4.4.3. Internet Control Message Protocol (ICMP)
 
-Host와 Router들이 Network Lever 정보를 전달할 때 사용한다. Source Host에게 어떤 에러가 있었는지 리포팅하거나 요청과 응답에 대한 Ping을 Echo하여 서로의 상태를 체크한다.
+Host와 Router들이 Network Level 정보를 전달할 때 사용한다. Source Host에게 어떤 에러가 있었는지 리포팅하거나 요청과 응답에 대한 Ping을 Echo하여 서로의 상태를 체크한다.
 
 ICMP는 IP(Network Layer) 위에 존재하며, ICMP 메시지는 TCP 등의 Segment처럼 IP Datagram 내부로 캡슐화된다.
 
-TTL(Time To Live)란 패킷이 Router에서 폐기되기 전 까지 네트워크에 존재할 수 있는 시간, 혹은 홉을 의미한다. Traceroute 같은 서비스는 ICMP 메시지에 TTL을 활용하여 패킷의 경로와 목적지 도착 여부 등을 확인한다.
+TTL(Time To Live)이란 패킷이 Router에서 폐기되기 전 까지 네트워크에 존재할 수 있는 시간, 혹은 홉을 의미한다. Traceroute 같은 서비스는 ICMP 메시지에 TTL을 활용하여 패킷의 경로와 목적지 도착 여부 등을 확인한다.
 
 ### 4.4.4. IPv6
 
@@ -243,7 +243,7 @@ IPv6를 사용하는 라우터들끼리 통신할 때 IPv4 라우터를 거쳐�
 
 라우팅 알고리즘은 패킷이 Source에서 Destination에 도달할 수 있도록 경로를 분석하고 Forwarding Table을 세팅하는 것이다.
 
-Graph Abstraction을 사용하는데, Router Set(Vortex)과 Link Set(Edge)로 Graph 객체를 만든다. Link의 Bandwidth과 Congestion 혹은 사용료에 따라서 Cost 가중치가 다르게 설정된다. 라우팅 알고리즘은 이런 가중치 등을 분석해서 최소 비용의 경로를 발견하는 것이다.
+Graph Abstraction을 사용하는데, Router Set(Vortex)과 Link Set(Edge)로 Graph 객체를 만든다. Link의 Bandwidth와 Congestion 혹은 사용료에 따라서 Cost 가중치가 다르게 설정된다. 라우팅 알고리즘은 이런 가중치 등을 분석해서 최소 비용의 경로를 발견하는 것이다.
 
 라우팅 알고리즘은 크게 두 가지 방식으로 분류될 수 있다.
 
@@ -292,7 +292,7 @@ Poison Reverse로 이러한 문제를 어느정도 해결할 수 있으나 3개 
   * LS : N개의 노드와 E개의 링크가 있으면 O(N^E) 메시지를 보낸다.
   * DV : 근접한 이웃들간의 메시지 교환이 발생한다.
 * Convergence Speed : 정보 변경으로 인한 라우팅 업데이트.
-  * LS : o(N^2) 알고리즘으로 인해 메시지는 O(N^E)만큼이 필요하다.
+  * LS : O(N^2) 알고리즘으로 인해 메시지는 O(N^E)만큼이 필요하다.
   * DV : Convergence는 다양하다. 좋은 정보는 준수하지만 최악의 경우 무한 루프에 빠질 수 있다.
 * Robustness : 라우터가 맛이 간다면?
   * LS : 노드는 잘못된 링크 비용을 홍보하고 각 노드는 자기의 테이블만을 계산한다.
@@ -393,11 +393,11 @@ BGP는 라우팅 루프 문제가 발생하지 않는다.
 
 Dual Homed와 같이 여러 네트워크들이 서로 연결되어 있는 경우, 하나의 AS가 외부에 정보를 알려주지 않아도 다른 AS들이 더 빠르게 갈 수 있는 경우 정책에 의거해 라우트 정보를 공유하지 않는다.
 
-* Policy,
+* Policy.
   * Intra : 싱글 어드민이 컨트롤하기 때문에 정책 결정 시스템이 필요없다.
   * Inter : 어드민이 어떻게 누가 트래픽을 라우트하는지 등 컨트롤을 원한다.
-* Scale,
-  * 계층적인 라우팅은 Forwarding Table 크기과 궁극적으로 업데이트 트래픽을 줄인다.
+* Scale.
+  * 계층적인 라우팅은 Forwarding Table 크기와 테이블의 업데이트 트래픽을 줄인다.
 * Performance.
   * Intra : 성능에 초점을 둘 수 있다.
   * Inter : 성능보다 Policy가 중요할 수 있다.

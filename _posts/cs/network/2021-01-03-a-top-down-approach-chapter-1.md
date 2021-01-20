@@ -32,7 +32,7 @@ Protocol이란 메세지의 송수신 제어에 대한 통신 규약이다. 즉,
 
 ### 1.2.1. Access Network
 
-End System이 다른 End System으로 연결되는 경로에는 여러 Router들이 존재한다. Access Network는 하나의 End System과 해당 End System이 가장 처음 만나는 Edge Router 사이를 물리적으로 연결해주는 네트워크이다.
+End System이 다른 End System으로 연결되는 경로에는 여러 Router들이 존재한다. Access Network는 하나의 End System과 해당 End System이 경로에서 가장 처음 만나는 Edge Router 사이를 물리적으로 연결해주는 네트워크이다.
 
 #### Home Access
 
@@ -96,7 +96,7 @@ Packet은 통신 Link를 통해 전달된다. Packet이 목적지에 도달하�
 
 #### Store-and-Forward Transmission
 
-* 패킷 스위치는 Queue 구조의 Buffer를 가지고 있으며 전체 패킷을 전달받은 이후에야, 그 다음 Router로 향하는 링크에 패킷의 첫 비트를 전송하기 시작한다.
+* 패킷 스위치는 Queue 구조의 Buffer를 가지고 있으며 패킷 1개를 완전히 전달받은 이후에야, 그 다음 Router로 향하는 링크에 해당 패킷의 첫 비트를 전송하기 시작한다.
 * 패킷을 시작 지점에서 목표 지점으로 전송하는데 걸리는 딜레이는 N(링크 개수) * L/R이다.
 
 #### Queuing Delays and Packet Loss
@@ -150,7 +150,7 @@ End System은 Access Network를 통해 인터넷에 연결된다. 두 Host끼리
 
 **PoP(Point of Presence)** : 하위계층(고객) ISP들이 상위계층(제공자) ISP로 연결할 수 있는 제공자 네트워크에 존재하는 1개 혹은 그 이상의 라우터 그룹이다.
 
-**IXP(Internet Exchange Point)** : ISP들과의 Link를 맺어주는 제 3 사업자. IXP 없이도 ISP들 끼리 Peer Link를 맺을 수 있다.
+**IXP(Internet Exchange Point)** : ISP들간의 Link를 맺어주는 제 3 사업자. IXP 없이도 ISP들 끼리 Peer Link를 맺을 수 있다.
 
 **Multi-Home** : 하위 계층의 ISP는 여러 개의 상위 계층 ISP를 가질 수 있다.
 
@@ -168,7 +168,7 @@ End System은 Access Network를 통해 인터넷에 연결된다. 두 Host끼리
 
 #### Queuing Delay
 
-Router의 Buffer에 담긴 패킷들이 Outbound Link(다음 Router로 향하는 Link)로 빠져나가는 처리 속도보다, 패킷들이 유입되는 트래픽 속도가 더 빠른 경우 발생한다. Outbound Link의 처리 속도(대역폭)이 현재 트래픽에 비해 충분하지 않아, 처리해야 할 패킷들이 Buffer에 쌓이게 되는 지연 시간이다.
+Router의 Buffer에 담긴 패킷들이 Outbound Link(다음 Router로 향하는 Link)로 빠져나가는 처리 속도보다, 패킷들이 유입되는 트래픽 속도가 더 빠른 경우 발생한다. Outbound Link의 처리 속도(대역폭)가 현재 트래픽에 비해 충분하지 않아, 처리해야 할 패킷들이 Buffer에 쌓이게 되는 지연 시간이다.
 
 ``L(패킷 길이) * a(평균 패킷 유입 속도) / R(Outbound Link Bandwidth, 패킷이 처리되는 속도)``
 
@@ -226,7 +226,7 @@ Node에서 다음 Node로 패킷이 링크를 따라 전파되는 시간을 의�
 
 #### Link
 
-* 이웃하는 네트워크 원소들간(Hop, 경로의 한 부분) 데이터를 전달해주는 레이어이다.
+* 이웃하는 네트워크 노드들간(Hop, 경로의 한 부분) 데이터를 전달해주는 레이어이다.
 * 하나의 Hop을 이동한다.
 * Network 레이어에서 내려준 Datagram에 Header를 붙여서 Frame을 만든다.
 
@@ -234,13 +234,13 @@ Node에서 다음 Node로 패킷이 링크를 따라 전파되는 시간을 의�
 
 * 비트 정보를 회선과 같은 물리적인 매체를 통해 전달하는 레이어이다.
 
-End System, Switch, Router 등의 컴포넌트가 가지는 Protocol Stack은 각각 다르다. Switch나 Router는 굳이 Application과 Transport Layer의 정보를 확인할 필요가 없기 때문이다.
+End System, Switch, Router 등의 노드가 가지는 Protocol Stack은 각각 다르다. Switch나 Router는 굳이 Application과 Transport Layer의 정보를 확인할 필요가 없다.
 
-컴포넌트에서, 각 네트워크 레이어들은 하위 계층부터 순차적으로 전달받은 Peer-PDU의 헤더를 분석하며, 올바른 경우 헤더를 분리한 뒤 Payload를 상위 계층으로 전달한다.
+노드의 네트워크 레이어들은 하위 계층부터 순차적으로 전달받은 Peer-PDU의 헤더를 분석하며, 올바른 경우 헤더를 분리한 뒤 Payload를 상위 계층으로 전달한다.
 
 다음 Router로 이동해야 할지, 현재 위치가 Destination이기 때문에 더이상 움직이지 않고 Message를 확인하는지 등의 결정은 헤더 분석을 통해 이루어진다.
 
-이후 다음 컴포넌트로 이동해야 한다면, 다시 상위 계층에서 하위 계층으로 PDU에 헤더를 붙인 뒤 링크를 통해 패킷이 다음 컴포넌트 위치로 이동한다.
+다음 노드로 이동해야 한다면, 현재 노드의 PDU는 다시 상위 계층에서 하위 계층으로 전달되면서 헤더가 붙는다. 재조립된 패킷은 이후 링크를 통해 다음 노드 위치로 이동한다.
 
 <br>
 
@@ -260,7 +260,7 @@ End System, Switch, Router 등의 컴포넌트가 가지는 Protocol Stack은 �
   * 타깃 주변의 컴퓨터들을 감염시킨 뒤, 타깃에게 쓸모없는 과도한 트래픽의 패킷을 보냄으로써 서버 및 대역폭 등 타깃의 리소스를 사용 불가 상태로 만드는 행위이다.
 * Sniffing
   * WiFi 등 공유되는 브로드캐스트 네트워크에서 발생한다.
-  * 내가 Destination이 아닌 패킷 데이터를 받아 정보를 읽는다.
+  * 제 3자가 자신이 Destination이 아닌 패킷 데이터를 받아 정보를 읽는다.
 * IP Spoofing
   * 특정 Host가 다른 Host의 IP를 도용해 Source Host인척 다른 Destination Host에 Packet을 보내는 것이다.
 

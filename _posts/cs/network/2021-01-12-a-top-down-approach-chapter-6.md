@@ -24,7 +24,7 @@ WiFi 또한 Wired Shared Link처럼 CSMA를 통해 하나의 노드가 현재 �
 
 > **CSMA** : 매체를 사용하려고 시도하기 이전에 매체를 상태를 감지하여 충돌의 기회를 줄이는 것이다. 충돌의 가능성을 줄일 수 있으나 완전히 없앨 수는 없다.
 
-그러나 충돌이 발생했을 때 Wired Link는CD(Collision Detection) 등을 통해 문제를 극복할 수 있다. 반면 Wireless는 Hidden Terminal 및 Fading 이슈로 인해 이러한 충돌 감지가 어렵다.
+그러나 충돌이 발생했을 때 Wired Link는 CD(Collision Detection) 등을 통해 문제를 극복할 수 있다. 반면 Wireless는 Hidden Terminal 및 Fading 이슈로 인해 이러한 충돌 감지가 어렵다.
 
 또한 Wireless Link는 Wired Link보다 자원이 적어 충돌로 인한 재전송 때문에 큰 오버헤드가 발생할 수 있다. 따라서 Wireless Link는 간섭을 원천적으로 배제하는 Collision Avoidance라는 옵셔널한 기능을 사용할 수 있다.
 
@@ -38,9 +38,7 @@ Base Station은 RTS에 대한 응답으로 CTS(Clear-To-Send)를 브로드캐스
 
 ### 6.2.1. CDMA
 
-Cellular Network는 CDMA(Code Division Multiple Access)를 사용하기도 한다. CDMA란 모든 유저들이 같은 주파수를 공유하지만, 각 유저들마다 데이터를 인코딩할 수 있는 고유한 Chip Sequence를 부여한다. 다중 접속을 허용하며, 최소한의 간섭으로 다중으로 데이터를 전송할 수 있다.
-
-다만 데이터를 인코딩 및 디코딩 하는 과정에서 시간 등 비용이 증가할 수 있다.
+Cellular Network는 CDMA(Code Division Multiple Access)를 사용하기도 한다. CDMA란 모든 유저들이 같은 주파수를 공유하지만, 각 유저들마다 데이터를 인코딩할 수 있는 고유한 Chip Sequence를 부여한다. 다중 접속을 허용하며, 최소한의 간섭으로 데이터를 다중 전송할 수 있다. 다만 데이터를 인코딩 및 디코딩 하는 과정에서 시간 등 비용이 증가할 수 있다.
 
 <br>
 
@@ -63,7 +61,7 @@ Wireless Network는 두 가지 모드로 작동할 수 있다.
 이런 두 가지 모드의 네트워크는 또한 Single Hop인지 Multiple Hops인지에 따라 세분화될 수 있다.
 
 * Single Hop.
-  * Infrastructure : Node가 BS에 도달하는데 1개 홉이 걸리는, 일반적인 무선 네트워크이며 BS는 더 큰 네트워크로 연결된다.
+  * Infrastructure : Node가 BS에 도달하는데 1개 홉이 걸리는 일반적인 무선 네트워크이며, BS는 더 큰 네트워크로 연결된다.
   * Non-Infrastructure : BS가 없고 더 큰 인터넷으로 연결되지 않는다. Node들간의 주종 관계가 있는 블루투스가 대표적인 예이다.
 * Multiple Hops.
   * Infrastructure : Node가 BS에 도달하는데 여러 홉을 Relay해야 하는 매쉬넷 등의 네트워크이다.

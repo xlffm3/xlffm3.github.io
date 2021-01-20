@@ -5,8 +5,8 @@ categories:
   - Database
 tags:
   - Database
-date: 2021-01-16
-last_modified_at: 2021-01-16
+date: 2021-01-20
+last_modified_at: 2021-01-20
 ---
 
 ## 1. SQL 고득점 Kit

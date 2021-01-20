@@ -14,7 +14,7 @@ author_profile: true
 
 * 객체지향의 사실과 오해
 * [코딩을 지탱하는 기술](https://xlffm3.github.io/book/technology-supporting-coding/)
-* SQL 첫걸음
+* [SQL 첫걸음](https://xlffm3.github.io/database/sql-first-step/)
 * 그림으로 배우는 HTTP & Network
 * Effective Java
 

@@ -19,7 +19,7 @@ last_modified_at: 2021-01-11T16:55:00-05:00
 
 MAC(LAN, Physical, Ethernet) 주소란 Link Layer상의 하나의 인터페이스에서 물리적으로 연결된 다른 인터페이스로 Frame이 이동할 때 사용된다. 이더넷과 와이파이를 포함한 대부분의 네트워크 인터페이스에 고유하게 할당되어 있다. 48bit MAC 주소는 기기 생산시 NIC ROM에 구워진다.
 
-Network Layer는 어떻게 특정 MAC 주소가 Datagram이 가고자 하는 IP 주소의 네트워크 인터페이스인지 식별할 수 있을까?
+IP는 논리적인 주소이고 MAC 주소는 물리적인 주소이다. Network Layer는 어떻게 특정 MAC 주소가 Datagram이 가고자 하는 IP 주소의 네트워크 인터페이스인지 식별할 수 있을까?
 
 ARP(Address Resolution Protocol)라는 프로토콜은 ARP Table을 제공하며, LAN 상의 호스트와 라우터 등 노드들은 ARP Table을 가지고 있다. ARP Table은 노드들의 IP와 MAC 주소간의 맵핑 정보와 해당 맵핑 정보가 어느 시간 유지되는지 TTL 등을 제공한다.
 

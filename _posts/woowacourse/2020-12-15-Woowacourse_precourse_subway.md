@@ -233,7 +233,7 @@ public class SubwayMapController {
 
 ## 4. Controller의 단일 책임 원칙
 
-[3절](https://xlffm3.github.io/java/etc/Woowacourse_precourse_subway/#3-mvc-%ED%8C%A8%ED%84%B4--%EB%A0%88%EC%9D%B4%EC%96%B4%EB%93%9C-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90)의 Service 레이어 추가를 통해, SubwayMapController가 많이 가벼워졌지만 약간의 문제가 있었다.
+[3절](https://xlffm3.github.io/woowacourse/Woowacourse_precourse_subway/#3-mvc-%ED%8C%A8%ED%84%B4--%EB%A0%88%EC%9D%B4%EC%96%B4%EB%93%9C-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90)의 Service 레이어 추가를 통해, SubwayMapController가 많이 가벼워졌지만 약간의 문제가 있었다.
 
 과연 하나의 컨트롤러가 역 관리, 노선 관리, 구간 관리를 모두 전담하는게 맞을까? 클래스는 단 한개의 책임을 가져야한다. 이 말은 곧 클래스를 변경하는 이유는 단 한 개여야 한다는 말과 일맥상통한다.
 

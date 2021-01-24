@@ -92,7 +92,7 @@ public void addStationToGraph(Station firstStation, Station lastStation, Section
 }
 ```
 
-두 지하철 역과 그 사이의 거리 및 시간 정보들을 그래프에 저장하는데요 ``addStationToGraph()`` 라는 네이밍은 그래프에 역을 추가한다는 의미이기 때문에 다소 불분명해보입니다.
+두 지하철 역과 그 사이의 거리 및 시간 정보들을 그래프에 저장하는데요. ``addStationToGraph()`` 라는 네이밍은 그래프에 역을 추가한다는 의미이기 때문에 다소 불분명해보입니다.
 
 그리고 MinimumDistanceGraph가 아니라 MinimumTimeGraph여야 하는데, 이 부분에도 오타가 존재하네요. 왜 이렇게 오타를 많이 냈을까... 😑
 

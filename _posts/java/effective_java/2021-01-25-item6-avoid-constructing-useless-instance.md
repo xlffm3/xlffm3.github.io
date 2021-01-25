@@ -32,7 +32,7 @@ String의 ``matches()`` 메서드는 내부에서 정규표현식용 Pattern 인
 
 따라서 정규표현식으로 문자열을 비교할 때 Pattern 인스턴스를 캐싱해두고 재사용하는 것이 성능상 유리하다.
 
-> [String과 Matcher 및 Pattern의 matches 메서드의 내부 코드 구조](https://xlffm3.github.io/woowacourse/Woowacourse_precourse_racing/#4-%EC%BD%94%EB%93%9C%EB%A5%BC-%EA%B9%8C%EB%B3%B4%EB%8A%94-%EC%8A%B5%EA%B4%80--string)를 정리해둔 포스팅이다.
+> 자세한 내용은 [String과 Matcher 및 Pattern의 matches 메서드의 내부 코드 구조를 정리해둔 포스팅](https://xlffm3.github.io/woowacourse/Woowacourse_precourse_racing/#4-%EC%BD%94%EB%93%9C%EB%A5%BC-%EA%B9%8C%EB%B3%B4%EB%8A%94-%EC%8A%B5%EA%B4%80--string)을 참조하자.
 
 <br>
 
@@ -45,7 +45,7 @@ String의 ``matches()`` 메서드는 내부에서 정규표현식용 Pattern 인
 * Map의 ``keySet()`` 메서드는 매번 같은 Set 인스턴스를 반환한다.
 * 의도하지 않은 오토박싱(Auto Boxing).
   * 기본 타입과 박싱된 기본 타입간의 자동 상호 변환을 해주는 기술이다.
-  * 박싱된 기본 타입 인스턴스(Long, Integer)보다는 기본 타입(long, int)를 사용하는 것이 성능상 유리하다.
+  * 박싱된 기본 타입 인스턴스(Long, Integer)보다는 기본 타입(long, int)을 사용하는 것이 성능상 유리하다.
 
 DB 연결같이 생성 비용이 비싼 객체는 별도의 Pool을 관리하여 재사용하는 것이 유리하다. 그러나 무겁지 않은 객체들을 재사용하기 위해 자체 객체 풀을 만들 필요는 없다.
 

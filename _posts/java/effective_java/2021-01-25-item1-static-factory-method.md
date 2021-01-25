@@ -25,6 +25,7 @@ last_modified_at: 2021-01-25
 * from, of, valueOf
 * getInstance, newInstance, create
 * getType, newType, type
+  * "Type"은 정적 팩토레 메서드가 반환하는 객체의 타입이다.
 
 > Car.java
 

@@ -32,7 +32,7 @@ String의 ``matches()`` 메서드는 내부에서 정규표현식용 Pattern 인
 
 따라서 정규표현식으로 문자열을 비교할 때 Pattern 인스턴스를 캐싱해두고 재사용하는 것이 성능상 유리하다.
 
-> 자세한 내용은 [String과 Matcher 및 Pattern의 matches 메서드의 내부 코드 구조를 정리해둔 포스팅](https://xlffm3.github.io/woowacourse/Woowacourse_precourse_racing/#4-%EC%BD%94%EB%93%9C%EB%A5%BC-%EA%B9%8C%EB%B3%B4%EB%8A%94-%EC%8A%B5%EA%B4%80--string)을 참조하자.
+> 자세한 내용은 [String과 Matcher 및 Pattern의 ``matches()`` 메서드의 내부 코드 구조를 정리해둔 포스팅](https://xlffm3.github.io/woowacourse/Woowacourse_precourse_racing/#4-%EC%BD%94%EB%93%9C%EB%A5%BC-%EA%B9%8C%EB%B3%B4%EB%8A%94-%EC%8A%B5%EA%B4%80--string)을 참조하자.
 
 <br>
 

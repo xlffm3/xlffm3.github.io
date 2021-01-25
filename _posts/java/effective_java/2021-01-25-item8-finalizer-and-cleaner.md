@@ -16,7 +16,7 @@ Java는 객체 소멸자인 finalizer를 제공하지만 예측 불가능하고 
 
 > C++의 파괴자(destructor)는 특정 객체와 관련된 자원을 회수하는 용도로서 try-with-resources와 비슷할뿐, finalizer와 전혀 다른 개념이다.
 
-finalizer는 즉시 수행되지 않으며 수행 여부조차 보장하지 않으며, GC 알고리즘에 따라 천차만별이다. 즉, 제때 실행되어야 하는 작업 및 DB의 공유 자원에 대한 Lock 해제 등 라이프사이클에 상관없이 상태를 영구적으로 수정하는 작업을 finalizer에게 맡기면 안 된다. ``System.gc``나 ``System.runFinalization`` 등의 메서드는 실행 가능성을 높여줄뿐 여전히 수행 시점 및 여부를 보장하지 않는다.
+finalizer는 즉시 수행되지 않고 수행 여부조차 보장하지 않으며, GC 알고리즘에 따라 천차만별이다. 즉, 제때 실행되어야 하는 자원 해제 작업 및 DB의 공유 자원에 대한 Lock 해제 등 라이프사이클에 상관없이 상태를 영구적으로 수정하는 작업 등을 finalizer에게 맡기면 안 된다. ``System.gc``나 ``System.runFinalization`` 등의 메서드는 실행 가능성을 높여줄뿐 여전히 수행 시점 및 여부를 보장하지 않는다.
 
 또한 finalizer 동작 중 발생한 예외는 무시되며 처리할 작업이 남아있더라도 그 순간 종료된다. 잡지 못한 예외 때문에 해당 객체는 마무리가 덜 된 상태로 남을 수 있으며, 다른 스레드가 해당 훼손된 객체를 사용하면 어떻게 동작할지 예측할 수 없다. 아울러 finalizer 동작 중 발생한 예외는 스택 트레이스 등 경고조차 출력하지 않는다.
 
@@ -52,17 +52,19 @@ Java 9에서부터 finalizer의 대안으로 제시되었으나 비슷한 단점
 
 ## 4. 사용 이유
 
-1. 자원의 소유자가 차마 ``close()`` 등으로 자원 회수를 하지 않는 경우를 대비한 안전망 역할.
+아래의 두 가지의 경우에 해당되더라도, 불확실성과 성능 저하에 주의하며 finalizer 및 cleaner를 사용해야 한다.
 
-FileInputStream, FileOutputStream 등이 안전망 역할의 finalizer를 사용한다.
+### 4.1. 안전망 역할
 
-2. Native Peer와 연결된 객체.
+자원의 소유자가 차마 ``close()`` 등으로 자원 회수를 하지 않는 경우를 대비한 안전망 역할을 한다.
+
+* FileInputStream, FileOutputStream 등이 안전망 역할의 finalizer를 사용한다.
+
+### 4.2. Native Peer와 연결된 객체
 
 Native Peer란 일반 Java 객체가 네이티브 메서드를 통해 기능을 위임한 네이티브 객체를 의미한다. GC는 네이티브 객체를 회수하지 못하기 때문에 finalizer 및 cleaner를 사용한다.
 
 * 단 성능 저하를 감당할 수 있고 네이티브 피어의 자원이 즉시 회수될 필요가 없는 경우에만 해당한다.
-
-위 두 가지의 경우에 해당되더라도, 불확실성과 성능 저하에 주의하며 finalizer 및 cleaner를 사용해야 한다.
 
 <br>
 
@@ -107,7 +109,7 @@ public class Room implements AutoCloseable {
 ```
 
 * State는 cleaner가 청소할 때 수거하는 자원을 정의하고 있다.
-* GC가 수거하지 않거나 ``close()``를 호출하지 않는다면 Cleaner가 (언젠가) State의 ``run()``을 호출하게 된다.
+* GC가 수거하지 않거나 ``close()``를 호출하지 않는다면 cleaner가 (언젠가) State의 ``run()``을 호출하게 된다.
 
 State 인스턴스가 Room 인스턴스를 참조하는 경우 순환 참조가 발생하여 GC가 Room을 회수해갈 기회가 사라진다. State가 정적이 아닌 중첩(내부) 클래스라면 자동으로 바깥 객체의 참조를 가지기 때문에 정적으로 선언되었다.
 

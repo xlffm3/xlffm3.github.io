@@ -79,7 +79,6 @@ new 연산을 호출하면 매번 객체를 새로 생성하게 된다. 생성 �
 
 ```java
 public class Car {
-
     private static final Car SMALL_CAR = new Car(50, 130, 800);
     private static final Car BIG_CAR = new Car(40, 150, 1000);
 

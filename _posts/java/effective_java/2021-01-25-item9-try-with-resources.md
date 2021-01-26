@@ -1,6 +1,6 @@
 ---
 title: "[Effective Java] Item 9. try-finally보다 try-with-resources를 사용하라"
-excerpt: "사용 자원을 자동으로 해제해주는 기능을 알아보자"
+excerpt: "사용 자원을 자동으로 해제해주는 기능을 알아보자."
 categories:
   - Java
 tags:

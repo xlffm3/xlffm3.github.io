@@ -29,10 +29,10 @@ static void copy(String src, String dst) throws IOException {
             while ((n = in.read(buf)) >= 0)
                 out.write(buf, 0, n);
         } finally {
-            out.close();
+            if (out != null) out.close();
         }
     } finally {
-        in.close();
+        if (in != null) in.close();
     }
 }
 ```

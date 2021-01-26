@@ -14,7 +14,7 @@ last_modified_at: 2021-01-26
 
 > ``compareTo()`` 메서드는 Object에 정의되어 있지 않고, 단순 동치성 비교에 더해 순서까지 비교할 수 있으며 제네릭하다.
 
-인스턴스들이 자연적인 순서(natural order)가 있다면 Comparable을 구현하자. 해당 인터페이스를 활용하는 많은 제네릭 알고리즘 및 컬렉션들이 제공하는 정렬 및 검색 등 유용한 기능을 사용할 수 있다. 많은 Java 플랫폼 라이브러리의 값 클래스 및 열거 타입이 Comparable을 구현했다.
+인스턴스들이 자연적인 순서(natural order)가 있다면 Comparable을 구현하자. 해당 인터페이스를 활용하는 많은 제네릭 알고리즘 및 컬렉션들이 제공하는 정렬 및 검색 등의 유용한 기능을 사용할 수 있다. 많은 Java 플랫폼 라이브러리의 값 클래스 및 열거 타입이 Comparable을 구현했다.
 
 <br>
 
@@ -50,8 +50,7 @@ Comparable을 구현하지 않은 필드나 표준이 아닌 순서로 비교해
 > PhoneNumber.java
 
 ```java
-private static final Comparator<PhoneNumber> COMPARATOR =
-        comparingInt((PhoneNumber pn) -> pn.areaCode)
+private static final Comparator<PhoneNumber> COMPARATOR = comparingInt((PhoneNumber pn) -> pn.areaCode)
                 .thenComparingInt(pn -> pn.prefix)
                 .thenComparingInt(pn -> pn.lineNum);
 

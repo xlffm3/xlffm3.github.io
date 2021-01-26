@@ -25,7 +25,7 @@ last_modified_at: 2021-01-25
 * from, of, valueOf
 * getInstance, newInstance, create
 * getType, newType, type
-  * "Type"은 정적 팩토레 메서드가 반환하는 객체의 타입이다.
+  * "Type"은 정적 팩토리 메서드가 반환하는 객체의 타입이다.
 
 > Car.java
 
@@ -94,7 +94,8 @@ public class Car {
 
 * 클래스를 싱글턴으로 만들 수 있다.
   * 인스턴스의 생성자를 private으로 두어 인스턴스화 불가능하게 설정할 수 있다.
-  * 인스턴스의 동치성을 보장할 수 있다.
+* 불변 값 클래스에서 동치인 인스턴스가 단 하나뿐임을 보장할 수 있다.
+  * ``a == b``일 때만 ``a.equals(b)``가 성립한다.
 
 <br>
 

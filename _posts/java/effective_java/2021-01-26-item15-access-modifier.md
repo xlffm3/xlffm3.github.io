@@ -31,7 +31,7 @@ last_modified_at: 2021-01-26
 
 ## 2. 접근 제한자
 
-모든 클래스와 멤버의 접근성을 가능한 좁혀야 한다. 클래스는 아래의 접근 제한자들 중 public과 package-private(default)만 사용 가능하다.
+모든 클래스와 멤버의 접근성을 가능한 좁혀야 한다. 멤버 클래스가 아닌 일반 클래스는 아래의 접근 제한자들 중 public과 package-private(default)만 사용 가능하다.
 
 * private : 멤버를 선언한 톱 레벨 클래스에서만 접근할 수 있다.
 * package-private(default) : 멤버가 소속된 패키지 안의 모든 클래스에서 접근할 수 있다.

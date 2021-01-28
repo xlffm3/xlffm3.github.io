@@ -1,6 +1,6 @@
 ---
 title: "[Effective Java] Item 3. private 생성자나 열거 타입으로 싱글턴임을 보증하라"
-excerpt: "싱글턴이란 무엇인가?"
+excerpt: "싱글턴이란 인스턴스를 오직 하나만 생성할 수 있는 클래스이다."
 categories:
   - Java
 tags:

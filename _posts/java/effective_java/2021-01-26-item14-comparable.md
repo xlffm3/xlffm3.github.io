@@ -45,7 +45,7 @@ public interface Comparable<T> {
 
 ## 3. Comparator
 
-Comparable을 구현하지 않은 필드나 표준이 아닌 순서로 비교해야 한다면 **Comparator**를 사용하자. 람다식을 통해 코드가 간결해지지만 약간의 성능 저하가 유발된다.
+Comparable을 구현하지 않은 필드 혹은 표준이 아닌 순서로 비교해야 한다면 **Comparator**를 사용하자. 람다식을 통해 코드가 간결해지지만 약간의 성능 저하가 유발된다.
 
 > PhoneNumber.java
 

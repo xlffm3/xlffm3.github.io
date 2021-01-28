@@ -1,6 +1,6 @@
 ---
 title: "[Effective Java] Item 7. 다 쓴 객체 참조를 해제하라"
-excerpt: "Java도 C처럼 free를?"
+excerpt: "메모리 누수는 항상 신경써야 한다."
 categories:
   - Java
 tags:

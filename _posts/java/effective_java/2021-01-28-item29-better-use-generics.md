@@ -10,7 +10,7 @@ date: 2021-01-28
 last_modified_at: 2021-01-28
 ---
 
-## 1. Object 기반 스택 리팩토링
+## 1. Object[] 기반의 스택 리팩토링
 
 > Stack.java
 

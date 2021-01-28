@@ -31,7 +31,7 @@ last_modified_at: 2021-01-26
 
 ## 2. 접근 제한자
 
-모든 클래스와 멤버의 접근성을 가능한 좁혀야 한다.
+모든 클래스와 멤버의 접근성을 가능한 좁혀야 한다. 클래스는 아래의 접근 제한자들 중 public과 package-private(default)만 사용 가능하다.
 
 * private : 멤버를 선언한 톱 레벨 클래스에서만 접근할 수 있다.
 * package-private(default) : 멤버가 소속된 패키지 안의 모든 클래스에서 접근할 수 있다.
@@ -49,7 +49,7 @@ last_modified_at: 2021-01-26
 
 ### 2.3. 멤버
 
-클래스의 공개 API를 설계하고 그 외의 모든 멤버는 private으로 선언한다. 패키지의 다른 클래스가 접근해야 하는 멤버에 한해 package-private으로 풀어준다. protected는 공개 API로서 영원히 지원되어야 하고 문서에 공개해야 할 수도 있기 때문에 적을 수록 좋다.
+클래스의 공개 API를 설계하고 그 외의 모든 멤버는 private으로 선언한다. 패키지의 다른 클래스가 접근해야 하는 멤버에 한해 package-private으로 풀어준다. **protected**는 공개 API로서 영원히 지원되어야 하고 문서에 공개해야 할 수도 있기 때문에 적을 수록 좋다.
 
 <br>
 
@@ -83,12 +83,14 @@ private static final Thing[] PRIVATE_VALUES = { ... };
 
 public static final List<Thing> VALUES = Collections.unmodifiableList(Arrays.asList(PRIVATE_VALUES));
 
+// 혹은
+
 public static final Thing[] values() {
      return PRIVATE_VALUES.clone();
 }
 ```
 
-외부에서 변경을 가할 수 있는 필드는 불변 컬렉션으로 제공하거나 복사본을 제공하는 API를 사용하도록 한다.
+외부에서 변경을 가할 수 있는 필드는 불변 컬렉션으로 제공하거나 방어적 복사본을 제공하는 API를 사용하도록 한다.
 
 <br>
 

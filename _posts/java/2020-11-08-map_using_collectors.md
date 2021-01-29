@@ -75,6 +75,7 @@ static <T,K,D,A,M extends Map<K,D>> Collector<T,?,M>
 T를 K로 맵핑하고, Supplier가 제공하는 Map에서 K키에 저장된 D객체에 T를 누적한다.
 
 **mapFactory : 함수의 수행 결과로서 새롭게 만들어지는 Map을 생성하는 function이다.**
+
 **downstream : groupingBy의 결과로서 얻어지는 결과 Collector이다.**
 
 > Test2.java

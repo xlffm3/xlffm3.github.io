@@ -6,8 +6,8 @@ categories:
 tags:
   - Java
   - Effective Java
-date: 2021-01-29
-last_modified_at: 2021-01-29
+date: 2021-01-30
+last_modified_at: 2021-01-30
 ---
 
 ## 1. 열거 타입의 확장

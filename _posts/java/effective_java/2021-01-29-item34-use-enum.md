@@ -159,7 +159,7 @@ public enum Operator implements OperatorService {
 인터페이스를 통해 상수별로 메서드를 다르게 구현했다. 필드로 BinaryOperator를 사용하면 굳이 인터페이스를 구현하지 않고도 같은 기능을 훨씬 짧게 리팩토링할 수 있다. 또한 Enum 클래스는 유용한 메서드들을 제공한다.
 
 * ``values()`` 메소드는 enum안에 존재하는 모든 값들을 순서대로 배열로 반환한다.
-* ``ordinal()`` 메소드는 각 enum 상수의 인덱스를 반환한다.
+* ``ordinal()`` 메소드는 enum 상수의 인덱스를 반환한다.
 * ``valueOf()`` 메소드는 문자열 이름에 해당하는 상수를 반환한다.
 
 <br>

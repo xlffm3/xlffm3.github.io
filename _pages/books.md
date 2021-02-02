@@ -12,11 +12,12 @@ author_profile: true
 
 개발 관련 서적을 읽고 학습 내용 및 감상 등을 정리합니다.
 
+* [Effective Java](https://xlffm3.github.io/tags/#effective-java)
 * 객체지향의 사실과 오해
-* [코딩을 지탱하는 기술](https://xlffm3.github.io/book/technology-supporting-coding/)
-* [SQL 첫걸음](https://xlffm3.github.io/database/sql-first-step/)
 * [그림으로 배우는 HTTP & Network Basic](https://xlffm3.github.io/network/http-network-basic/)
-* Effective Java
+* [SQL 첫걸음](https://xlffm3.github.io/database/sql-first-step/)
+* [코딩을 지탱하는 기술](https://xlffm3.github.io/book/technology-supporting-coding/)
+
 
 <br>
 

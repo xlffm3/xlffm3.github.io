@@ -1,5 +1,5 @@
 ---
-title: "👨‍💻 Portfolio"
+title: "Portfolio"
 excerpt: "Keep on reaching up for that higher ground."
 permalink: /portfolio/
 layout: collection

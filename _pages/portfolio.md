@@ -22,7 +22,7 @@ toc: false
 
 ### :: 우아한테크코스 ::
 
-* Timeline : ``2020.02 -``
+* Timeline : ``2021.02 -``
 * [Project Repository](https://github.com/xlffm3/woowacourse-projects)
 
 ### :: 42 Seoul ::

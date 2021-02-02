@@ -18,6 +18,20 @@ toc: false
 
 <br>
 
+## ‍💻 Experience
+
+### :: 우아한테크코스 ::
+
+* Timeline : ``2020.02 -``
+* [Project Repository](https://github.com/xlffm3/woowacourse-projects)
+
+### :: 42 Seoul ::
+
+* Timeline : ``2020.01 - 2021.01``
+* [Project Repository](https://github.com/xlffm3/42-Seoul)
+
+<br>
+
 ## 📚 Interest
 
 * Java with Spring & Spring Boot 🌱

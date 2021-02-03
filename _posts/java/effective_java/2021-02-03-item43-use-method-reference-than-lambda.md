@@ -1,6 +1,6 @@
 ---
 title: "[Effective Java] Item 43. 람다보다는 메서드 참조를 사용하라"
-excerpt: "람다는 작은 함수 객체를 아주 쉽게 표현할 수 있다."
+excerpt: "메서드 참조는 람다의 간단명료한 대안이 될 수 있다."
 categories:
   - Java
 tags:

@@ -1,6 +1,6 @@
 ---
 title: "[Effective Java] Item 63. 문자열 연결은 느리니 주의하라"
-excerpt: "많은 문자열을 연결할 때는 문자열 연결 연산자(+)를 피하자"
+excerpt: "많은 문자열을 연결할 때는 문자열 연결 연산자를 피하자"
 categories:
   - Java
 tags:

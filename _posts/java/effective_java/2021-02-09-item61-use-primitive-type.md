@@ -6,8 +6,8 @@ categories:
 tags:
   - Java
   - Effective Java
-date: 2021-02-08
-last_modified_at: 2021-02-08
+date: 2021-02-09
+last_modified_at: 2021-02-09
 ---
 
 ## 1. 박싱된 기본 타입

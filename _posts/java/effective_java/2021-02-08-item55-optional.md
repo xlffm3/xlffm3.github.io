@@ -1,6 +1,6 @@
 ---
 title: "[Effective Java] Item 55. 옵셔널 반환은 신중히 하라"
-excerpt: "옵셔널 반환에는 성능 저하가 뒤따르니, 성능에 민감한 메서드라면 null을 반환하거나 예외를 던지는 편이 나을 수 있다."
+excerpt: "성능에 민감한 메서드라면 null을 반환하거나 예외를 던지는 편이 나을 수 있다."
 categories:
   - Java
 tags:

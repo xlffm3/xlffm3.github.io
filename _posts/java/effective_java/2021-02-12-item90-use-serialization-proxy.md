@@ -1,5 +1,5 @@
 ---
-title: "[Effective Java] Item 90. 직렬화된 인스턴스 대신 직려로하 프록시 사용을 검토하라"
+title: "[Effective Java] Item 90. 직렬화된 인스턴스 대신 직렬화 프록시 사용을 검토하라"
 excerpt: "제 3자가 확장할 수 없는 클래스라면 가능한 한 직렬화 프록시 패턴을 사용하자."
 categories:
   - Java

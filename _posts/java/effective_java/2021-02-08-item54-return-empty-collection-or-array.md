@@ -33,7 +33,7 @@ public List<Cheese> getCheeses() {
 ```java
 private static final Cheese[] EMPTY_CHEESE_ARRAY = new Cheese[0];
 
-public List<Cheese> getCheeses() {
+public Cheese[] getCheeses() {
     return cheeseInStock.toArray(EMPTY_CHEESE_ARRAY);
 }
 ```

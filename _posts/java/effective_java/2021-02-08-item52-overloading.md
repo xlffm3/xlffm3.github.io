@@ -90,7 +90,7 @@ public class SetList {
 * 오토박싱이 도입되면서 다중정의에 더욱 주의를 기울여야 한다.
   * 오토박싱과 제네릭의 도입 전에는 Object와 int가 근본적으로 달랐다.
   * 그러나 오토박싱이 등장하면서 근본적으로 다르지 않게 되었다.
-* 리스트는 ``remove(int)``와 ``remove(Object)``를 다중정의하고 있으다.
+* 리스트는 ``remove(int)``와 ``remove(Object)``를 다중정의하고 있다.
   * i 인덱스의 원소 삭제가 아닌 Integer i라는 원소를 삭제하고 싶다면, ``list.remove(Integer.valueOf(i))``를 사용해야 한다.
 
 ### 1.3. 함수형 인터페이스

@@ -33,8 +33,7 @@ private static class SerializationProxy implements Serializable {
         this.end = p.end;
     }
 
-    private static final long serialVersionUID =
-            234098243823485285L; // 아무 값이나 상관없다.
+    private static final long serialVersionUID = 234098243823485285L; // 아무 값이나 상관없다.
 }
 ```
 

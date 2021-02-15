@@ -15,8 +15,7 @@ last_modified_at: 2020-11-08T20:05:00-05:00
 > Collectors.java
 
 ```java
-static <T,K> Collector<T,?,Map<K,List<T>>>
-  groupingBy(Function<? super T,? extends K> classifier)
+static <T,K> Collector<T,?,Map<K,List<T>>> groupingBy(Function<? super T,? extends K> classifier)
 ```
 
 T를 K로 맵핑하고, K에 저장된 List에 T를 저장한 Map을 생성한다.
@@ -67,9 +66,8 @@ public static void main(String[] args) {
 > Collectors.java
 
 ```java
-static <T,K,D,A,M extends Map<K,D>> Collector<T,?,M>
-  groupingBy(Function<? super T,? extends K> classifier,
-    Supplier<M> mapFactory, Collector<? super T,A,D> downstream)
+static <T,K,D,A,M extends Map<K,D>> Collector<T,?,M> groupingBy(Function<? super T,? extends K> classifier, Supplier<M> mapFactory,
+    Collector<? super T,A,D> downstream)
 ```
 
 T를 K로 맵핑하고, Supplier가 제공하는 Map에서 K키에 저장된 D객체에 T를 누적한다.

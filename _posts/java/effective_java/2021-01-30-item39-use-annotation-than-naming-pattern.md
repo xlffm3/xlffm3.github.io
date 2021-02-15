@@ -128,8 +128,7 @@ if (m.isAnnotationPresent(ExceptionTest.class)) {
         System.out.printf("테스트 %s 실패: 예외를 던지지 않음%n", m);
     } catch (InvocationTargetException wrappedEx) {
         Throwable exc = wrappedEx.getCause();
-        Class<? extends Throwable> excType =
-                m.getAnnotation(ExceptionTest.class).value();
+        Class<? extends Throwable> excType = m.getAnnotation(ExceptionTest.class).value();
         if (excType.isInstance(exc)) {
             passed++;
         } else {
@@ -180,8 +179,7 @@ if (m.isAnnotationPresent(ExceptionTest.class)) {
      } catch (Throwable wrappedExc) {
          Throwable exc = wrappedExc.getCause();
          int oldPassed = passed;
-         Class<? extends Throwable>[] excTypes =
-                 m.getAnnotation(ExceptionTest.class).value();
+         Class<? extends Throwable>[] excTypes = m.getAnnotation(ExceptionTest.class).value();
          for (Class<? extends Throwable> excType : excTypes) {
              if (excType.isInstance(exc)) {
                  passed++;
@@ -256,8 +254,7 @@ if (m.isAnnotationPresent(ExceptionTest.class)
     } catch (Throwable wrappedExc) {
         Throwable exc = wrappedExc.getCause();
         int oldPassed = passed;
-        ExceptionTest[] excTests =
-                m.getAnnotationsByType(ExceptionTest.class);
+        ExceptionTest[] excTests = m.getAnnotationsByType(ExceptionTest.class);
         for (ExceptionTest excTest : excTests) {
             if (excTest.value().isInstance(exc)) {
                 passed++;

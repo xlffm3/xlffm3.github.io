@@ -32,7 +32,7 @@ public static <E extends Comparable<E>> Optional<E> max(Collection<E> c) {
 }
 ```
 
-* Java 8 부터는 Optional\<T\>를 통해 null이 아닌 t 타입 참조를 하나 담아 반환한다.
+* Java 8 부터는 Optional\<T\>를 통해 null이 아닌 T 타입 참조를 하나 담아 반환한다.
   * 반환할 값이 없을 때는 ``Optional.empty()``를 통해 빈 옵셔널을 반환한다.
 * 예외를 던지는 메서드보다 유연하고 사용하기 쉽고, null을 반환하는 메서드보다 오류 가능성이 작다.
 * ``Optional.of()``에 null을 담으면 예외가 발생한다.
@@ -86,7 +86,7 @@ String lastWordInLexicon = max(words).orElseThrow(IllegalArgumentException::new)
 > Main.java
 
 ```java
-String lastWordInLexicon = max(words).orElseThrow(IllegalArgumentException::new);
+String lastWordInLexicon = max(words).get();
 ```
 
 * 옵셔널에 항상 값이 채워져 있다고 확신한다면 곧바로 값을 꺼내 사용할 수 있다.

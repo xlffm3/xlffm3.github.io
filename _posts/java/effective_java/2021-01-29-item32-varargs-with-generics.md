@@ -140,7 +140,7 @@ public class SafePickTwo {
 ```
 
 * 기존의 ``pickTwo()``는 ``toArray()``를 통해 varargs 매개변수 배열에 직접 접근하고 이를 외부에 노출시켰다.
-* ``List.of()``를 사용하 배열 없이 제네릭만 사용하기 때문에 안전하다.
+* ``List.of()``를 통해 배열 없이 제네릭만 사용하기 때문에 안전하다.
 
 <br>
 

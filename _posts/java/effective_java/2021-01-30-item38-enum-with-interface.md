@@ -109,7 +109,7 @@ private static <T extends Enum<T> & Operation> void test(Class<T> opEnumType, do
 ```
 
 * 한정적 타입 토큰?
-  * Class 객체는 열거 타입이면서 동시에 OperatorService의 하위 타입이어야 한다.
+  * Class 객체는 열거 타입이면서 동시에 Operator의 하위 타입이어야 한다.
 
 > Test.java
 

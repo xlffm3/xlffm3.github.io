@@ -28,16 +28,15 @@ try (Stream<String> words = new Scanner(file).tokens()) {
     });
 }
 
-Map<String, Long> freq;
+Map<String, Long> freq= new HashMap<>();
 try (Stream<String> words = new Scanner(file).tokens()) {
-    freq = words
-            .collect(groupingBy(String::toLowerCase, counting()));
+    freq = words.collect(groupingBy(String::toLowerCase, counting()));
 }
 ```
 
 * forEach 연산은 종단 연산 중 기능이 적고 병렬화가 불가능하다.
   * 스트림답지 않아 스트림 계산 결과를 보고할 때만 사용하고, 계산하는 데는 사용하는 것은 지양한다.
-* 수집기를 사용하면 아래의 코드처럼 부작용없이 빈도표를 초기화 할 수 있다.
+* 수집기를 사용하면 위의 코드처럼 부작용없이 빈도표를 초기화 할 수 있다.
 
 <br>
 
@@ -50,8 +49,7 @@ try (Stream<String> words = new Scanner(file).tokens()) {
 > Converter.java
 
 ```java
-private static final Map<String, Operation> stringToEnum =
-    Stream.of(values())
+private static final Map<String, Operation> stringToEnum = Stream.of(values())
             .collect(Collectors.toMap(Object::toString, e->e));
 ```
 
@@ -63,7 +61,7 @@ private static final Map<String, Operation> stringToEnum =
 Map<Artist, Album> topHits = albums.collect(
     toMap(Album::artist, a -> a, maxBy(comparing(Album::sales))));
 
-toMap(keyMapper, valueMapper, (oldVal, newVal) -> newVal)
+//toMap(keyMapper, valueMapper, (oldVal, newVal) -> newVal)
 ```
 
 * BinaryOperator\<U\> 형태의 병합 함수까지 제공할 수 있다.

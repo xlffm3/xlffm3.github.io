@@ -2,6 +2,8 @@
 main:
   - title: "Portfolio"
     url: /portfolio/
+  - title: "Resume"
+    url: https://www.notion.so/Jinhong-Park-d5ed848bced04634a408e69e5071e38a
   - title: "Books"
     url: /books/
   - title: "Posts"

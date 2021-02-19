@@ -39,14 +39,26 @@ interface ApplePredicate {
 }
 ```
 
-> AppleWeightColorPredicate.java
+> AppleWeightPredicate.java
 
 ```java
-class AppleWeightColorPredicate implements ApplePredicate {
+class AppleWeightPredicate implements ApplePredicate {
 
     @Override
     public boolean test(Apple apple) {
-        return apple.getWeight() > 150 && apple.geColor().equals(RED);
+        return apple.getWeight() > 150;
+    }
+}
+```
+
+> AppleColorPredicate.java
+
+```java
+class AppleColorPredicate implements ApplePredicate {
+
+    @Override
+    public boolean test(Apple apple) {
+        return apple.geColor().equals(RED);
     }
 }
 ```
@@ -65,6 +77,13 @@ public static List<Apple> filter(List<Apple> inventory, ApplePredicate p) {
 }
 ```
 
+> Main.java
+
+```java
+List<Apple> result = filter(list, new AppleWeightPredicate());
+List<Apple> result2 = filter(list, new AppleColorPredicate());
+```
+
 * 알고리즘을 정의하고 캡슐화한 다음 런타임 시점에 선택하는 전략 패턴과 유사하다.
 * 동적 파라미터화는 추상화된 동작(메서드)을 인자로 제공함으로써 하나의 메서드 시그니쳐로 다양한 동작을 수행할 수 있다.
   * 컬렉션을 순회하는 로직과 각 원소들을 검증하는 로직을 분리하게 된다.
@@ -73,7 +92,7 @@ public static List<Apple> filter(List<Apple> inventory, ApplePredicate p) {
 
 ## 2. 리팩토링
 
-위의 ``filter()`` 메서드에 새로운 필터링 기준을 사용하고 싶으면, 매번 ApplePredicate 인터페이스를 구현한 클래스를 새로 생성해야 하는 번거로움이 있다.
+위의 ``filter()`` 메서드에 새로운 필터링 기준을 사용하고 싶으면, 매번 ApplePredicate 인터페이스를 구현한 클래스를 새로 생성해야 한다. 일회성 동작의 성격을 지닌 클래스를 작성하고 파일로 관리하는 것은 다소 번거롭다.
 
 ### 2.1. 익명 클래스
 

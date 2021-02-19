@@ -86,6 +86,9 @@ filterApple(list, new Predicate<Apple>() {
         return apple.getWeight() > 150;  
     }  
 });
+
+//익명 클래스를 다음과 같이 짧게 축약 가능
+
 filterApple(list, (Apple apple) -> apple.getWeight() > 150);
 filterApple(list, Apple::isHeavy);
 ```

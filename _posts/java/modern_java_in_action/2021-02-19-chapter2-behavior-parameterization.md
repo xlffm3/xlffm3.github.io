@@ -1,5 +1,5 @@
 ---
-title: "[Modern Java in Action] 2장. 동적 파라미터화"
+title: "[Modern Java in Action] 2장. 동작 파라미터화 코드 전달하기"
 excerpt: "동적 파라미터화는 빈번한 요구사항 변경에 대처할 수 있는 개발 패턴이다."
 categories:
   - Java

@@ -1,5 +1,5 @@
 ---
-title: "[Modern Java in Action] 1장. Java의 큰 변화"
+title: "[Modern Java in Action] 1장. Java 8, 9, 10, 11 : 무슨 일이 일어나고 있는가?"
 excerpt: "새로운 언어가 탄생하고, 오래된 언어는 진화하지 못하면 도태된다."
 categories:
   - Java

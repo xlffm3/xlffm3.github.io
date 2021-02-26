@@ -161,7 +161,7 @@ String twoLines = processFile((BufferedReader br) -> br.readLine() + br.readLine
 > Filter.java
 
 ```java
-Collections.sort(list, (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight()));
+Collections.sort(list, (a1, a2) -> a1.getWeight().compareTo(a2.getWeight()));
 ```
 
 * ``sort()`` 메서드의 선언부분을 확인한다.

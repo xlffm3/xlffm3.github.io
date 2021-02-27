@@ -161,7 +161,7 @@ String twoLines = processFile((BufferedReader br) -> br.readLine() + br.readLine
 > Filter.java
 
 ```java
-Collections.sort(list, (a1, a2) -> a1.getWeight().compareTo(a2.getWeight()));
+Collections.sort(list, (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight()));
 ```
 
 * ``sort()`` 메서드의 선언부분을 확인한다.
@@ -199,6 +199,7 @@ Collections.sort(list, (a1, a2) -> a1.getWeight().compareTo(a2.getWeight()));
 ```
 
 * 함수 디스크립터를 통해 타입을 검사하기 때문에, 람다의 적절한 시그니처를 추론할 수 있다.
+  * 함께 사용되는 list의 타입 매개변수 등 문맥을 분석한다.
 * 람다 표현식의 파라미터 타입은 생략이 가능하다.
 
 ### 5.3. 지역 변수 사용

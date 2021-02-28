@@ -108,9 +108,10 @@ List<Integer> numbers = stream.reduce(
                  return l1; });
 ```
 
-* 위 예제는 Accumulator로 사용되는 List 컨테이너를 가변시키고 있는 잘못된 ``reduce()`` 사용이다.
-* ``collect()`` 작업을 ``reduce()``로 할 수 있을지라도 병렬화 작업에서는 제대로 작동하지 않는다.
+* 위 예제는 Accumulator로 사용되는 List 컨테이너를 가변시키는 잘못된 ``reduce()`` 사용이다.
+* ``collect()`` 작업을 ``reduce()``로 대체할 수 있을지라도 병렬화 작업에서는 제대로 작동하지 않는다.
   * 여러 스레드가 리스트에 대해 ConcurrentModification을 수행할 때 List는 스레드 안전하지 못하고 오염될 수 있다.
+* 가변 컨테이너를 통해 리듀싱 작업을 할 때 ``collect()``가 더 병렬 처리에 친화적이다.
 
 <br>
 

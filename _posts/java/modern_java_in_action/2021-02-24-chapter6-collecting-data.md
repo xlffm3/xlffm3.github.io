@@ -190,9 +190,11 @@ Map<Dish.Type, Dish> mostCaloricByType = menu.stream()
 ```java
 Map<Boolean, List<Dish>> partitionedMenu = menu.stream()
         .collect(Collectors.partitioningBy(Dish::isVegetarian));
+
 Map<Boolean, Map<Dish.Type, List<Dish>>> vegetarianDishesByType = menu.stream()
         .collect(Collectors.partitioningBy(Dish::isVegetarian,
         Collectors.groupingBy(Dish::getType)));
+
 Map<Boolean, Dish> mostCaloricPartitionedByVegetarian = menu.stream()
         .collect(Collectors.partitioningBy(Dish::isVegetarian,
         Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparingInt(Dish::getCalories)),

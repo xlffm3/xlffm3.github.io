@@ -1,6 +1,6 @@
 ---
 title: "[Modern Java in Action] 6장. 스트림으로 데이터 수집"
-excerpt: "Collector 인터페이스를 통해 데이터를 간편하게 수집해본다."
+excerpt: "Collector 인터페이스를 사용하여 데이터를 간단하게 수집해본다."
 categories:
   - Java
 tags:

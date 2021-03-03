@@ -345,10 +345,6 @@ Stream.iterate(new int[] { 0, 1 }, t -> new int[] { t[1], t[0] + t[1] })
 
 <br>
 
-## 8.
-
-<br>
-
 ---
 
 ## Reference

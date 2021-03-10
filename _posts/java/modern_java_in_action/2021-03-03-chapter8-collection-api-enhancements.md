@@ -15,7 +15,6 @@ last_modified_at: 2021-03-03
 > ListFactory.java
 
 ```java
-
 List<String> friends = Arrays.asList("Raphael", "Olivia", "Thibaut");
 List<String> friends2 = List.of("Raphael", "Olivia", "Thibaut");
 ```
